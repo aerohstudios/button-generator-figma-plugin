@@ -11,10 +11,12 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 figma.showUI(__html__);
 figma.ui.resize(500, 350);
 let useCustomSize = false;
+let useCustomFontSize = false;
 figma.ui.onmessage = (pluginMessage) => __awaiter(void 0, void 0, void 0, function* () {
     const newPage = figma.createPage();
     figma.currentPage = newPage;
     useCustomSize = pluginMessage.useCustomSize;
+    useCustomFontSize = pluginMessage.useCustomFontSize;
     const mainFrame = figma.createFrame();
     mainFrame.name = 'Main Frame';
     let componentWidth;
@@ -64,7 +66,7 @@ figma.ui.onmessage = (pluginMessage) => __awaiter(void 0, void 0, void 0, functi
             console.error('Error loading font:', error);
         }
     }))();
-    const component1 = generateComponentSet(pluginMessage.primaryrgbValues, pluginMessage.secondaryrgbValues, pluginMessage.buttonRadius, pluginMessage.fontStyle, 'small', pluginMessage.buttonHeight, pluginMessage.buttonWidth);
+    const component1 = generateComponentSet(pluginMessage.primaryrgbValues, pluginMessage.secondaryrgbValues, pluginMessage.buttonRadius, pluginMessage.fontStyle, 'small', pluginMessage.buttonHeight, pluginMessage.buttonWidth, pluginMessage.buttonFontSize);
     let distanceX;
     if (useCustomSize) {
         distanceX = pluginMessage.buttonWidth * 4 * 1.69 + 500;
@@ -73,10 +75,10 @@ figma.ui.onmessage = (pluginMessage) => __awaiter(void 0, void 0, void 0, functi
         distanceX = 1131;
     }
     const distanceY = 0;
-    const component2 = generateComponentSet(pluginMessage.primaryrgbValues, pluginMessage.secondaryrgbValues, pluginMessage.buttonRadius, pluginMessage.fontStyle, 'medium', pluginMessage.buttonHeight, pluginMessage.buttonWidth);
+    const component2 = generateComponentSet(pluginMessage.primaryrgbValues, pluginMessage.secondaryrgbValues, pluginMessage.buttonRadius, pluginMessage.fontStyle, 'medium', pluginMessage.buttonHeight, pluginMessage.buttonWidth, pluginMessage.buttonFontSize);
     component2.x = component1.x + component1.width + 200;
     component2.y = component1.y + distanceY;
-    const component3 = generateComponentSet(pluginMessage.primaryrgbValues, pluginMessage.secondaryrgbValues, pluginMessage.buttonRadius, pluginMessage.fontStyle, 'large', pluginMessage.buttonHeight, pluginMessage.buttonWidth);
+    const component3 = generateComponentSet(pluginMessage.primaryrgbValues, pluginMessage.secondaryrgbValues, pluginMessage.buttonRadius, pluginMessage.fontStyle, 'large', pluginMessage.buttonHeight, pluginMessage.buttonWidth, pluginMessage.buttonFontSize);
     component3.x = component2.x + component2.width + 200;
     component3.y = component2.y + distanceY;
     mainFrame.y = Math.min(heading1.y, heading2.y, component1.y, component2.y, component3.y) - 30;
@@ -120,7 +122,7 @@ figma.ui.onmessage = (pluginMessage) => __awaiter(void 0, void 0, void 0, functi
     const totalHeight = component3.height + 568;
     figma.notify('Yayyy! the button Design System is ready, go on and start using it!');
 });
-function generateComponentSet(primaryColor, secondaryColor, buttonRadius, fontStyle, buttonSize, customButtonHeight, customButtonWidth) {
+function generateComponentSet(primaryColor, secondaryColor, buttonRadius, fontStyle, buttonSize, customButtonHeight, customButtonWidth, customButtonFontSize) {
     let buttonWidth, buttonHeight;
     if (useCustomSize) {
         switch (buttonSize) {
@@ -236,7 +238,7 @@ function generateComponentSet(primaryColor, secondaryColor, buttonRadius, fontSt
                 }))();
             }
             const buttonText = buttonState === 'disabled' ? 'Disabled' : 'Click me';
-            const button = createButton(primaryColor, secondaryColor, buttonRadius, fontStyle, buttonType, buttonState, buttonText, buttonWidth, buttonHeight, buttonSize);
+            const button = createButton(primaryColor, secondaryColor, buttonRadius, fontStyle, buttonType, buttonState, buttonText, buttonWidth, buttonHeight, buttonSize, customButtonFontSize);
             const xPosition = 120 + buttonTypes.indexOf(buttonType) * (103 + buttonWidth);
             const yPosition = 160 + buttonStates.indexOf(buttonState) * (60 + buttonHeight);
             console.log(buttonTypes.indexOf(buttonType), 363);
@@ -248,7 +250,7 @@ function generateComponentSet(primaryColor, secondaryColor, buttonRadius, fontSt
     figma.currentPage.appendChild(componentSet);
     return componentSet;
 }
-function createButton(primaryColor, secondaryColor, buttonRadius, fontStyle, buttonType, buttonState, buttonText, width, height, buttonSize) {
+function createButton(primaryColor, secondaryColor, buttonRadius, fontStyle, buttonType, buttonState, buttonText, width, height, buttonSize, customButtonFontSize) {
     const button = figma.createComponent();
     button.name = `Button Type = ${buttonType}, Button State = ${buttonState}, Button Size = ${buttonSize}`;
     button.resize(width, height);
@@ -297,7 +299,12 @@ function createButton(primaryColor, secondaryColor, buttonRadius, fontStyle, but
             yield figma.loadFontAsync(fontName);
             buttonTextNode.fontName = fontName;
             buttonTextNode.characters = 'Button';
-            buttonTextNode.fontSize = 16;
+            if (useCustomFontSize) {
+                buttonTextNode.fontSize = Number(customButtonFontSize);
+            }
+            else {
+                buttonTextNode.fontSize = 16;
+            }
             if (buttonType == 'primary' || buttonType == 'elevated') {
                 buttonTextNode.fills = [{ type: 'SOLID', color: secondaryColor }];
             }
