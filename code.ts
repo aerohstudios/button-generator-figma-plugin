@@ -328,10 +328,12 @@ function createButton(primaryColor: RGB, secondaryColor: RGB, buttonRadius: numb
       await figma.loadFontAsync(fontName);
       buttonTextNode.fontName = fontName;
       buttonTextNode.characters = 'Button';
-      if (useCustomFontSize) {
+      if (height === width && useCustomSize) {
+        buttonTextNode.fontSize = width/4.95;
+      } else if (useCustomFontSize) {
         buttonTextNode.fontSize = Number(customButtonFontSize);
       } else {
-        buttonTextNode.fontSize = 16;
+        buttonTextNode.fontSize = height/4.95;
       }
 
       if (buttonType == 'primary' || buttonType == 'elevated') {
