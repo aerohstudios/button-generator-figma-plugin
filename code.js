@@ -171,7 +171,7 @@ function generateComponentSet(primaryColor, secondaryColor, buttonRadius, fontSt
         try {
             yield figma.loadFontAsync(fontName);
             buttonSizeLabel.fontName = fontName;
-            buttonSizeLabel.characters = `${buttonSize.toUpperCase()} Buttons`;
+            buttonSizeLabel.characters = `${buttonSize.toUpperCase()} BUTTONS`;
             buttonSizeLabel.fontSize = 32;
             buttonSizeLabel.fills = [{ type: 'SOLID', color: { r: 0, g: 0, b: 0 } }];
             componentSet.appendChild(buttonSizeLabel);
