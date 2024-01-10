@@ -162,7 +162,7 @@ function generateComponentSet(primaryColor, secondaryColor, buttonRadius, fontSt
     }
     const componentSet = figma.createFrame();
     componentSet.name = `Button Component Set - ${buttonSize}`;
-    componentSet.resize(429 + (4 * buttonWidth), (4 * buttonHeight) + 280);
+    componentSet.resize(429 + (4 * buttonWidth), (4 * buttonHeight) + 340);
     componentSet.y = 300;
     componentSet.x = 80;
     (() => __awaiter(this, void 0, void 0, function* () {
@@ -202,7 +202,7 @@ function generateComponentSet(primaryColor, secondaryColor, buttonRadius, fontSt
                 }
                 buttonTypeLabel.resize(textWidth, buttonTypeLabel.height);
                 const xPosition = 120 + buttonTypes.indexOf(buttonType) * (103 + buttonWidth);
-                const yPosition = 50;
+                const yPosition = 110;
                 buttonTypeLabel.x = xPosition;
                 buttonTypeLabel.y = yPosition;
                 componentSet.appendChild(buttonTypeLabel);
@@ -225,7 +225,7 @@ function generateComponentSet(primaryColor, secondaryColor, buttonRadius, fontSt
                         buttonStateLabel.resize(buttonStateLabel.width, buttonHeight);
                         buttonStateLabel.textAlignVertical = 'CENTER';
                         const xPosition = 0 + typeIndex * 220;
-                        const yPosition = 100 + buttonStates.indexOf(buttonState) * (60 + buttonHeight);
+                        const yPosition = 160 + buttonStates.indexOf(buttonState) * (60 + buttonHeight);
                         buttonStateLabel.x = xPosition;
                         buttonStateLabel.y = yPosition;
                         componentSet.appendChild(buttonStateLabel);
@@ -238,7 +238,7 @@ function generateComponentSet(primaryColor, secondaryColor, buttonRadius, fontSt
             const buttonText = buttonState === 'disabled' ? 'Disabled' : 'Click me';
             const button = createButton(primaryColor, secondaryColor, buttonRadius, fontStyle, buttonType, buttonState, buttonText, buttonWidth, buttonHeight, buttonSize);
             const xPosition = 120 + buttonTypes.indexOf(buttonType) * (103 + buttonWidth);
-            const yPosition = 100 + buttonStates.indexOf(buttonState) * (60 + buttonHeight);
+            const yPosition = 160 + buttonStates.indexOf(buttonState) * (60 + buttonHeight);
             console.log(buttonTypes.indexOf(buttonType), 363);
             button.x = xPosition;
             button.y = yPosition;
