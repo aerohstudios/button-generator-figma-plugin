@@ -2142,7 +2142,8 @@
   </div>
 
 
-  <div id="inputContainer" style="display:none; justify-content: center; flex-direction: row; align-items: center; gap: 2rem">
+  <div id="inputContainer" style="display:none; justify-content: center; flex-direction: column; align-items: center; gap: 2rem; width: 100%;">
+    <div id="inputContainer" style="display: flex; justify-content: center; flex-direction: row; align-items: center; gap: 2rem; width: 100%;">
     <div style="display: flex; flex-direction: column; justify-content: center; align-items: center; width: 100%;">
     <div class="section-title">Button Height:</div>
     <div class="input">
@@ -2170,6 +2171,29 @@
       />
     </div>
   </div>
+
+</div>
+
+  <div class="checkbox" style="width: 100%;">
+    <input id="toggleTextSizeCheckbox" type="checkbox" class="checkbox__box">
+    <label for="toggleTextSizeCheckbox" class="checkbox__label">Custom Button Font Size</label>
+  </div>
+  </div>
+
+  <div id="textSizeInputContainer" style="display:none; justify-content: center; flex-direction: column; align-items: center; gap: 2rem; width: 100%;">
+    <div style="display: flex; flex-direction: column; justify-content: center; align-items: center; width: 100%;">
+      <div class="section-title">Button Font Size:</div>
+      <div class="input">
+        <input
+          type="number"
+          id="button-font-size"
+          class="input__field"
+          placeholder="Button Font Size"
+          min="0"
+          max="200"
+        />
+      </div>
+    </div>
   </div>
 
   <button id="submit-post" class="button button--primary">Generate</button>
@@ -2184,6 +2208,15 @@
                 inputContainer.style.display = checkbox.checked ? 'flex' : 'none';
             });
         });
+
+        const inputFontSizeContainer = document.getElementById('textSizeInputContainer');
+  document.addEventListener('DOMContentLoaded', function () {
+            const checkbox = document.getElementById('toggleTextSizeCheckbox');
+
+            checkbox.addEventListener('change', function () {
+              inputFontSizeContainer.style.display = checkbox.checked ? 'flex' : 'none';
+            });
+        });
   document.getElementById("submit-post").onclick = () => {
     const primaryColor = document.getElementById("primary-color").value;
     const secondaryColor = document.getElementById("secondary-color").value;
@@ -2191,7 +2224,9 @@
     const fontStyle = document.getElementById("font-style").value;
     const buttonHeight = document.getElementById("button-height").value;
     const buttonWidth = document.getElementById("button-width").value;
+    const buttonFontSize = document.getElementById("button-font-size").value;
     const useCustomSize = document.getElementById("toggleCheckbox").checked;
+    const useCustomFontSize = document.getElementById("toggleTextSizeCheckbox").checked;
 
     if (useCustomSize) {
     // Validate custom height and width
@@ -2231,7 +2266,9 @@
           fontStyle,
           buttonHeight,
           buttonWidth,
-          useCustomSize
+          buttonFontSize,
+          useCustomSize,
+          useCustomFontSize
         },
       },
       "*"
