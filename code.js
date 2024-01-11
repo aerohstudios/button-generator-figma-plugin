@@ -299,11 +299,11 @@ function createButton(primaryColor, secondaryColor, buttonRadius, fontStyle, but
             yield figma.loadFontAsync(fontName);
             buttonTextNode.fontName = fontName;
             buttonTextNode.characters = 'Button';
-            if (height === width && useCustomSize) {
-                buttonTextNode.fontSize = width / 4.95;
-            }
-            else if (useCustomFontSize) {
+            if (useCustomFontSize) {
                 buttonTextNode.fontSize = Number(customButtonFontSize);
+            }
+            else if (height === width && useCustomSize) {
+                buttonTextNode.fontSize = width / 4.95;
             }
             else {
                 buttonTextNode.fontSize = height / 4.95;
