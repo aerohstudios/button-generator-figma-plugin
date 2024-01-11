@@ -9,7 +9,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 figma.showUI(__html__);
-figma.ui.resize(500, 350);
+figma.ui.resize(400, 350);
 let useCustomSize = false;
 let useCustomFontSize = false;
 figma.ui.onmessage = (pluginMessage) => __awaiter(void 0, void 0, void 0, function* () {
