@@ -210,11 +210,11 @@ function generateComponentSet(primaryColor: RGB, secondaryColor: RGB, buttonRadi
         buttonTypeLabel.fills = [{ type: 'SOLID', color: { r: 0, g: 0, b: 0 } }];
         buttonTypeLabel.textAlignHorizontal = 'CENTER';
         let textWidth;
-        if (buttonWidth > 117) {
+        if (buttonWidth > 128) {
           textWidth = buttonWidth;
         }
         else {
-          textWidth = 116;
+          textWidth = 128;
         }
         buttonTypeLabel.resize(textWidth, buttonTypeLabel.height);
 
