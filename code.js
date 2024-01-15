@@ -253,6 +253,9 @@ function generateComponentSet(primaryColor, secondaryColor, buttonRadius, fontSt
 function createButton(primaryColor, secondaryColor, buttonRadius, fontStyle, buttonType, buttonState, buttonText, width, height, buttonSize, customButtonFontSize) {
     const button = figma.createComponent();
     button.name = `Button Type = ${buttonType}, Button State = ${buttonState}, Button Size = ${buttonSize}`;
+    button.layoutMode = "HORIZONTAL";
+    button.primaryAxisAlignItems = "CENTER";
+    button.counterAxisAlignItems = "CENTER";
     button.resize(width, height);
     button.cornerRadius = Number(buttonRadius);
     switch (buttonType) {
@@ -336,8 +339,7 @@ function createButton(primaryColor, secondaryColor, buttonRadius, fontStyle, but
             else if (buttonType == 'elevated') {
                 buttonTextNode.fills = [{ type: 'SOLID', color: primaryColor }];
             }
-            buttonTextNode.x = (button.width - buttonTextNode.width) / 2;
-            buttonTextNode.y = (button.height - buttonTextNode.height) / 2;
+            buttonTextNode.layoutAlign = "CENTER";
             button.appendChild(buttonTextNode);
         }
         catch (error) {
@@ -346,10 +348,10 @@ function createButton(primaryColor, secondaryColor, buttonRadius, fontStyle, but
     }))();
     if (buttonType == 'primary' || buttonType == 'elevated') {
         if (buttonState == 'hover') {
-            button.fills = [{ type: 'SOLID', color: { r: primaryColor.r - 0.1, g: primaryColor.g - 0.1, b: primaryColor.b - 0.1 } }];
+            button.fills = [{ type: 'SOLID', color: { r: Math.max(0, primaryColor.r - 0.1), g: Math.max(0, primaryColor.g - 0.1), b: Math.max(0, primaryColor.b - 0.1) } }];
         }
         else if (buttonState == 'pressed') {
-            button.fills = [{ type: 'SOLID', color: { r: primaryColor.r - 0.2, g: primaryColor.g - 0.2, b: primaryColor.b - 0.2 } }];
+            button.fills = [{ type: 'SOLID', color: { r: Math.max(0, primaryColor.r - 0.2), g: Math.max(0, primaryColor.g - 0.2), b: Math.max(0, primaryColor.b - 0.2) } }];
         }
         else if (buttonState == 'disabled') {
             button.fills = [{
@@ -368,7 +370,7 @@ function createButton(primaryColor, secondaryColor, buttonRadius, fontStyle, but
                 }];
         }
         else if (buttonState == 'pressed') {
-            button.fills = [{ type: 'SOLID', color: { r: primaryColor.r - 0.2, g: primaryColor.g - 0.2, b: primaryColor.b - 0.2 } }];
+            button.fills = [{ type: 'SOLID', color: { r: Math.max(0, primaryColor.r - 0.2), g: Math.max(0, primaryColor.g - 0.2), b: Math.max(0, primaryColor.b - 0.2) } }];
         }
     }
     else if (buttonType == 'secondary') {
@@ -380,7 +382,7 @@ function createButton(primaryColor, secondaryColor, buttonRadius, fontStyle, but
                 }];
         }
         else if (buttonState == 'pressed') {
-            button.fills = [{ type: 'SOLID', color: { r: primaryColor.r - 0.2, g: primaryColor.g - 0.2, b: primaryColor.b - 0.2 } }];
+            button.fills = [{ type: 'SOLID', color: { r: Math.max(0, primaryColor.r - 0.2), g: Math.max(0, primaryColor.g - 0.2), b: Math.max(0, primaryColor.b - 0.2) } }];
         }
         else if (buttonState == 'disabled') {
             button.strokes = [{ type: 'SOLID', color: primaryColor, opacity: 0.32 }];

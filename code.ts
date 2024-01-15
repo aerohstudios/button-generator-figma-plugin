@@ -278,7 +278,9 @@ function generateComponentSet(primaryColor: RGB, secondaryColor: RGB, buttonRadi
 function createButton(primaryColor: RGB, secondaryColor: RGB, buttonRadius: number, fontStyle: string, buttonType: string, buttonState: string, buttonText: string, width: number, height: number, buttonSize: string, customButtonFontSize: number) {
   const button = figma.createComponent();
   button.name = `Button Type = ${buttonType}, Button State = ${buttonState}, Button Size = ${buttonSize}`;
-
+  button.layoutMode = "HORIZONTAL";
+  button.primaryAxisAlignItems = "CENTER";
+  button.counterAxisAlignItems = "CENTER";
   button.resize(width, height);
   button.cornerRadius = Number(buttonRadius);
 
@@ -366,8 +368,7 @@ function createButton(primaryColor: RGB, secondaryColor: RGB, buttonRadius: numb
         buttonTextNode.fills = [{ type: 'SOLID', color: primaryColor }];
       }
 
-      buttonTextNode.x = (button.width - buttonTextNode.width) / 2;
-      buttonTextNode.y = (button.height - buttonTextNode.height) / 2;
+      buttonTextNode.layoutAlign = "CENTER";
       button.appendChild(buttonTextNode);
     } catch (error) {
       console.error('Error loading font:', error);
@@ -376,11 +377,11 @@ function createButton(primaryColor: RGB, secondaryColor: RGB, buttonRadius: numb
 
   if (buttonType == 'primary' || buttonType == 'elevated') {
     if (buttonState == 'hover') {
-      button.fills = [{ type: 'SOLID', color: { r: primaryColor.r - 0.1, g: primaryColor.g - 0.1, b: primaryColor.b - 0.1 } }];
+      button.fills = [{ type: 'SOLID', color: { r: Math.max(0, primaryColor.r - 0.1), g: Math.max(0, primaryColor.g - 0.1), b: Math.max(0, primaryColor.b - 0.1) } }];
 
     }
     else if (buttonState == 'pressed') {
-      button.fills = [{ type: 'SOLID', color: { r: primaryColor.r - 0.2, g: primaryColor.g - 0.2, b: primaryColor.b - 0.2 } }];
+      button.fills = [{ type: 'SOLID', color: { r: Math.max(0, primaryColor.r - 0.2), g: Math.max(0, primaryColor.g - 0.2), b: Math.max(0, primaryColor.b - 0.2) } }];
     }
     else if (buttonState == 'disabled') {
       button.fills = [{
@@ -400,7 +401,7 @@ function createButton(primaryColor: RGB, secondaryColor: RGB, buttonRadius: numb
 
     }
     else if (buttonState == 'pressed') {
-      button.fills = [{ type: 'SOLID', color: { r: primaryColor.r - 0.2, g: primaryColor.g - 0.2, b: primaryColor.b - 0.2 } }];
+      button.fills = [{ type: 'SOLID', color: { r: Math.max(0, primaryColor.r - 0.2), g: Math.max(0, primaryColor.g - 0.2), b: Math.max(0, primaryColor.b - 0.2) } }];
 
     }
 
@@ -414,7 +415,7 @@ function createButton(primaryColor: RGB, secondaryColor: RGB, buttonRadius: numb
 
     }
     else if (buttonState == 'pressed') {
-      button.fills = [{ type: 'SOLID', color: { r: primaryColor.r - 0.2, g: primaryColor.g - 0.2, b: primaryColor.b - 0.2 } }];
+      button.fills = [{ type: 'SOLID', color: { r: Math.max(0, primaryColor.r - 0.2), g: Math.max(0, primaryColor.g - 0.2), b: Math.max(0, primaryColor.b - 0.2) } }];
 
     }
     else if (buttonState == 'disabled') {
