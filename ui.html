@@ -2079,7 +2079,7 @@
     margin-top: 1rem;
   }
 </style>
-<h1>Button design system generator</h1>
+<h1 style="font-size: 24px;">Button Design System Generator</h1>
 <div>
   <div style="display: flex; justify-content: space-between; flex-direction: row; align-items: center;gap: 2rem;">
     <div style="display: flex; justify-content: center; align-items: center; width: 100%;">
@@ -2136,7 +2136,7 @@
   </div>
 </div>
 
-  <div class="checkbox">
+  <div class="checkbox" style="margin-top: 1rem;">
     <input id="toggleCheckbox" type="checkbox" class="checkbox__box">
     <label for="toggleCheckbox" class="checkbox__label">Custom height and width for buttons (Button Font Size will Auto-Scale)</label>
   </div>
@@ -2173,11 +2173,11 @@
   </div>
 
 </div>
+</div>
 
   <div class="checkbox" style="width: 100%;">
     <input id="toggleTextSizeCheckbox" type="checkbox" class="checkbox__box">
     <label for="toggleTextSizeCheckbox" class="checkbox__label">Custom Button Font Size (will apply to ALL buttons)</label>
-  </div>
   </div>
 
   <div id="textSizeInputContainer" style="display:none; justify-content: center; flex-direction: column; align-items: center; gap: 2rem; width: 100%;">
@@ -2195,8 +2195,12 @@
       </div>
     </div>
   </div>
+  <div style="display: flex; justify-content: space-between; align-items: center; ">
+    <button id="submit-post" class="button button--primary">Generate Components</button>
 
-  <button id="submit-post" class="button button--primary">Generate</button>
+    <a href="https://forms.gle/LrfpkoeQiALGzhai8" target="_blank" style="text-decoration: none;"><button class="button button--secondary" onclick="">Report / Give Feedback</button></a>
+  </div>
+
 </div>
 
 <script>
