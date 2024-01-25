@@ -1,5 +1,20 @@
-figma.showUI(__html__)
-figma.ui.resize(400, 350)
+figma.showUI(__html__, { themeColors: true })
+figma.ui.resize(400, 438)
+
+// // Get local color styles
+const colorStyles = figma.getLocalPaintStyles();
+
+// // Create dropdown options
+const options = colorStyles.map((style) => {
+  return {
+    label: style.name,
+    value: style.paints[0], // Assuming one paint
+  };
+});
+
+// Send options to UI
+figma.ui.postMessage({ type: 'setDropdownOptions', options });
+
 
 let useCustomSize = false;
 let useCustomFontSize = false;
@@ -334,9 +349,9 @@ function createButton(primaryColor: RGB, secondaryColor: RGB, buttonRadius: numb
         buttonTextNode.fontSize = Number(customButtonFontSize);
       }
       else if (height === width && useCustomSize) {
-        buttonTextNode.fontSize = width/4.95;
+        buttonTextNode.fontSize = width / 4.95;
       } else {
-        buttonTextNode.fontSize = height/4.95;
+        buttonTextNode.fontSize = height / 4.95;
       }
 
       if (buttonType == 'primary' || buttonType == 'elevated') {

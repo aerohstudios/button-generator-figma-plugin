@@ -8,8 +8,19 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-figma.showUI(__html__);
-figma.ui.resize(400, 350);
+figma.showUI(__html__, { themeColors: true });
+figma.ui.resize(400, 438);
+// // Get local color styles
+const colorStyles = figma.getLocalPaintStyles();
+// // Create dropdown options
+const options = colorStyles.map((style) => {
+    return {
+        label: style.name,
+        value: style.paints[0], // Assuming one paint
+    };
+});
+// Send options to UI
+figma.ui.postMessage({ type: 'setDropdownOptions', options });
 let useCustomSize = false;
 let useCustomFontSize = false;
 figma.ui.onmessage = (pluginMessage) => __awaiter(void 0, void 0, void 0, function* () {
