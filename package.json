@@ -14,7 +14,6 @@
     "typescript": "*"
   },
   "dependencies": {
-    "color-convert": "^2.0.1",
-    "figma-plugin-ds": "^1.0.1"
+    "color-convert": "^2.0.1"
   }
 }
