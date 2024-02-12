@@ -9,7 +9,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 figma.showUI(__html__, { themeColors: true });
-figma.ui.resize(400, 438);
+figma.ui.resize(400, 525);
 // // Get local color styles
 const colorStyles = figma.getLocalPaintStyles();
 // // Create dropdown options
@@ -23,11 +23,13 @@ const options = colorStyles.map((style) => {
 figma.ui.postMessage({ type: 'setDropdownOptions', options });
 let useCustomSize = false;
 let useCustomFontSize = false;
+// let useLocalColors = false;
 figma.ui.onmessage = (pluginMessage) => __awaiter(void 0, void 0, void 0, function* () {
     const newPage = figma.createPage();
     figma.currentPage = newPage;
     useCustomSize = pluginMessage.useCustomSize;
     useCustomFontSize = pluginMessage.useCustomFontSize;
+    // useLocalColors = pluginMessage.useLocalColorStyles;
     const mainFrame = figma.createFrame();
     mainFrame.name = 'Main Frame';
     let componentWidth;
@@ -128,6 +130,7 @@ figma.ui.onmessage = (pluginMessage) => __awaiter(void 0, void 0, void 0, functi
     const allButtons = [...buttonsComponent1, ...buttonsComponent2, ...buttonsComponent3];
     const buttonSet = figma.combineAsVariants(allButtons, figma.currentPage);
     buttonSet.name = 'Button Set';
+    buttonSet.cornerRadius = 0;
     console.log(109, buttonsComponent1);
     const totalWidth = component1.width + component2.width + component3.width;
     const totalHeight = component3.height + 568;
@@ -276,7 +279,7 @@ function createButton(primaryColor, secondaryColor, buttonRadius, fontStyle, but
             break;
         case 'secondary':
             console.log("second button color");
-            button.fills = [{ type: 'SOLID', color: secondaryColor }];
+            // button.fills = [{ type: 'SOLID', color: secondaryColor }];
             button.strokes = [{ type: 'SOLID', color: primaryColor }];
             button.strokeWeight = 2;
             break;
@@ -288,20 +291,20 @@ function createButton(primaryColor, secondaryColor, buttonRadius, fontStyle, but
             button.fills = [{ type: 'SOLID', color: primaryColor }];
             button.effects = [{
                     type: 'DROP_SHADOW',
-                    color: { r: 0, g: 0, b: 0, a: 0.5 },
-                    offset: { x: 0, y: 2 },
+                    color: { r: 0, g: 0, b: 0, a: 0.25 },
+                    offset: { x: 0, y: 4 },
                     radius: 4,
                     visible: true,
                     blendMode: 'NORMAL',
                 }];
-            button.effects = [{
-                    type: 'INNER_SHADOW',
-                    color: { r: 0, g: 0, b: 0, a: 0.5 },
-                    offset: { x: 0, y: 2 },
-                    radius: 4,
-                    visible: true,
-                    blendMode: 'NORMAL',
-                }];
+            // button.effects = [{
+            //   type: 'INNER_SHADOW',
+            //   color: { r: 0, g: 0, b: 0, a: 0.5 },
+            //   offset: { x: 0, y: 2 },
+            //   radius: 4,
+            //   visible: true,
+            //   blendMode: 'NORMAL',
+            // }];
             break;
         default:
             break;
@@ -317,10 +320,10 @@ function createButton(primaryColor, secondaryColor, buttonRadius, fontStyle, but
                 buttonTextNode.fontSize = Number(customButtonFontSize);
             }
             else if (height === width && useCustomSize) {
-                buttonTextNode.fontSize = width / 4.95;
+                buttonTextNode.fontSize = Math.max(12, Math.floor(width / 20) * 4);
             }
             else {
-                buttonTextNode.fontSize = height / 4.95;
+                buttonTextNode.fontSize = Math.max(12, Math.floor(width / 20) * 4);
             }
             if (buttonType == 'primary' || buttonType == 'elevated') {
                 buttonTextNode.fills = [{ type: 'SOLID', color: secondaryColor }];

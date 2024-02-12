@@ -1,5 +1,5 @@
 figma.showUI(__html__, { themeColors: true })
-figma.ui.resize(400, 438)
+figma.ui.resize(400, 525)
 
 // // Get local color styles
 const colorStyles = figma.getLocalPaintStyles();
@@ -138,6 +138,7 @@ figma.ui.onmessage = async (pluginMessage) => {
 
   const buttonSet = figma.combineAsVariants(allButtons, figma.currentPage);
   buttonSet.name = 'Button Set';
+  buttonSet.cornerRadius = 0;
   console.log(109, buttonsComponent1)
   const totalWidth = component1.width + component2.width + component3.width;
   const totalHeight = component3.height + 568;
@@ -306,7 +307,6 @@ function createButton(primaryColor: RGB, secondaryColor: RGB, buttonRadius: numb
       break;
     case 'secondary':
       console.log("second button color")
-      button.fills = [{ type: 'SOLID', color: secondaryColor }];
       button.strokes = [{ type: 'SOLID', color: primaryColor }];
       button.strokeWeight = 2;
       break;
@@ -318,16 +318,8 @@ function createButton(primaryColor: RGB, secondaryColor: RGB, buttonRadius: numb
       button.fills = [{ type: 'SOLID', color: primaryColor }];
       button.effects = [{
         type: 'DROP_SHADOW',
-        color: { r: 0, g: 0, b: 0, a: 0.5 },
-        offset: { x: 0, y: 2 },
-        radius: 4,
-        visible: true,
-        blendMode: 'NORMAL',
-      }];
-      button.effects = [{
-        type: 'INNER_SHADOW',
-        color: { r: 0, g: 0, b: 0, a: 0.5 },
-        offset: { x: 0, y: 2 },
+        color: { r: 0, g: 0, b: 0, a: 0.25 },
+        offset: { x: 0, y: 4 },
         radius: 4,
         visible: true,
         blendMode: 'NORMAL',
@@ -349,9 +341,9 @@ function createButton(primaryColor: RGB, secondaryColor: RGB, buttonRadius: numb
         buttonTextNode.fontSize = Number(customButtonFontSize);
       }
       else if (height === width && useCustomSize) {
-        buttonTextNode.fontSize = width / 4.95;
+        buttonTextNode.fontSize = Math.max(12, Math.floor(width / 20) * 4);
       } else {
-        buttonTextNode.fontSize = height / 4.95;
+        buttonTextNode.fontSize = Math.max(12, Math.floor(width / 20) * 4);
       }
 
       if (buttonType == 'primary' || buttonType == 'elevated') {
