@@ -564,10 +564,17 @@
     const primaryColor = primaryColorDropdown.value;
     const secondaryColor = secondaryColorDropdown.value;
 
-    // Apply the colors to the preview button
+    // Apply styles to the preview button
     previewButton.style.backgroundColor = primaryColor;
     previewButton.style.color = secondaryColor;
-    }
+    previewButton.style.borderRadius = buttonRadius + "px";
+    previewButton.style.fontFamily = fontStyle;
+    previewButton.style.height = useCustomSize ? buttonHeight + "px" : "40px";
+    previewButton.style.width = useCustomSize ? buttonWidth + "px" : "117px";
+    previewButton.style.fontSize = useCustomFontSize
+      ? buttonFontSize + "px"
+      : "inherit";
+  }
 
   const inputContainer = document.getElementById("inputContainer");
   document.addEventListener("DOMContentLoaded", function () {
