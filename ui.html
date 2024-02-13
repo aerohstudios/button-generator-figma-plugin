@@ -542,6 +542,11 @@
   const secondaryColorInput = document.getElementById("secondary-color");
   const previewButton = document.getElementById("preview-button");
 
+  // Add event listeners to the color dropdowns
+  primaryColorDropdown.addEventListener("input", updatePreviewButtonColor);
+  secondaryColorDropdown.addEventListener("input", updatePreviewButtonColor);
+
+
   const inputContainer = document.getElementById("inputContainer");
   document.addEventListener("DOMContentLoaded", function () {
     const checkbox = document.getElementById("toggleCheckbox");
