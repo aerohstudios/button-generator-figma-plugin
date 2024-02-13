@@ -546,6 +546,16 @@
   primaryColorDropdown.addEventListener("input", updatePreviewButtonColor);
   secondaryColorDropdown.addEventListener("input", updatePreviewButtonColor);
 
+  // Function to update the preview button color
+  function updatePreviewButtonColor() {
+    // Get the selected primary and secondary colors
+    const primaryColor = primaryColorDropdown.value;
+    const secondaryColor = secondaryColorDropdown.value;
+
+    // Apply the colors to the preview button
+    previewButton.style.backgroundColor = primaryColor;
+    previewButton.style.color = secondaryColor;
+  }
 
   const inputContainer = document.getElementById("inputContainer");
   document.addEventListener("DOMContentLoaded", function () {
