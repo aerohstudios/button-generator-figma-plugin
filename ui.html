@@ -118,6 +118,11 @@
     width: 117px;
     border: none;
   }
+  #button-preview-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 </style>
 <div style="display: flex; flex-direction: column; gap: 20px">
   <div class="navbar">
@@ -445,7 +450,7 @@
         background-color: transparent;
       "
     />
-    <div class="button-preview-container">
+    <div id="button-preview-container">
       <button id="preview-button">Preview</button>
     </div>
     <hr
@@ -462,6 +467,7 @@
         align-items: center;
         flex-direction: column;
         gap: 10px;
+        padding-bottom: 20px;
       "
     >
       <button id="submit-post" class="button button--primary">
