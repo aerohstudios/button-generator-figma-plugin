@@ -576,6 +576,9 @@
       : "inherit";
   }
 
+  // Call updatePreviewButton initially to set initial styles
+  updatePreviewButton();
+
   const inputContainer = document.getElementById("inputContainer");
   document.addEventListener("DOMContentLoaded", function () {
     const checkbox = document.getElementById("toggleCheckbox");
