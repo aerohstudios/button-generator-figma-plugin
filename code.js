@@ -23,13 +23,11 @@ const options = colorStyles.map((style) => {
 figma.ui.postMessage({ type: 'setDropdownOptions', options });
 let useCustomSize = false;
 let useCustomFontSize = false;
-// let useLocalColors = false;
 figma.ui.onmessage = (pluginMessage) => __awaiter(void 0, void 0, void 0, function* () {
     const newPage = figma.createPage();
     figma.currentPage = newPage;
     useCustomSize = pluginMessage.useCustomSize;
     useCustomFontSize = pluginMessage.useCustomFontSize;
-    // useLocalColors = pluginMessage.useLocalColorStyles;
     const mainFrame = figma.createFrame();
     mainFrame.name = 'Main Frame';
     let componentWidth;
@@ -279,7 +277,6 @@ function createButton(primaryColor, secondaryColor, buttonRadius, fontStyle, but
             break;
         case 'secondary':
             console.log("second button color");
-            // button.fills = [{ type: 'SOLID', color: secondaryColor }];
             button.strokes = [{ type: 'SOLID', color: primaryColor }];
             button.strokeWeight = 2;
             break;
@@ -297,14 +294,6 @@ function createButton(primaryColor, secondaryColor, buttonRadius, fontStyle, but
                     visible: true,
                     blendMode: 'NORMAL',
                 }];
-            // button.effects = [{
-            //   type: 'INNER_SHADOW',
-            //   color: { r: 0, g: 0, b: 0, a: 0.5 },
-            //   offset: { x: 0, y: 2 },
-            //   radius: 4,
-            //   visible: true,
-            //   blendMode: 'NORMAL',
-            // }];
             break;
         default:
             break;
