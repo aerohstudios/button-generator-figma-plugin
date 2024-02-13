@@ -554,13 +554,20 @@
   );
   const previewButton = document.getElementById("preview-button");
 
-  // Add event listeners to the color dropdowns
-  primaryColorDropdown.addEventListener("input", updatePreviewButtonColor);
-  secondaryColorDropdown.addEventListener("input", updatePreviewButtonColor);
+  // Add event listeners to all relevant elements
+  primaryColorDropdown.addEventListener("input", updatePreviewButton);
+  secondaryColorDropdown.addEventListener("input", updatePreviewButton);
+  buttonRadiusInput.addEventListener("input", updatePreviewButton);
+  fontStyleInput.addEventListener("input", updatePreviewButton);
+  buttonHeightInput.addEventListener("input", updatePreviewButton);
+  buttonWidthInput.addEventListener("input", updatePreviewButton);
+  buttonFontSizeInput.addEventListener("input", updatePreviewButton);
+  useCustomSizeCheckbox.addEventListener("change", updatePreviewButton);
+  useCustomFontSizeCheckbox.addEventListener("change", updatePreviewButton);
+  useLocalColorStylesCheckbox.addEventListener("change", updatePreviewButton);
 
-  // Function to update the preview button color
-  function updatePreviewButtonColor() {
-    // Get the selected primary and secondary colors
+  // Function to update the preview button
+  function updatePreviewButton() {
     const primaryColor = primaryColorDropdown.value;
     const secondaryColor = secondaryColorDropdown.value;
     const buttonRadius = buttonRadiusInput.value;
