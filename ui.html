@@ -537,9 +537,21 @@
 </div>
 
 <script>
-  // Get the color dropdowns and the preview button
-  const primaryColorInput = document.getElementById("primary-color");
-  const secondaryColorInput = document.getElementById("secondary-color");
+  // Get all the relevant elements
+  const primaryColorDropdown = document.getElementById("primary-color");
+  const secondaryColorDropdown = document.getElementById("secondary-color");
+  const buttonRadiusInput = document.getElementById("button-radius");
+  const fontStyleInput = document.getElementById("font-style");
+  const buttonHeightInput = document.getElementById("button-height");
+  const buttonWidthInput = document.getElementById("button-width");
+  const buttonFontSizeInput = document.getElementById("button-font-size");
+  const useCustomSizeCheckbox = document.getElementById("toggleCheckbox");
+  const useCustomFontSizeCheckbox = document.getElementById(
+    "toggleTextSizeCheckbox"
+  );
+  const useLocalColorStylesCheckbox = document.getElementById(
+    "toggleLocalColorStylesCheckbox"
+  );
   const previewButton = document.getElementById("preview-button");
 
   // Add event listeners to the color dropdowns
@@ -555,7 +567,7 @@
     // Apply the colors to the preview button
     previewButton.style.backgroundColor = primaryColor;
     previewButton.style.color = secondaryColor;
-  }
+    }
 
   const inputContainer = document.getElementById("inputContainer");
   document.addEventListener("DOMContentLoaded", function () {
