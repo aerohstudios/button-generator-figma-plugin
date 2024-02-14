@@ -122,7 +122,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-  }
+      }
 </style>
 <div style="display: flex; flex-direction: column; gap: 20px">
   <div class="navbar">
@@ -451,7 +451,7 @@
       "
     />
     <div id="button-preview-container">
-      <button id="preview-button">Preview</button>
+            <button id="preview-button">Preview</button>
     </div>
     <hr
       style="
@@ -546,7 +546,7 @@
   // Get all the relevant elements
   const primaryColorDropdown = document.getElementById("primary-color");
   const secondaryColorDropdown = document.getElementById("secondary-color");
-  const buttonRadiusInput = document.getElementById("button-radius");
+    const buttonRadiusInput = document.getElementById("button-radius");
   const fontStyleInput = document.getElementById("font-style");
   const buttonHeightInput = document.getElementById("button-height");
   const buttonWidthInput = document.getElementById("button-width");
@@ -586,8 +586,6 @@
     const useLocalColorStyles = useLocalColorStylesCheckbox.checked;
 
     // Apply styles to the preview button
-    previewButton.style.backgroundColor = primaryColor;
-    previewButton.style.color = secondaryColor;
     previewButton.style.borderRadius = buttonRadius + "px";
     previewButton.style.fontFamily = fontStyle;
     previewButton.style.height = useCustomSize ? buttonHeight + "px" : "40px";
@@ -604,8 +602,28 @@
     }
   }
   previewButton.style.fontSize = fontSize;
-  }
 
+  let primaryColorButton = primaryColor;
+  let secondaryColorButton = secondaryColor;
+
+  console.log(primaryColorButton, 607);
+  console.log(secondaryColorButton, 608);
+  if (useLocalColorStyles) {
+  const localPrimaryColor = document.getElementById("color-dropdown").value;
+  const localSecondaryColor = document.getElementById("secondary-color-dropdown").value;
+
+  // Parse the JSON strings back into objects
+  const primaryColorButton = JSON.parse(localPrimaryColor);
+  const secondaryColorButton = JSON.parse(localSecondaryColor);
+
+  // Set background and text color using RGB values
+  previewButton.style.backgroundColor = `rgb(${primaryColorButton.r * 255}, ${primaryColorButton.g * 255}, ${primaryColorButton.b * 255})`;
+  previewButton.style.color = `rgb(${secondaryColorButton.r * 255}, ${secondaryColorButton.g * 255}, ${secondaryColorButton.b * 255})`;
+} else {
+  previewButton.style.backgroundColor = primaryColorButton;
+  previewButton.style.color = secondaryColorButton;
+}
+  }
   // Call updatePreviewButton initially to set initial styles
   updatePreviewButton();
 
