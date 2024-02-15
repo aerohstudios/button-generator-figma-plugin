@@ -378,8 +378,6 @@ function createButton(primaryColor: RGB, secondaryColor: RGB, buttonRadius: numb
       else if (buttonType == 'elevated') {
         buttonTextNode.fills = [{ type: 'SOLID', color: primaryColor }];
       }
-
-      buttonTextNode.layoutAlign = "CENTER";
       button.appendChild(buttonTextNode);
     } catch (error) {
       console.error('Error loading font:', error);
