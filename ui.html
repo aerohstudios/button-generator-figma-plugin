@@ -945,7 +945,6 @@
       })
         .then((response) => response.json())
         .then((data) => {
-          console.log("Added to waitlist");
           const waitlistSuccessText = document.getElementById(
             "waitlist-success-text"
           );
@@ -959,7 +958,6 @@
           // setButtonText("Join Waitlist");
         });
     } else {
-      console.log("Invalid Email!");
       const waitlistSuccessText = document.getElementById(
         "waitlist-success-text"
       );
