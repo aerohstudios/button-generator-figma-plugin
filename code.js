@@ -23,11 +23,13 @@ const options = colorStyles.map((style) => {
 figma.ui.postMessage({ type: 'setDropdownOptions', options });
 let useCustomSize = false;
 let useCustomFontSize = false;
+let useButtonPadding = false;
 figma.ui.onmessage = (pluginMessage) => __awaiter(void 0, void 0, void 0, function* () {
     const newPage = figma.createPage();
     figma.currentPage = newPage;
     useCustomSize = pluginMessage.useCustomSize;
     useCustomFontSize = pluginMessage.useCustomFontSize;
+    useButtonPadding = pluginMessage.useButtonPadding;
     const mainFrame = figma.createFrame();
     mainFrame.name = 'Main Frame';
     let componentWidth;

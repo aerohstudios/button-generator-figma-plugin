@@ -18,11 +18,13 @@ figma.ui.postMessage({ type: 'setDropdownOptions', options });
 
 let useCustomSize = false;
 let useCustomFontSize = false;
+let useButtonPadding = false;
 figma.ui.onmessage = async (pluginMessage) => {
   const newPage = figma.createPage();
   figma.currentPage = newPage;
   useCustomSize = pluginMessage.useCustomSize;
   useCustomFontSize = pluginMessage.useCustomFontSize;
+  useButtonPadding = pluginMessage.useButtonPadding;
 
   const mainFrame = figma.createFrame();
   mainFrame.name = 'Main Frame';
@@ -295,7 +297,7 @@ function createButton(primaryColor: RGB, secondaryColor: RGB, buttonRadius: numb
   const button = figma.createComponent();
   button.name = `Button Type = ${buttonType}, Button State = ${buttonState}, Button Size = ${buttonSize}`;
   button.layoutMode = "HORIZONTAL";
-  button.primaryAxisAlignItems = "CENTER";
+    button.primaryAxisAlignItems = "CENTER";
   button.counterAxisAlignItems = "CENTER";
   button.resize(width, height);
   button.cornerRadius = Number(buttonRadius);
