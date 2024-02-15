@@ -81,7 +81,7 @@ figma.ui.onmessage = async (pluginMessage) => {
     }
   })();
 
-  const component1 = generateComponentSet(pluginMessage.primaryrgbValues, pluginMessage.secondaryrgbValues, pluginMessage.buttonRadius, pluginMessage.fontStyle, 'small', pluginMessage.buttonHeight, pluginMessage.buttonWidth, pluginMessage.buttonFontSize);
+  const component1 = generateComponentSet(pluginMessage.primaryrgbValues, pluginMessage.secondaryrgbValues, pluginMessage.buttonRadius, pluginMessage.fontStyle, 'small', pluginMessage.buttonHeight, pluginMessage.buttonWidth, pluginMessage.buttonFontSize, pluginMessage.verticalPadding, pluginMessage.horizontalPadding);
 
   let distanceX;
   if (useCustomSize) {
@@ -91,11 +91,11 @@ figma.ui.onmessage = async (pluginMessage) => {
   }
   const distanceY = 0;
 
-  const component2 = generateComponentSet(pluginMessage.primaryrgbValues, pluginMessage.secondaryrgbValues, pluginMessage.buttonRadius, pluginMessage.fontStyle, 'medium', pluginMessage.buttonHeight, pluginMessage.buttonWidth, pluginMessage.buttonFontSize);
+  const component2 = generateComponentSet(pluginMessage.primaryrgbValues, pluginMessage.secondaryrgbValues, pluginMessage.buttonRadius, pluginMessage.fontStyle, 'medium', pluginMessage.buttonHeight, pluginMessage.buttonWidth, pluginMessage.buttonFontSize, pluginMessage.verticalPadding, pluginMessage.horizontalPadding);
   component2.x = component1.x + component1.width + 200;
   component2.y = component1.y + distanceY;
 
-  const component3 = generateComponentSet(pluginMessage.primaryrgbValues, pluginMessage.secondaryrgbValues, pluginMessage.buttonRadius, pluginMessage.fontStyle, 'large', pluginMessage.buttonHeight, pluginMessage.buttonWidth, pluginMessage.buttonFontSize);
+  const component3 = generateComponentSet(pluginMessage.primaryrgbValues, pluginMessage.secondaryrgbValues, pluginMessage.buttonRadius, pluginMessage.fontStyle, 'large', pluginMessage.buttonHeight, pluginMessage.buttonWidth, pluginMessage.buttonFontSize, pluginMessage.verticalPadding, pluginMessage.horizontalPadding);
   component3.x = component2.x + component2.width + 200;
   component3.y = component2.y + distanceY;
 
@@ -147,7 +147,7 @@ figma.ui.onmessage = async (pluginMessage) => {
 
   figma.notify('Yayyy! the button Design System is ready, go on and start using it!');
 }
-function generateComponentSet(primaryColor: RGB, secondaryColor: RGB, buttonRadius: number, fontStyle: string, buttonSize: 'small' | 'medium' | 'large', customButtonHeight: number, customButtonWidth: number, customButtonFontSize: number) {
+function generateComponentSet(primaryColor: RGB, secondaryColor: RGB, buttonRadius: number, fontStyle: string, buttonSize: 'small' | 'medium' | 'large', customButtonHeight: number, customButtonWidth: number, customButtonFontSize: number, verticalPadding: number, horizontalPadding: number) {
 
   let buttonWidth: number, buttonHeight: number;
   if (useCustomSize) {
@@ -297,10 +297,10 @@ function createButton(primaryColor: RGB, secondaryColor: RGB, buttonRadius: numb
   const button = figma.createComponent();
   button.name = `Button Type = ${buttonType}, Button State = ${buttonState}, Button Size = ${buttonSize}`;
   button.layoutMode = "HORIZONTAL";
-    button.primaryAxisAlignItems = "CENTER";
+  button.primaryAxisAlignItems = "CENTER";
   button.counterAxisAlignItems = "CENTER";
-  button.resize(width, height);
-  button.cornerRadius = Number(buttonRadius);
+      button.resize(width, height);
+    button.cornerRadius = Number(buttonRadius);
 
   switch (buttonType) {
     case 'primary':
