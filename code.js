@@ -348,7 +348,6 @@ function createButton(primaryColor, secondaryColor, buttonRadius, fontStyle, but
             else if (buttonType == 'elevated') {
                 buttonTextNode.fills = [{ type: 'SOLID', color: primaryColor }];
             }
-            buttonTextNode.layoutAlign = "CENTER";
             button.appendChild(buttonTextNode);
         }
         catch (error) {
