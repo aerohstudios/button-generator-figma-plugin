@@ -767,7 +767,7 @@
       paddingInputContainer.style.display = checkbox.checked ? "flex" : "none";
     });
   });
-  
+
   document.getElementById("submit-post").onclick = () => {
     const primaryColor = document.getElementById("primary-color").value;
     const secondaryColor = document.getElementById("secondary-color").value;
@@ -782,6 +782,9 @@
     ).checked;
     const useLocalColorStyles = document.getElementById(
       "toggleLocalColorStylesCheckbox"
+    ).checked;
+    const useButtonPadding = document.getElementById(
+      "toggleButtonPaddingCheckbox"
     ).checked;
 
     if (useCustomSize) {
@@ -847,7 +850,7 @@
           buttonFontSize,
           useCustomSize,
           useCustomFontSize,
-        },
+                  },
       },
       "*"
     );
