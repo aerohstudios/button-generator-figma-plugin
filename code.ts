@@ -296,8 +296,8 @@ function createButton(primaryColor: RGB, secondaryColor: RGB, buttonRadius: numb
   button.layoutMode = "HORIZONTAL";
   button.primaryAxisAlignItems = "CENTER";
   button.counterAxisAlignItems = "CENTER";
+  button.counterAxisSizingMode = "AUTO";
   if(useButtonPadding){
-    button.counterAxisSizingMode = "AUTO";
     button.paddingTop = Number(verticalPadding);
     button.paddingBottom = Number(verticalPadding);
     button.paddingLeft = Number(horizontalPadding);
