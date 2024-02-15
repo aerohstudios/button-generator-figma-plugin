@@ -252,7 +252,7 @@ function generateComponentSet(primaryColor, secondaryColor, buttonRadius, fontSt
                 }))();
             }
             const buttonText = buttonState === 'disabled' ? 'Disabled' : 'Click me';
-            const button = createButton(primaryColor, secondaryColor, buttonRadius, fontStyle, buttonType, buttonState, buttonText, buttonWidth, buttonHeight, buttonSize, customButtonFontSize);
+            const button = createButton(primaryColor, secondaryColor, buttonRadius, fontStyle, buttonType, buttonState, buttonText, buttonWidth, buttonHeight, buttonSize, customButtonFontSize, useButtonPadding, verticalPadding, horizontalPadding);
             const xPosition = 120 + buttonTypes.indexOf(buttonType) * (103 + buttonWidth);
             const yPosition = 160 + buttonStates.indexOf(buttonState) * (60 + buttonHeight);
             console.log(buttonTypes.indexOf(buttonType), 363);
@@ -264,13 +264,22 @@ function generateComponentSet(primaryColor, secondaryColor, buttonRadius, fontSt
     figma.currentPage.appendChild(componentSet);
     return componentSet;
 }
-function createButton(primaryColor, secondaryColor, buttonRadius, fontStyle, buttonType, buttonState, buttonText, width, height, buttonSize, customButtonFontSize) {
+function createButton(primaryColor, secondaryColor, buttonRadius, fontStyle, buttonType, buttonState, buttonText, width, height, buttonSize, customButtonFontSize, useButtonPadding, verticalPadding, horizontalPadding) {
     const button = figma.createComponent();
     button.name = `Button Type = ${buttonType}, Button State = ${buttonState}, Button Size = ${buttonSize}`;
     button.layoutMode = "HORIZONTAL";
     button.primaryAxisAlignItems = "CENTER";
     button.counterAxisAlignItems = "CENTER";
-    button.resize(width, height);
+    if (useButtonPadding) {
+        button.counterAxisSizingMode = "AUTO";
+        button.paddingTop = Number(verticalPadding);
+        button.paddingBottom = Number(verticalPadding);
+        button.paddingLeft = Number(horizontalPadding);
+        button.paddingRight = Number(horizontalPadding);
+    }
+    else {
+        button.resize(width, height);
+    }
     button.cornerRadius = Number(buttonRadius);
     switch (buttonType) {
         case 'primary':

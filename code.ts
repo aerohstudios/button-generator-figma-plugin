@@ -277,7 +277,7 @@ function generateComponentSet(primaryColor: RGB, secondaryColor: RGB, buttonRadi
       }
 
       const buttonText = buttonState === 'disabled' ? 'Disabled' : 'Click me';
-      const button = createButton(primaryColor, secondaryColor, buttonRadius, fontStyle, buttonType, buttonState, buttonText, buttonWidth, buttonHeight, buttonSize, customButtonFontSize);
+      const button = createButton(primaryColor, secondaryColor, buttonRadius, fontStyle, buttonType, buttonState, buttonText, buttonWidth, buttonHeight, buttonSize, customButtonFontSize, useButtonPadding, verticalPadding, horizontalPadding);
       const xPosition = 120 + buttonTypes.indexOf(buttonType) * (103 + buttonWidth);
       const yPosition = 160 + buttonStates.indexOf(buttonState) * (60 + buttonHeight);
 
@@ -293,14 +293,22 @@ function generateComponentSet(primaryColor: RGB, secondaryColor: RGB, buttonRadi
   return componentSet;
 }
 
-function createButton(primaryColor: RGB, secondaryColor: RGB, buttonRadius: number, fontStyle: string, buttonType: string, buttonState: string, buttonText: string, width: number, height: number, buttonSize: string, customButtonFontSize: number) {
+function createButton(primaryColor: RGB, secondaryColor: RGB, buttonRadius: number, fontStyle: string, buttonType: string, buttonState: string, buttonText: string, width: number, height: number, buttonSize: string, customButtonFontSize: number, useButtonPadding: boolean, verticalPadding: number, horizontalPadding: number) {
   const button = figma.createComponent();
   button.name = `Button Type = ${buttonType}, Button State = ${buttonState}, Button Size = ${buttonSize}`;
   button.layoutMode = "HORIZONTAL";
   button.primaryAxisAlignItems = "CENTER";
   button.counterAxisAlignItems = "CENTER";
-      button.resize(width, height);
-    button.cornerRadius = Number(buttonRadius);
+  if(useButtonPadding){
+    button.counterAxisSizingMode = "AUTO";
+    button.paddingTop = Number(verticalPadding);
+    button.paddingBottom = Number(verticalPadding);
+    button.paddingLeft = Number(horizontalPadding);
+    button.paddingRight = Number(horizontalPadding);
+  } else {
+    button.resize(width, height);
+  }
+  button.cornerRadius = Number(buttonRadius);
 
   switch (buttonType) {
     case 'primary':
