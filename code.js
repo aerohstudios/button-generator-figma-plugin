@@ -131,7 +131,6 @@ figma.ui.onmessage = (pluginMessage) => __awaiter(void 0, void 0, void 0, functi
     const buttonSet = figma.combineAsVariants(allButtons, figma.currentPage);
     buttonSet.name = 'Button Set';
     buttonSet.cornerRadius = 0;
-    console.log(109, buttonsComponent1);
     const totalWidth = component1.width + component2.width + component3.width;
     const totalHeight = component3.height + 568;
     figma.notify('Yayyy! the button Design System is ready, go on and start using it!');
@@ -255,7 +254,6 @@ function generateComponentSet(primaryColor, secondaryColor, buttonRadius, fontSt
             const button = createButton(primaryColor, secondaryColor, buttonRadius, fontStyle, buttonType, buttonState, buttonText, buttonWidth, buttonHeight, buttonSize, customButtonFontSize, useButtonPadding, verticalPadding, horizontalPadding);
             const xPosition = 120 + buttonTypes.indexOf(buttonType) * (103 + buttonWidth);
             const yPosition = 160 + buttonStates.indexOf(buttonState) * (60 + buttonHeight);
-            console.log(buttonTypes.indexOf(buttonType), 363);
             button.x = xPosition;
             button.y = yPosition;
             componentSet.appendChild(button);
@@ -283,16 +281,13 @@ function createButton(primaryColor, secondaryColor, buttonRadius, fontStyle, but
     button.cornerRadius = Number(buttonRadius);
     switch (buttonType) {
         case 'primary':
-            console.log("primary button color");
             button.fills = [{ type: 'SOLID', color: primaryColor }];
             break;
         case 'secondary':
-            console.log("second button color");
             button.strokes = [{ type: 'SOLID', color: primaryColor }];
             button.strokeWeight = 2;
             break;
         case 'text':
-            console.log("text button color");
             button.fills = [];
             break;
         case 'elevated':
