@@ -141,7 +141,6 @@ figma.ui.onmessage = async (pluginMessage) => {
   const buttonSet = figma.combineAsVariants(allButtons, figma.currentPage);
   buttonSet.name = 'Button Set';
   buttonSet.cornerRadius = 0;
-  console.log(109, buttonsComponent1)
   const totalWidth = component1.width + component2.width + component3.width;
   const totalHeight = component3.height + 568;
 
@@ -281,8 +280,6 @@ function generateComponentSet(primaryColor: RGB, secondaryColor: RGB, buttonRadi
       const xPosition = 120 + buttonTypes.indexOf(buttonType) * (103 + buttonWidth);
       const yPosition = 160 + buttonStates.indexOf(buttonState) * (60 + buttonHeight);
 
-      console.log(buttonTypes.indexOf(buttonType), 363)
-
       button.x = xPosition;
       button.y = yPosition;
 
@@ -312,16 +309,13 @@ function createButton(primaryColor: RGB, secondaryColor: RGB, buttonRadius: numb
 
   switch (buttonType) {
     case 'primary':
-      console.log("primary button color")
       button.fills = [{ type: 'SOLID', color: primaryColor }];
       break;
     case 'secondary':
-      console.log("second button color")
       button.strokes = [{ type: 'SOLID', color: primaryColor }];
       button.strokeWeight = 2;
       break;
     case 'text':
-      console.log("text button color")
       button.fills = [];
       break;
     case 'elevated':
