@@ -23,11 +23,13 @@ const options = colorStyles.map((style) => {
 figma.ui.postMessage({ type: 'setDropdownOptions', options });
 let useCustomSize = false;
 let useCustomFontSize = false;
+let useButtonPadding = false;
 figma.ui.onmessage = (pluginMessage) => __awaiter(void 0, void 0, void 0, function* () {
     const newPage = figma.createPage();
     figma.currentPage = newPage;
     useCustomSize = pluginMessage.useCustomSize;
     useCustomFontSize = pluginMessage.useCustomFontSize;
+    useButtonPadding = pluginMessage.useButtonPadding;
     const mainFrame = figma.createFrame();
     mainFrame.name = 'Main Frame';
     let componentWidth;
@@ -77,7 +79,7 @@ figma.ui.onmessage = (pluginMessage) => __awaiter(void 0, void 0, void 0, functi
             console.error('Error loading font:', error);
         }
     }))();
-    const component1 = generateComponentSet(pluginMessage.primaryrgbValues, pluginMessage.secondaryrgbValues, pluginMessage.buttonRadius, pluginMessage.fontStyle, 'small', pluginMessage.buttonHeight, pluginMessage.buttonWidth, pluginMessage.buttonFontSize);
+    const component1 = generateComponentSet(pluginMessage.primaryrgbValues, pluginMessage.secondaryrgbValues, pluginMessage.buttonRadius, pluginMessage.fontStyle, 'small', pluginMessage.buttonHeight, pluginMessage.buttonWidth, pluginMessage.buttonFontSize, pluginMessage.verticalPadding, pluginMessage.horizontalPadding);
     let distanceX;
     if (useCustomSize) {
         distanceX = pluginMessage.buttonWidth * 4 * 1.69 + 500;
@@ -86,10 +88,10 @@ figma.ui.onmessage = (pluginMessage) => __awaiter(void 0, void 0, void 0, functi
         distanceX = 1131;
     }
     const distanceY = 0;
-    const component2 = generateComponentSet(pluginMessage.primaryrgbValues, pluginMessage.secondaryrgbValues, pluginMessage.buttonRadius, pluginMessage.fontStyle, 'medium', pluginMessage.buttonHeight, pluginMessage.buttonWidth, pluginMessage.buttonFontSize);
+    const component2 = generateComponentSet(pluginMessage.primaryrgbValues, pluginMessage.secondaryrgbValues, pluginMessage.buttonRadius, pluginMessage.fontStyle, 'medium', pluginMessage.buttonHeight, pluginMessage.buttonWidth, pluginMessage.buttonFontSize, pluginMessage.verticalPadding, pluginMessage.horizontalPadding);
     component2.x = component1.x + component1.width + 200;
     component2.y = component1.y + distanceY;
-    const component3 = generateComponentSet(pluginMessage.primaryrgbValues, pluginMessage.secondaryrgbValues, pluginMessage.buttonRadius, pluginMessage.fontStyle, 'large', pluginMessage.buttonHeight, pluginMessage.buttonWidth, pluginMessage.buttonFontSize);
+    const component3 = generateComponentSet(pluginMessage.primaryrgbValues, pluginMessage.secondaryrgbValues, pluginMessage.buttonRadius, pluginMessage.fontStyle, 'large', pluginMessage.buttonHeight, pluginMessage.buttonWidth, pluginMessage.buttonFontSize, pluginMessage.verticalPadding, pluginMessage.horizontalPadding);
     component3.x = component2.x + component2.width + 200;
     component3.y = component2.y + distanceY;
     mainFrame.y = Math.min(heading1.y, heading2.y, component1.y, component2.y, component3.y) - 30;
@@ -129,12 +131,11 @@ figma.ui.onmessage = (pluginMessage) => __awaiter(void 0, void 0, void 0, functi
     const buttonSet = figma.combineAsVariants(allButtons, figma.currentPage);
     buttonSet.name = 'Button Set';
     buttonSet.cornerRadius = 0;
-    console.log(109, buttonsComponent1);
     const totalWidth = component1.width + component2.width + component3.width;
     const totalHeight = component3.height + 568;
     figma.notify('Yayyy! the button Design System is ready, go on and start using it!');
 });
-function generateComponentSet(primaryColor, secondaryColor, buttonRadius, fontStyle, buttonSize, customButtonHeight, customButtonWidth, customButtonFontSize) {
+function generateComponentSet(primaryColor, secondaryColor, buttonRadius, fontStyle, buttonSize, customButtonHeight, customButtonWidth, customButtonFontSize, verticalPadding, horizontalPadding) {
     let buttonWidth, buttonHeight;
     if (useCustomSize) {
         switch (buttonSize) {
@@ -250,10 +251,9 @@ function generateComponentSet(primaryColor, secondaryColor, buttonRadius, fontSt
                 }))();
             }
             const buttonText = buttonState === 'disabled' ? 'Disabled' : 'Click me';
-            const button = createButton(primaryColor, secondaryColor, buttonRadius, fontStyle, buttonType, buttonState, buttonText, buttonWidth, buttonHeight, buttonSize, customButtonFontSize);
+            const button = createButton(primaryColor, secondaryColor, buttonRadius, fontStyle, buttonType, buttonState, buttonText, buttonWidth, buttonHeight, buttonSize, customButtonFontSize, useButtonPadding, verticalPadding, horizontalPadding);
             const xPosition = 120 + buttonTypes.indexOf(buttonType) * (103 + buttonWidth);
             const yPosition = 160 + buttonStates.indexOf(buttonState) * (60 + buttonHeight);
-            console.log(buttonTypes.indexOf(buttonType), 363);
             button.x = xPosition;
             button.y = yPosition;
             componentSet.appendChild(button);
@@ -262,26 +262,32 @@ function generateComponentSet(primaryColor, secondaryColor, buttonRadius, fontSt
     figma.currentPage.appendChild(componentSet);
     return componentSet;
 }
-function createButton(primaryColor, secondaryColor, buttonRadius, fontStyle, buttonType, buttonState, buttonText, width, height, buttonSize, customButtonFontSize) {
+function createButton(primaryColor, secondaryColor, buttonRadius, fontStyle, buttonType, buttonState, buttonText, width, height, buttonSize, customButtonFontSize, useButtonPadding, verticalPadding, horizontalPadding) {
     const button = figma.createComponent();
     button.name = `Button Type = ${buttonType}, Button State = ${buttonState}, Button Size = ${buttonSize}`;
     button.layoutMode = "HORIZONTAL";
     button.primaryAxisAlignItems = "CENTER";
     button.counterAxisAlignItems = "CENTER";
-    button.resize(width, height);
+    button.counterAxisSizingMode = "AUTO";
+    if (useButtonPadding) {
+        button.paddingTop = Number(verticalPadding);
+        button.paddingBottom = Number(verticalPadding);
+        button.paddingLeft = Number(horizontalPadding);
+        button.paddingRight = Number(horizontalPadding);
+    }
+    else {
+        button.resize(width, height);
+    }
     button.cornerRadius = Number(buttonRadius);
     switch (buttonType) {
         case 'primary':
-            console.log("primary button color");
             button.fills = [{ type: 'SOLID', color: primaryColor }];
             break;
         case 'secondary':
-            console.log("second button color");
             button.strokes = [{ type: 'SOLID', color: primaryColor }];
             button.strokeWeight = 2;
             break;
         case 'text':
-            console.log("text button color");
             button.fills = [];
             break;
         case 'elevated':
@@ -342,7 +348,6 @@ function createButton(primaryColor, secondaryColor, buttonRadius, fontStyle, but
             else if (buttonType == 'elevated') {
                 buttonTextNode.fills = [{ type: 'SOLID', color: primaryColor }];
             }
-            buttonTextNode.layoutAlign = "CENTER";
             button.appendChild(buttonTextNode);
         }
         catch (error) {

@@ -127,6 +127,20 @@
     gap: 10px;
     padding: 10px;
   }
+  #preview-button {
+    height: 40px;
+    width: 117px;
+    border: none;
+  }
+  #button-preview-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid var(--figma-color-border);
+    flex-direction: column;
+    gap: 10px;
+    padding: 10px;
+  }
 </style>
 <div style="display: flex; flex-direction: column; gap: 20px">
   <div class="navbar">
@@ -266,7 +280,7 @@
         background-color: transparent;
       "
     />
-    
+
     <p style="width: 100%; text-align: left;font-size: 12px; font-weight: bold;">Below is the preview of the Primary Small Button:</p>
     <div id="button-preview-container">
       <button id="preview-button">Preview</button>
@@ -453,6 +467,89 @@
       </div>
     </div>
 
+    <div class="checkbox" style="width: 100%">
+      <input
+        id="toggleButtonPaddingCheckbox"
+        type="checkbox"
+        class="checkbox__box"
+      />
+      <label for="toggleButtonPaddingCheckbox" class="checkbox__label"
+        >Use Padding in the Buttons</label
+      >
+    </div>
+
+    <div
+      id="paddingInputContainer"
+      style="
+        display: none;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+        gap: 2rem;
+        width: 100%;
+      "
+    >
+      <div
+        id="paddingInputContainer"
+        style="
+          display: flex;
+          justify-content: center;
+          flex-direction: row;
+          align-items: center;
+          gap: 2rem;
+          width: 100%;
+        "
+      >
+        <div
+          style="
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+            width: 100%;
+            gap: 10px;
+          "
+        >
+          <div class="section-title">Vertical Padding:</div>
+          <div class="input" style="width: 100%">
+            <input
+              type="number"
+              id="button-vertical-padding"
+              class="input__field"
+              placeholder="Vertical Padding"
+              max="200"
+              min="0"
+              style="width: 100%; padding: 5px"
+            />
+          </div>
+        </div>
+
+        <div
+          style="
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+            width: 100%;
+            gap: 10px;
+          "
+        >
+          <div class="section-title">Horizontal Padding:</div>
+          <div class="input" style="width: 100%">
+            <input
+              type="number"
+              id="button-horizontal-padding"
+              class="input__field"
+              placeholder="Horizontal Padding"
+              min="0"
+              max="200"
+              style="width: 100%; padding: 5px"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+
     <!-- <hr
       style="
         border: 0.1px solid var(--figma-color-border);
@@ -474,6 +571,7 @@
         align-items: center;
         flex-direction: column;
         gap: 10px;
+        padding-bottom: 20px;
         padding-bottom: 20px;
       "
     >
@@ -564,7 +662,7 @@
   const useCustomFontSizeCheckbox = document.getElementById(
     "toggleTextSizeCheckbox"
   );
-  const useLocalColorStylesCheckbox = document.getElementById(
+    const useLocalColorStylesCheckbox = document.getElementById(
     "toggleLocalColorStylesCheckbox"
   );
   const previewButton = document.getElementById("preview-button");
@@ -617,8 +715,6 @@
   let primaryColorButton = primaryColor;
   let secondaryColorButton = secondaryColor;
 
-  console.log(primaryColorButton, 607);
-  console.log(secondaryColorButton, 608);
   if (useLocalColorStyles) {
   const localPrimaryColor = document.getElementById("color-dropdown").value;
   const localSecondaryColor = document.getElementById("secondary-color-dropdown").value;
@@ -677,6 +773,16 @@
         : "flex";
     });
   });
+
+  const paddingInputContainer = document.getElementById("paddingInputContainer");
+  document.addEventListener("DOMContentLoaded", function () {
+    const checkbox = document.getElementById("toggleButtonPaddingCheckbox");
+
+    checkbox.addEventListener("change", function () {
+      paddingInputContainer.style.display = checkbox.checked ? "flex" : "none";
+    });
+  });
+
   document.getElementById("submit-post").onclick = () => {
     const primaryColor = document.getElementById("primary-color").value;
     const secondaryColor = document.getElementById("secondary-color").value;
@@ -691,6 +797,9 @@
     ).checked;
     const useLocalColorStyles = document.getElementById(
       "toggleLocalColorStylesCheckbox"
+    ).checked;
+    const useButtonPadding = document.getElementById(
+      "toggleButtonPaddingCheckbox"
     ).checked;
 
     if (useCustomSize) {
@@ -712,6 +821,11 @@
         return;
       }
     }
+
+    if (useButtonPadding) {
+    var verticalPadding = document.getElementById("button-vertical-padding").value;
+      var horizontalPadding = document.getElementById("button-horizontal-padding").value;
+}
 
     if (!fontStyle) {
       fontStyle = "Inter";
@@ -756,6 +870,9 @@
           buttonFontSize,
           useCustomSize,
           useCustomFontSize,
+          useButtonPadding,
+          verticalPadding,
+          horizontalPadding
         },
       },
       "*"
@@ -845,7 +962,6 @@
       })
         .then((response) => response.json())
         .then((data) => {
-          console.log("Added to waitlist");
           const waitlistSuccessText = document.getElementById(
             "waitlist-success-text"
           );
@@ -859,7 +975,6 @@
           // setButtonText("Join Waitlist");
         });
     } else {
-      console.log("Invalid Email!");
       const waitlistSuccessText = document.getElementById(
         "waitlist-success-text"
       );
