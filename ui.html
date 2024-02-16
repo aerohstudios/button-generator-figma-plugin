@@ -127,6 +127,20 @@
     gap: 10px;
     padding: 10px;
   }
+  #preview-button {
+    height: 40px;
+    width: 117px;
+    border: none;
+  }
+  #button-preview-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid var(--figma-color-border);
+    flex-direction: column;
+    gap: 10px;
+    padding: 10px;
+  }
 </style>
 <div style="display: flex; flex-direction: column; gap: 20px">
   <div class="navbar">
@@ -266,7 +280,7 @@
         background-color: transparent;
       "
     />
-    
+
     <p style="width: 100%; text-align: left;font-size: 12px; font-weight: bold;">Below is the preview of the Primary Small Button:</p>
     <div id="button-preview-container">
       <button id="preview-button">Preview</button>
@@ -557,6 +571,7 @@
         align-items: center;
         flex-direction: column;
         gap: 10px;
+        padding-bottom: 20px;
         padding-bottom: 20px;
       "
     >
