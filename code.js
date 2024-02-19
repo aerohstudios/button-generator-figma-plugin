@@ -341,6 +341,17 @@ function createButton(primaryColor, secondaryColor, buttonRadius, fontStyle, but
             if (useCustomFontSize) {
                 buttonTextNode.fontSize = Number(customButtonFontSize);
             }
+            else if (useButtonPadding) {
+                if (buttonSize == 'small') {
+                    buttonTextNode.fontSize = 12;
+                }
+                else if (buttonSize == 'medium') {
+                    buttonTextNode.fontSize = 16;
+                }
+                else {
+                    buttonTextNode.fontSize = 20;
+                }
+            }
             else if (height === width && useCustomSize) {
                 buttonTextNode.fontSize = Math.max(12, Math.floor(width / 20) * 4);
             }
