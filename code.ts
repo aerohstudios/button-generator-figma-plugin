@@ -89,6 +89,8 @@ figma.ui.onmessage = async (pluginMessage) => {
   let distanceX;
   if (useCustomSize) {
     distanceX = pluginMessage.buttonWidth * 4 * 1.69 + 500;
+  } else if(useButtonPadding){
+    distanceX = ((pluginMessage.horizontalPadding*2)+38) * 4 * 1.69 + 500;
   } else {
     distanceX = 1131;
   }
