@@ -173,6 +173,24 @@ function generateComponentSet(primaryColor: RGB, secondaryColor: RGB, buttonRadi
         buttonWidth = 181;
         buttonHeight = 60;
     }
+  } else if(useButtonPadding){
+    switch (buttonSize) {
+      case 'small':
+        buttonWidth = (Number(horizontalPadding)*2)+38;
+        buttonHeight = (Number(verticalPadding)*2)+15;
+        break;
+      case 'medium':
+        buttonWidth = ((Number(horizontalPadding)*2)+51);
+        buttonHeight = ((Number(verticalPadding)*2)+19);
+        break;
+      case 'large':
+        buttonWidth = ((Number(horizontalPadding)*2)+63);
+        buttonHeight = ((Number(verticalPadding)*2)+24);
+        break;
+      default:
+        buttonWidth = 181;
+        buttonHeight = 60;
+    }
   } else {
     switch (buttonSize) {
       case 'small':
