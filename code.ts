@@ -33,6 +33,9 @@ figma.ui.onmessage = async (pluginMessage) => {
   if (useCustomSize) {
     componentWidth = 429 + (4 * pluginMessage.buttonWidth);
     componentHeight = (4 * pluginMessage.buttonHeight * 1.69) + 280;
+  } else if(useButtonPadding){
+    componentWidth = 429 + (4 * ((pluginMessage.horizontalPadding*2)+38)) ;
+    componentHeight = (4 * ((pluginMessage.verticalPadding*2)+15) * 1.69) + 280;
   }
   else {
     componentWidth = 429 + (4 * 117);
