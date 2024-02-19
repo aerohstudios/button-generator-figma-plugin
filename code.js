@@ -38,6 +38,10 @@ figma.ui.onmessage = (pluginMessage) => __awaiter(void 0, void 0, void 0, functi
         componentWidth = 429 + (4 * pluginMessage.buttonWidth);
         componentHeight = (4 * pluginMessage.buttonHeight * 1.69) + 280;
     }
+    else if (useButtonPadding) {
+        componentWidth = 429 + (4 * ((pluginMessage.horizontalPadding * 2) + 38));
+        componentHeight = (4 * ((pluginMessage.verticalPadding * 2) + 15) * 1.69) + 280;
+    }
     else {
         componentWidth = 429 + (4 * 117);
         componentHeight = (4 * 80) + 280;
@@ -83,6 +87,9 @@ figma.ui.onmessage = (pluginMessage) => __awaiter(void 0, void 0, void 0, functi
     let distanceX;
     if (useCustomSize) {
         distanceX = pluginMessage.buttonWidth * 4 * 1.69 + 500;
+    }
+    else if (useButtonPadding) {
+        distanceX = ((pluginMessage.horizontalPadding * 2) + 38) * 4 * 1.69 + 500;
     }
     else {
         distanceX = 1131;
@@ -131,8 +138,9 @@ figma.ui.onmessage = (pluginMessage) => __awaiter(void 0, void 0, void 0, functi
     const buttonSet = figma.combineAsVariants(allButtons, figma.currentPage);
     buttonSet.name = 'Button Set';
     buttonSet.cornerRadius = 0;
-    const totalWidth = component1.width + component2.width + component3.width;
-    const totalHeight = component3.height + 568;
+    const totalWidth = component1.width + component2.width + component3.width + 400;
+    const totalHeight = component3.height;
+    buttonSet.resize(totalWidth, totalHeight);
     figma.notify('Yayyy! the button Design System is ready, go on and start using it!');
 });
 function generateComponentSet(primaryColor, secondaryColor, buttonRadius, fontStyle, buttonSize, customButtonHeight, customButtonWidth, customButtonFontSize, verticalPadding, horizontalPadding) {
@@ -150,6 +158,25 @@ function generateComponentSet(primaryColor, secondaryColor, buttonRadius, fontSt
             case 'large':
                 buttonWidth = Number(customButtonWidth) * 1.69;
                 buttonHeight = Number(customButtonHeight) * 1.69;
+                break;
+            default:
+                buttonWidth = 181;
+                buttonHeight = 60;
+        }
+    }
+    else if (useButtonPadding) {
+        switch (buttonSize) {
+            case 'small':
+                buttonWidth = (Number(horizontalPadding) * 2) + 38;
+                buttonHeight = (Number(verticalPadding) * 2) + 15;
+                break;
+            case 'medium':
+                buttonWidth = ((Number(horizontalPadding) * 2) + 51);
+                buttonHeight = ((Number(verticalPadding) * 2) + 19);
+                break;
+            case 'large':
+                buttonWidth = ((Number(horizontalPadding) * 2) + 63);
+                buttonHeight = ((Number(verticalPadding) * 2) + 24);
                 break;
             default:
                 buttonWidth = 181;
@@ -215,7 +242,9 @@ function generateComponentSet(primaryColor, secondaryColor, buttonRadius, fontSt
                 else {
                     textWidth = 128;
                 }
+                /////////////
                 buttonTypeLabel.resize(textWidth, buttonTypeLabel.height);
+                //////////////
                 const xPosition = 120 + buttonTypes.indexOf(buttonType) * (103 + buttonWidth);
                 const yPosition = 110;
                 buttonTypeLabel.x = xPosition;
@@ -313,6 +342,17 @@ function createButton(primaryColor, secondaryColor, buttonRadius, fontStyle, but
             buttonTextNode.characters = 'Button';
             if (useCustomFontSize) {
                 buttonTextNode.fontSize = Number(customButtonFontSize);
+            }
+            else if (useButtonPadding) {
+                if (buttonSize == 'small') {
+                    buttonTextNode.fontSize = 12;
+                }
+                else if (buttonSize == 'medium') {
+                    buttonTextNode.fontSize = 16;
+                }
+                else {
+                    buttonTextNode.fontSize = 20;
+                }
             }
             else if (height === width && useCustomSize) {
                 buttonTextNode.fontSize = Math.max(12, Math.floor(width / 20) * 4);
