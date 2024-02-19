@@ -138,8 +138,9 @@ figma.ui.onmessage = (pluginMessage) => __awaiter(void 0, void 0, void 0, functi
     const buttonSet = figma.combineAsVariants(allButtons, figma.currentPage);
     buttonSet.name = 'Button Set';
     buttonSet.cornerRadius = 0;
-    const totalWidth = component1.width + component2.width + component3.width;
-    const totalHeight = component3.height + 568;
+    const totalWidth = component1.width + component2.width + component3.width + 400;
+    const totalHeight = component3.height;
+    buttonSet.resize(totalWidth, totalHeight);
     figma.notify('Yayyy! the button Design System is ready, go on and start using it!');
 });
 function generateComponentSet(primaryColor, secondaryColor, buttonRadius, fontStyle, buttonSize, customButtonHeight, customButtonWidth, customButtonFontSize, verticalPadding, horizontalPadding) {
