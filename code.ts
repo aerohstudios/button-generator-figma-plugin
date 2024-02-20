@@ -28,6 +28,16 @@ figma.ui.onmessage = async (pluginMessage) => {
   useCustomFontSize = pluginMessage.useCustomFontSize;
   useButtonPadding = pluginMessage.useButtonPadding;
 
+  // Check if primary color style already exists, otherwise create it
+primaryColorStyle = colorStyles.find(style => style.name === 'Primary Color') || figma.createPaintStyle();
+primaryColorStyle.name = 'Primary Color';
+primaryColorStyle.paints = [{ type: 'SOLID', color: pluginMessage.primaryrgbValues }];
+
+// Check if secondary color style already exists, otherwise create it
+secondaryColorStyle = colorStyles.find(style => style.name === 'Secondary Color') || figma.createPaintStyle();
+secondaryColorStyle.name = 'Secondary Color';
+secondaryColorStyle.paints = [{ type: 'SOLID', color: pluginMessage.secondaryrgbValues }];
+
   const mainFrame = figma.createFrame();
   mainFrame.name = 'Main Frame';
   let componentWidth;
