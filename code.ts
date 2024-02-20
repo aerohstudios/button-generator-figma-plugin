@@ -29,14 +29,14 @@ figma.ui.onmessage = async (pluginMessage) => {
   useButtonPadding = pluginMessage.useButtonPadding;
 
   // Check if primary color style already exists, otherwise create it
-primaryColorStyle = colorStyles.find(style => style.name === 'Primary Color') || figma.createPaintStyle();
-primaryColorStyle.name = 'Primary Color';
-primaryColorStyle.paints = [{ type: 'SOLID', color: pluginMessage.primaryrgbValues }];
+  primaryColorStyle = colorStyles.find(style => style.name === 'Primary Color') || figma.createPaintStyle();
+  primaryColorStyle.name = 'Primary Color';
+  primaryColorStyle.paints = [{ type: 'SOLID', color: pluginMessage.primaryrgbValues }];
 
-// Check if secondary color style already exists, otherwise create it
-secondaryColorStyle = colorStyles.find(style => style.name === 'Secondary Color') || figma.createPaintStyle();
-secondaryColorStyle.name = 'Secondary Color';
-secondaryColorStyle.paints = [{ type: 'SOLID', color: pluginMessage.secondaryrgbValues }];
+  // Check if secondary color style already exists, otherwise create it
+  secondaryColorStyle = colorStyles.find(style => style.name === 'Secondary Color') || figma.createPaintStyle();
+  secondaryColorStyle.name = 'Secondary Color';
+  secondaryColorStyle.paints = [{ type: 'SOLID', color: pluginMessage.secondaryrgbValues }];
 
   const mainFrame = figma.createFrame();
   mainFrame.name = 'Main Frame';
@@ -45,9 +45,9 @@ secondaryColorStyle.paints = [{ type: 'SOLID', color: pluginMessage.secondaryrgb
   if (useCustomSize) {
     componentWidth = 429 + (4 * pluginMessage.buttonWidth);
     componentHeight = (4 * pluginMessage.buttonHeight * 1.69) + 280;
-  } else if(useButtonPadding){
-    componentWidth = 429 + (4 * ((pluginMessage.horizontalPadding*2)+38)) ;
-    componentHeight = (4 * ((pluginMessage.verticalPadding*2)+15) * 1.69) + 280;
+  } else if (useButtonPadding) {
+    componentWidth = 429 + (4 * ((pluginMessage.horizontalPadding * 2) + 38));
+    componentHeight = (4 * ((pluginMessage.verticalPadding * 2) + 15) * 1.69) + 280;
   }
   else {
     componentWidth = 429 + (4 * 117);
@@ -101,8 +101,8 @@ secondaryColorStyle.paints = [{ type: 'SOLID', color: pluginMessage.secondaryrgb
   let distanceX;
   if (useCustomSize) {
     distanceX = pluginMessage.buttonWidth * 4 * 1.69 + 500;
-  } else if(useButtonPadding){
-    distanceX = ((pluginMessage.horizontalPadding*2)+38) * 4 * 1.69 + 500;
+  } else if (useButtonPadding) {
+    distanceX = ((pluginMessage.horizontalPadding * 2) + 38) * 4 * 1.69 + 500;
   } else {
     distanceX = 1131;
   }
@@ -158,7 +158,7 @@ secondaryColorStyle.paints = [{ type: 'SOLID', color: pluginMessage.secondaryrgb
   const buttonSet = figma.combineAsVariants(allButtons, figma.currentPage);
   buttonSet.name = 'Button Set';
   buttonSet.cornerRadius = 0;
-  const totalWidth = component1.width + component2.width + component3.width+400;
+  const totalWidth = component1.width + component2.width + component3.width + 400;
   const totalHeight = component3.height;
   buttonSet.resize(totalWidth, totalHeight);
 
@@ -185,19 +185,19 @@ function generateComponentSet(primaryColor: RGB, secondaryColor: RGB, buttonRadi
         buttonWidth = 181;
         buttonHeight = 60;
     }
-  } else if(useButtonPadding){
+  } else if (useButtonPadding) {
     switch (buttonSize) {
       case 'small':
-        buttonWidth = (Number(horizontalPadding)*2)+38;
-        buttonHeight = (Number(verticalPadding)*2)+15;
+        buttonWidth = (Number(horizontalPadding) * 2) + 38;
+        buttonHeight = (Number(verticalPadding) * 2) + 15;
         break;
       case 'medium':
-        buttonWidth = ((Number(horizontalPadding)*2)+51);
-        buttonHeight = ((Number(verticalPadding)*2)+19);
+        buttonWidth = ((Number(horizontalPadding) * 2) + 51);
+        buttonHeight = ((Number(verticalPadding) * 2) + 19);
         break;
       case 'large':
-        buttonWidth = ((Number(horizontalPadding)*2)+63);
-        buttonHeight = ((Number(verticalPadding)*2)+24);
+        buttonWidth = ((Number(horizontalPadding) * 2) + 63);
+        buttonHeight = ((Number(verticalPadding) * 2) + 24);
         break;
       default:
         buttonWidth = 181;
@@ -333,7 +333,7 @@ function createButton(primaryColor: RGB, secondaryColor: RGB, buttonRadius: numb
   button.primaryAxisAlignItems = "CENTER";
   button.counterAxisAlignItems = "CENTER";
   button.counterAxisSizingMode = "AUTO";
-  if(useButtonPadding){
+  if (useButtonPadding) {
     button.paddingTop = Number(verticalPadding);
     button.paddingBottom = Number(verticalPadding);
     button.paddingLeft = Number(horizontalPadding);
@@ -379,13 +379,13 @@ function createButton(primaryColor: RGB, secondaryColor: RGB, buttonRadius: numb
       buttonTextNode.characters = 'Button';
       if (useCustomFontSize) {
         buttonTextNode.fontSize = Number(customButtonFontSize);
-      } else if(useButtonPadding){
-        if(buttonSize == 'small'){
-        buttonTextNode.fontSize = 12;
-        } else if(buttonSize == 'medium'){
-        buttonTextNode.fontSize = 16;
+      } else if (useButtonPadding) {
+        if (buttonSize == 'small') {
+          buttonTextNode.fontSize = 12;
+        } else if (buttonSize == 'medium') {
+          buttonTextNode.fontSize = 16;
         } else {
-        buttonTextNode.fontSize = 20;
+          buttonTextNode.fontSize = 20;
         }
       }
       else if (height === width && useCustomSize) {
