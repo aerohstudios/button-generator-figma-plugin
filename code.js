@@ -9,7 +9,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 figma.showUI(__html__, { themeColors: true });
-figma.ui.resize(400, 525);
+figma.ui.resize(400, 685);
 // // Get local color styles
 const colorStyles = figma.getLocalPaintStyles();
 // // Create dropdown options
