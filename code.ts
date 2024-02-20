@@ -2,6 +2,7 @@ figma.showUI(__html__, { themeColors: true })
 figma.ui.resize(400, 685)
 
 let primaryColorStyle: PaintStyle | null = null;
+let secondaryColorStyle: PaintStyle | null = null;
 
 // // Get local color styles
 const colorStyles = figma.getLocalPaintStyles();
