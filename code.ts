@@ -1,5 +1,5 @@
 figma.showUI(__html__, { themeColors: true })
-figma.ui.resize(400, 525)
+figma.ui.resize(400, 685)
 
 // // Get local color styles
 const colorStyles = figma.getLocalPaintStyles();
@@ -14,7 +14,6 @@ const options = colorStyles.map((style) => {
 
 // Send options to UI
 figma.ui.postMessage({ type: 'setDropdownOptions', options });
-
 
 let useCustomSize = false;
 let useCustomFontSize = false;
