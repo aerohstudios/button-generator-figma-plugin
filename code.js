@@ -322,6 +322,29 @@ function generateComponentSet(primaryColor, secondaryColor, buttonRadius, fontSt
     return componentSet;
 }
 function createButton(primaryColor, secondaryColor, buttonRadius, fontStyle, buttonType, buttonState, buttonText, width, height, buttonSize, customButtonFontSize, useButtonPadding, verticalPadding, horizontalPadding) {
+    const colorStyles = figma.getLocalPaintStyles();
+    if (useLocalStyles) {
+        // Find the PaintStyle object with the matching name
+        const primaryStyle = colorStyles.find(style => style.name === primaryOptionName);
+        const secondaryStyle = colorStyles.find(style => style.name === secondaryOptionName);
+        // Check if the style is found before assigning it
+        if (primaryStyle !== undefined) {
+            primaryColorStyle = primaryStyle;
+        }
+        if (secondaryStyle !== undefined) {
+            secondaryColorStyle = secondaryStyle;
+        }
+    }
+    else {
+        // Check if primary color style already exists, otherwise create it
+        primaryColorStyle = colorStyles.find(style => style.name === 'Primary Color') || figma.createPaintStyle();
+        primaryColorStyle.name = 'Primary Color';
+        primaryColorStyle.paints = [{ type: 'SOLID', color: primaryColor }];
+        // Check if secondary color style already exists, otherwise create it
+        secondaryColorStyle = colorStyles.find(style => style.name === 'Secondary Color') || figma.createPaintStyle();
+        secondaryColorStyle.name = 'Secondary Color';
+        secondaryColorStyle.paints = [{ type: 'SOLID', color: secondaryColor }];
+    }
     const button = figma.createComponent();
     button.name = `Button Type = ${buttonType}, Button State = ${buttonState}, Button Size = ${buttonSize}`;
     button.layoutMode = "HORIZONTAL";
