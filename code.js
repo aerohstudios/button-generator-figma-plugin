@@ -30,19 +30,38 @@ let useLocalStyles = false;
 let primaryOptionName;
 let secondaryOptionName;
 figma.ui.onmessage = (pluginMessage) => __awaiter(void 0, void 0, void 0, function* () {
+    // // Create a new rectangle node
+    // const rectNode = figma.createRectangle();
+    // // Set the size of the rectangle
+    // rectNode.resize(100, 100);
+    // // Create a local color style variable
+    // const colorStyle = figma.createPaintStyle();
+    // colorStyle.name = 'My Color Style';
+    // colorStyle.paints = [{ type: 'SOLID', color: { r: 1, g: 0, b: 0 } }]; // Set the color to red
+    // // Apply the local color style to the rectangle
+    // rectNode.fillStyleId = colorStyle.id;
+    // Add the rectangle to the current page
+    // figma.currentPage.appendChild(rectNode);
     const newPage = figma.createPage();
     figma.currentPage = newPage;
     useCustomSize = pluginMessage.useCustomSize;
     useCustomFontSize = pluginMessage.useCustomFontSize;
     useButtonPadding = pluginMessage.useButtonPadding;
-    // Check if primary color style already exists, otherwise create it
-    primaryColorStyle = colorStyles.find(style => style.name === 'Primary Color') || figma.createPaintStyle();
-    primaryColorStyle.name = 'Primary Color';
-    primaryColorStyle.paints = [{ type: 'SOLID', color: pluginMessage.primaryrgbValues }];
-    // Check if secondary color style already exists, otherwise create it
-    secondaryColorStyle = colorStyles.find(style => style.name === 'Secondary Color') || figma.createPaintStyle();
-    secondaryColorStyle.name = 'Secondary Color';
-    secondaryColorStyle.paints = [{ type: 'SOLID', color: pluginMessage.secondaryrgbValues }];
+    useLocalStyles = pluginMessage.useLocalColorStyles;
+    if (useLocalStyles) {
+        primaryOptionName = pluginMessage.primaryOptionName;
+        secondaryOptionName = pluginMessage.secondaryOptionName;
+    }
+    else {
+        // Check if primary color style already exists, otherwise create it
+        primaryColorStyle = colorStyles.find(style => style.name === 'Primary Color') || figma.createPaintStyle();
+        primaryColorStyle.name = 'Primary Color';
+        primaryColorStyle.paints = [{ type: 'SOLID', color: pluginMessage.primaryrgbValues }];
+        // Check if secondary color style already exists, otherwise create it
+        secondaryColorStyle = colorStyles.find(style => style.name === 'Secondary Color') || figma.createPaintStyle();
+        secondaryColorStyle.name = 'Secondary Color';
+        secondaryColorStyle.paints = [{ type: 'SOLID', color: pluginMessage.secondaryrgbValues }];
+    }
     const mainFrame = figma.createFrame();
     mainFrame.name = 'Main Frame';
     let componentWidth;
