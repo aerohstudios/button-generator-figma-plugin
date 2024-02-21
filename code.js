@@ -363,7 +363,7 @@ function createButton(primaryColor, secondaryColor, buttonRadius, fontStyle, but
     button.cornerRadius = Number(buttonRadius);
     switch (buttonType) {
         case 'primary':
-            button.fills = [{ type: 'SOLID', color: primaryColor }];
+            button.fillStyleId = primaryColorStyle.id;
             break;
         case 'secondary':
             button.strokes = [{ type: 'SOLID', color: primaryColor }];
