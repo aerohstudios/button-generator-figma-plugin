@@ -429,7 +429,7 @@ function createButton(primaryColor, secondaryColor, buttonRadius, fontStyle, but
             }
             else if (buttonType == 'text') {
                 if (buttonState == 'pressed') {
-                    buttonTextNode.fills = [{ type: 'SOLID', color: secondaryColor }];
+                    buttonTextNode.fillStyleId = secondaryColorStyle.id;
                 }
                 else if (buttonState == 'disabled') {
                     buttonTextNode.fills = [{ type: 'SOLID', color: primaryColor, opacity: 0.32 }];
