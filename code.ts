@@ -447,7 +447,7 @@ if (secondaryStyle !== undefined) {
       }
 
       if (buttonType == 'primary' || buttonType == 'elevated') {
-        buttonTextNode.fills = [{ type: 'SOLID', color: secondaryColor }];
+        buttonTextNode.fillStyleId = secondaryColorStyle.id;
       }
       else if (buttonType == 'secondary') {
         if (buttonState == 'pressed') {

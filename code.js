@@ -414,7 +414,7 @@ function createButton(primaryColor, secondaryColor, buttonRadius, fontStyle, but
                 buttonTextNode.fontSize = Math.max(12, Math.floor(width / 20) * 4);
             }
             if (buttonType == 'primary' || buttonType == 'elevated') {
-                buttonTextNode.fills = [{ type: 'SOLID', color: secondaryColor }];
+                buttonTextNode.fillStyleId = secondaryColorStyle.id;
             }
             else if (buttonType == 'secondary') {
                 if (buttonState == 'pressed') {
