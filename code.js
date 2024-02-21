@@ -424,7 +424,7 @@ function createButton(primaryColor, secondaryColor, buttonRadius, fontStyle, but
                     buttonTextNode.fills = [{ type: 'SOLID', color: primaryColor, opacity: 0.32 }];
                 }
                 else {
-                    buttonTextNode.fills = [{ type: 'SOLID', color: primaryColor }];
+                    buttonTextNode.fillStyleId = primaryColorStyle.id;
                 }
             }
             else if (buttonType == 'text') {
