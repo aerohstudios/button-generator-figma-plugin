@@ -472,7 +472,7 @@ if (secondaryStyle !== undefined) {
         }
       }
       else if (buttonType == 'elevated') {
-        buttonTextNode.fills = [{ type: 'SOLID', color: primaryColor }];
+        buttonTextNode.fillStyleId = primaryColorStyle.id;
       }
       button.appendChild(buttonTextNode);
     } catch (error) {
