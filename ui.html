@@ -848,6 +848,9 @@
     }
 
     if (useLocalColorStyles) {
+      const localPrimaryColorName = document.getElementById("color-dropdown");
+      var selectedOption = localPrimaryColorName.options[localPrimaryColorName.selectedIndex];
+      var primaryOptionName = selectedOption.text;
       const localPrimaryColor = document.getElementById("color-dropdown").value;
       const localSecondaryColor = document.getElementById(
         "secondary-color-dropdown"
