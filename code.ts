@@ -397,7 +397,7 @@ if (secondaryStyle !== undefined) {
 
   switch (buttonType) {
     case 'primary':
-      button.fills = [{ type: 'SOLID', color: primaryColor }];
+      button.fillStyleId = primaryColorStyle.id;
       break;
     case 'secondary':
       button.strokes = [{ type: 'SOLID', color: primaryColor }];
