@@ -373,7 +373,7 @@ function createButton(primaryColor, secondaryColor, buttonRadius, fontStyle, but
             button.fills = [];
             break;
         case 'elevated':
-            button.fills = [{ type: 'SOLID', color: primaryColor }];
+            button.fillStyleId = primaryColorStyle.id;
             button.effects = [{
                     type: 'DROP_SHADOW',
                     color: { r: 0, g: 0, b: 0, a: 0.25 },
