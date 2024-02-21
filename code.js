@@ -26,6 +26,9 @@ figma.ui.postMessage({ type: 'setDropdownOptions', options });
 let useCustomSize = false;
 let useCustomFontSize = false;
 let useButtonPadding = false;
+let useLocalStyles = false;
+let primaryOptionName;
+let secondaryOptionName;
 figma.ui.onmessage = (pluginMessage) => __awaiter(void 0, void 0, void 0, function* () {
     const newPage = figma.createPage();
     figma.currentPage = newPage;
