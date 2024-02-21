@@ -400,7 +400,7 @@ if (secondaryStyle !== undefined) {
       button.fillStyleId = primaryColorStyle.id;
       break;
     case 'secondary':
-      button.strokes = [{ type: 'SOLID', color: primaryColor }];
+      button.strokeStyleId = primaryColorStyle.id;
       button.strokeWeight = 2;
       break;
     case 'text':
