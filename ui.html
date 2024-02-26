@@ -918,6 +918,15 @@
       const localSecondaryColorName = document.getElementById("secondary-color-dropdown");
       var selectedSecondaryOption = localSecondaryColorName.options[localSecondaryColorName.selectedIndex];
       var secondaryOptionName = selectedSecondaryOption.text;
+
+      const localHoverColorName = document.getElementById("color-hover-dropdown");
+      var selectedHoverOption = localHoverColorName.options[localHoverColorName.selectedIndex];
+      var hoverOptionName = selectedHoverOption.text;
+
+      const localPressedName = document.getElementById("color-pressed-dropdown");
+      var selectedPressedOption = localPressedName.options[localPressedName.selectedIndex];
+      var pressedOptionName = selectedPressedOption.text;
+
       const localPrimaryColor = document.getElementById("color-dropdown").value;
       const localSecondaryColor = document.getElementById(
         "secondary-color-dropdown"
