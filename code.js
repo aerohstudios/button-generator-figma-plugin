@@ -494,11 +494,12 @@ function createButton(primaryColor, secondaryColor, buttonRadius, fontStyle, but
     }
     else if (buttonType == 'text') {
         if (buttonState == 'hover') {
-            button.fills = [{
-                    type: 'SOLID',
-                    color: primaryColor,
-                    opacity: 0.12
-                }];
+            button.fillStyleId = disabledColorStyle.id;
+            // button.fills = [{
+            //   type: 'SOLID',
+            //   color: primaryColor,
+            //   opacity: 0.12
+            // }];
         }
         else if (buttonState == 'pressed') {
             button.fills = [{ type: 'SOLID', color: { r: Math.max(0, primaryColor.r - 0.2), g: Math.max(0, primaryColor.g - 0.2), b: Math.max(0, primaryColor.b - 0.2) } }];
