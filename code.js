@@ -343,6 +343,12 @@ function createButton(primaryColor, secondaryColor, buttonRadius, fontStyle, but
         if (secondaryStyle !== undefined) {
             secondaryColorStyle = secondaryStyle;
         }
+        if (hoverStyle !== undefined) {
+            hoverColorStyle = hoverStyle;
+        }
+        if (pressedStyle !== undefined) {
+            pressedColorStyle = pressedStyle;
+        }
     }
     else {
         // Check if primary color style already exists, otherwise create it
