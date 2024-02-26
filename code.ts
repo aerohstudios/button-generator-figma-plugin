@@ -548,11 +548,12 @@ if (pressedStyle !== undefined) {
 
   } else if (buttonType == 'secondary') {
     if (buttonState == 'hover') {
-      button.fills = [{
-        type: 'SOLID',
-        color: primaryColor,
-        opacity: 0.12
-      }];
+      button.fillStyleId = disabledColorStyle.id;
+      // button.fills = [{
+      //   type: 'SOLID',
+      //   color: primaryColor,
+      //   opacity: 0.12
+      // }];
 
     }
     else if (buttonState == 'pressed') {
