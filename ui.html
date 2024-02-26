@@ -995,6 +995,18 @@
         optionElement.text = option.label;
         dropdownSecondary.appendChild(optionElement);
       });
+      message.options.forEach((option) => {
+        const optionElement = document.createElement("option");
+        optionElement.value = JSON.stringify(option.value.color);
+        optionElement.text = option.label;
+        dropdownHover.appendChild(optionElement);
+      });
+      message.options.forEach((option) => {
+        const optionElement = document.createElement("option");
+        optionElement.value = JSON.stringify(option.value.color);
+        optionElement.text = option.label;
+        dropdownPressed.appendChild(optionElement);
+      });
     }
   };
 
