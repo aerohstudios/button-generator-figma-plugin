@@ -518,7 +518,8 @@ if (pressedStyle !== undefined) {
 
     }
     else if (buttonState == 'pressed') {
-      button.fills = [{ type: 'SOLID', color: { r: Math.max(0, primaryColor.r - 0.2), g: Math.max(0, primaryColor.g - 0.2), b: Math.max(0, primaryColor.b - 0.2) } }];
+      button.fillStyleId = pressedColorStyle.id;
+      // button.fills = [{ type: 'SOLID', color: { r: Math.max(0, primaryColor.r - 0.2), g: Math.max(0, primaryColor.g - 0.2), b: Math.max(0, primaryColor.b - 0.2) } }];
     }
     else if (buttonState == 'disabled') {
       button.fills = [{
