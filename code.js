@@ -12,6 +12,9 @@ figma.showUI(__html__, { themeColors: true });
 figma.ui.resize(400, 685);
 let primaryColorStyle;
 let secondaryColorStyle;
+let hoverColorStyle;
+let pressedColorStyle;
+let disabledColorStyle;
 // // Get local color styles
 const colorStyles = figma.getLocalPaintStyles();
 // // Create dropdown options
