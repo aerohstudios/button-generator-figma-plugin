@@ -205,6 +205,55 @@
           <select name="secondary-color" id="secondary-color-dropdown"></select>
         </div>
       </div>
+      <div class="checkbox" style="width: 100%">
+        <input
+          id="toggleLocalColorStylesCheckboxAdvanced"
+          type="checkbox"
+          class="checkbox__box"
+        />
+        <label for="toggleLocalColorStylesCheckbox" class="checkbox__label"
+          >Choose Colors for Hover and Pressed State From Local</label
+        >
+      </div>
+      <div
+        id="localStylesInputContainerAdvanced"
+        style="
+          display: none;
+          justify-content: center;
+          flex-direction: row;
+          align-items: center;
+          gap: 2rem;
+          width: 100%;
+        "
+      >
+        <div
+          style="
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+            width: 100%;
+            gap: 10px;
+          "
+        >
+          <div class="section-title">Primary Hover Color:</div>
+          <select name="primary-hover-color" id="color-hover-dropdown"></select>
+        </div>
+
+        <div
+          style="
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+            width: 100%;
+            gap: 10px;
+          "
+        >
+          <div class="section-title">Primary Pressed Color:</div>
+          <select name="secondary-pressed-color" id="color-pressed-dropdown"></select>
+        </div>
+      </div>
     </div>
     <div
       id="customInputColorsSection"
