@@ -32,6 +32,8 @@ let useButtonPadding = false;
 let useLocalStyles = false;
 let primaryOptionName;
 let secondaryOptionName;
+let hoverOptionName;
+let pressedOptionName;
 figma.ui.onmessage = (pluginMessage) => __awaiter(void 0, void 0, void 0, function* () {
     // // Create a new rectangle node
     // const rectNode = figma.createRectangle();
