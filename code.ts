@@ -3,6 +3,9 @@ figma.ui.resize(400, 685)
 
 let primaryColorStyle: PaintStyle;
 let secondaryColorStyle: PaintStyle;
+let hoverColorStyle: PaintStyle;
+let pressedColorStyle: PaintStyle;
+let disabledColorStyle: PaintStyle;
 
 // // Get local color styles
 const colorStyles = figma.getLocalPaintStyles();
