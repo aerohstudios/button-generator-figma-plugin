@@ -828,6 +828,15 @@
         : "flex";
     });
   });
+  document.addEventListener("DOMContentLoaded", function () {
+    const checkbox = document.getElementById("toggleLocalColorStylesCheckboxAdvanced");
+
+  checkbox.addEventListener("change", function () {
+    inputCustomStylesContainerAdvanced.style.display = checkbox.checked
+      ? "flex"
+      : "none";
+  });
+});
 
   const paddingInputContainer = document.getElementById("paddingInputContainer");
   document.addEventListener("DOMContentLoaded", function () {
