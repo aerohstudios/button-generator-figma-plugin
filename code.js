@@ -334,6 +334,8 @@ function createButton(primaryColor, secondaryColor, buttonRadius, fontStyle, but
         // Find the PaintStyle object with the matching name
         const primaryStyle = colorStyles.find(style => style.name === primaryOptionName);
         const secondaryStyle = colorStyles.find(style => style.name === secondaryOptionName);
+        const hoverStyle = colorStyles.find(style => style.name === hoverOptionName);
+        const pressedStyle = colorStyles.find(style => style.name === pressedOptionName);
         // Check if the style is found before assigning it
         if (primaryStyle !== undefined) {
             primaryColorStyle = primaryStyle;
