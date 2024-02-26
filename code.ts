@@ -377,6 +377,12 @@ if (primaryStyle !== undefined) {
 if (secondaryStyle !== undefined) {
   secondaryColorStyle = secondaryStyle;
 }
+if (hoverStyle !== undefined) {
+  hoverColorStyle = hoverStyle;
+}
+if (pressedStyle !== undefined) {
+  pressedColorStyle = pressedStyle;
+}
   } else {
   // Check if primary color style already exists, otherwise create it
   primaryColorStyle = colorStyles.find(style => style.name === 'Primary Color') || figma.createPaintStyle();
