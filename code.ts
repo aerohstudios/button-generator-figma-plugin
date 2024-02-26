@@ -57,6 +57,8 @@ figma.ui.onmessage = async (pluginMessage) => {
   if (useLocalStyles) {
     primaryOptionName = pluginMessage.primaryOptionName;
     secondaryOptionName = pluginMessage.secondaryOptionName;
+    hoverOptionName = pluginMessage.hoverOptionName
+    pressedOptionName = pluginMessage.pressedOptionName
   } else {
 
   // Check if primary color style already exists, otherwise create it
