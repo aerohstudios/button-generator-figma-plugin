@@ -359,7 +359,19 @@ function createButton(primaryColor, secondaryColor, buttonRadius, fontStyle, but
         secondaryColorStyle = colorStyles.find(style => style.name === 'Secondary Color') || figma.createPaintStyle();
         secondaryColorStyle.name = 'Secondary Color';
         secondaryColorStyle.paints = [{ type: 'SOLID', color: secondaryColor }];
+        // Check if hover color style already exists, otherwise create it
+        hoverColorStyle = colorStyles.find(style => style.name === 'Hover Color') || figma.createPaintStyle();
+        hoverColorStyle.name = 'Hover Color';
+        hoverColorStyle.paints = [{ type: 'SOLID', color: { r: Math.max(0, primaryColor.r - 0.1), g: Math.max(0, primaryColor.g - 0.1), b: Math.max(0, primaryColor.b - 0.1) } }];
+        // Check if pressed color style already exists, otherwise create it
+        pressedColorStyle = colorStyles.find(style => style.name === 'Pressed Color') || figma.createPaintStyle();
+        pressedColorStyle.name = 'Pressed Color';
+        pressedColorStyle.paints = [{ type: 'SOLID', color: { r: Math.max(0, primaryColor.r - 0.2), g: Math.max(0, primaryColor.g - 0.2), b: Math.max(0, primaryColor.b - 0.2) } }];
     }
+    // Check if pressed color style already exists, otherwise create it
+    disabledColorStyle = colorStyles.find(style => style.name === 'Disabled Color') || figma.createPaintStyle();
+    disabledColorStyle.name = 'Disabled Color';
+    disabledColorStyle.paints = [{ type: 'SOLID', color: primaryColor, opacity: 0.15 }];
     const button = figma.createComponent();
     button.name = `Button Type = ${buttonType}, Button State = ${buttonState}, Button Size = ${buttonSize}`;
     button.layoutMode = "HORIZONTAL";
