@@ -831,10 +831,10 @@
   document.addEventListener("DOMContentLoaded", function () {
     const checkbox = document.getElementById("toggleLocalColorStylesCheckboxAdvanced");
 
-  checkbox.addEventListener("change", function () {
-    inputCustomStylesContainerAdvanced.style.display = checkbox.checked
-      ? "flex"
-      : "none";
+    checkbox.addEventListener("change", function () {
+      inputCustomStylesContainerAdvanced.style.display = checkbox.checked
+        ? "flex"
+        : "none";
   });
 });
 
@@ -975,6 +975,9 @@
       const dropdownSecondary = document.getElementById(
         "secondary-color-dropdown"
       );
+      const dropdownHover = document.getElementById("color-hover-dropdown");
+      const dropdownPressed = document.getElementById("color-pressed-dropdown");
+
       dropdown.innerHTML = ""; // Clear existing options
       dropdownSecondary.innerHTML = ""; // Clear existing options
 
