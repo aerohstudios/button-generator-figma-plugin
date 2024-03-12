@@ -1151,7 +1151,21 @@
     var nameInput = document.getElementById("name-input").value;
     var roleInput = document.getElementById("role-input").value;
     var companyInput = document.getElementById("company-input").value;
-    var superpowerInput = document.getElementById("superpower-input").value;
+    var superpowerInput = "";
+    if (document.getElementById("codeGenerationCheckbox").checked) {
+        superpowerInput += "Code Generation, ";
+    }
+
+    if (document.getElementById("uiGenerationCheckbox").checked) {
+        superpowerInput += "UI Generation, ";
+    }
+
+    if (document.getElementById("otherCheckbox").checked) {
+        var otherInput = document.getElementById("otherInput").value;
+        if (otherInput.trim() !== "") {
+            superpowerInput += otherInput.substring(0, 255) + ", "; // Limit to 255 characters
+        }
+    }
     var button = document.getElementById("submit-email");
     button.classList.add("btn-disabled");
     button.textContent = "Just wait a sec";
