@@ -161,7 +161,7 @@
     height: 100%;
   }
 </style>
-<div style="display: flex; flex-direction: column; gap: 20px">
+<div style="display: flex; flex-direction: column; gap: 0px">
   <div class="navbar">
     <p onclick="showButtons()" id="buttonsOption" class="navbar-option active">
       Buttons
@@ -169,9 +169,7 @@
     <p onclick="showCustomAI()" id="customAIOption" class="navbar-option">
       Custom AI <span class="emoji outline" title="✨">✨</span>
     </p>
-    <p onclick="" id="reportOption" class="navbar-option">
-      Report/Feedback
-    </p>
+    <p onclick="showReportPage()" id="reportOption" class="navbar-option">Report/Feedback</p>
   </div>
   <div
     id="buttonsSection"
