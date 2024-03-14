@@ -1259,6 +1259,16 @@
     document.getElementById("reportOption").classList.remove("active");
     document.getElementById("customAIOption").classList.add("active");
   }
+  function showReportPage() {
+    document.getElementById("buttonsSection").style.display = "none";
+    document.getElementById("customAISection").style.display = "none";
+    document.getElementById("reportSection").style.display = "flex";
+
+    // Toggle active class for navbar options
+    document.getElementById("buttonsOption").classList.remove("active");
+    document.getElementById("customAIOption").classList.remove("active");
+    document.getElementById("reportOption").classList.add("active");
+  }
   function submitEmail() {
     // Handle email submission logic here
 
