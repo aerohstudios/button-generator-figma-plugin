@@ -169,26 +169,37 @@
     <p onclick="showCustomAI()" id="customAIOption" class="navbar-option">
       Custom AI <span class="emoji outline" title="✨">✨</span>
     </p>
-    <p onclick="showReportPage()" id="reportOption" class="navbar-option">Report/Feedback</p>
+    <p onclick="showReportPage()" id="reportOption" class="navbar-option">
+      Report/Feedback
+    </p>
   </div>
   <div
     id="buttonsSection"
     style="padding: 0 20px; display: flex; flex-direction: column; gap: 20px"
   >
-  <div id="preview-section" style="position: sticky; top: 0; z-index: 999;">
-    <p
-      style="width: 100%; text-align: left; font-size: 12px; font-weight: bold; margin: 10px 0;"
-    >
-      Below is the preview of the Primary Small Button:
-    </p>
-    <div id="button-preview-container">
-      <button id="preview-button">Preview</button>
+    <div id="preview-section" style="position: sticky; top: 0; z-index: 999">
+      <p
+        style="
+          width: 100%;
+          text-align: left;
+          font-size: 12px;
+          font-weight: bold;
+          margin: 10px 0;
+        "
+      >
+        Below is the preview of the Primary Small Button:
+      </p>
+      <div id="button-preview-container">
+        <button id="preview-button">Preview</button>
+      </div>
     </div>
-  </div>
 
-
-    <div class="flex-row-center" style="gap: 10px; height: 100%;" id="middle-section">
-      <div class="flex-column-center" style="gap: 25px;">
+    <div
+      class="flex-row-center"
+      style="gap: 10px; height: 100%"
+      id="middle-section"
+    >
+      <div class="flex-column-center" style="gap: 25px">
         <div class="checkbox" style="width: 100%">
           <input
             id="toggleLocalColorStylesCheckbox"
@@ -365,26 +376,26 @@
           </div>
         </div>
         <div
-        style="
-          display: flex;
-          justify-content: center;
-          align-items: flex-start;
-          width: 100%;
-          flex-direction: column;
-          gap: 15px;
-        "
-      >
-        <div class="section-title">Font Name:</div>
-        <div class="input">
-          <input
-            type="text"
-            id="font-style"
-            class="input__field"
-            placeholder="Font Name (ex: Arial)"
-            style="padding: 5px; width: 230px"
-          />
+          style="
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            width: 100%;
+            flex-direction: column;
+            gap: 15px;
+          "
+        >
+          <div class="section-title">Font Name:</div>
+          <div class="input">
+            <input
+              type="text"
+              id="font-style"
+              class="input__field"
+              placeholder="Font Name (ex: Arial)"
+              style="padding: 5px; width: 230px"
+            />
+          </div>
         </div>
-      </div>
       </div>
 
       <hr
@@ -397,8 +408,8 @@
       />
       <!-- <div style="height: 100%; width: 2px; background-color: var(--figma-color-border);"></div> -->
 
-      <div class="flex-column-center" style="gap: 0px;">
-        <div class="checkbox" style="width: 100%;">
+      <div class="flex-column-center" style="gap: 0px">
+        <div class="checkbox" style="width: 100%">
           <input
             id="toggleButtonPaddingCheckbox"
             type="radio"
@@ -483,11 +494,17 @@
           </div>
         </div>
 
-        <div class="checkbox" style="margin-top: 25px;">
-          <input id="toggleCheckbox" type="radio" class="checkbox__box" name="customPaddingAndDimensionsOption" />
+        <div class="checkbox" style="margin-top: 25px">
+          <input
+            id="toggleCheckbox"
+            type="radio"
+            class="checkbox__box"
+            name="customPaddingAndDimensionsOption"
+          />
           <label for="toggleCheckbox" class="checkbox__label"
-            >Use Custom Dimensions<br/><span style="font-size: 10px;">(Button Font Size will
-            Auto-Scale)</span></label
+            >Use Custom Dimensions<br /><span style="font-size: 10px"
+              >(Button Font Size will Auto-Scale)</span
+            ></label
           >
         </div>
 
@@ -565,74 +582,75 @@
         </div>
 
         <div
-        style="
-          display: flex;
-          justify-content: center;
-          align-items: flex-start;
-          width: 100%;
-          flex-direction: column;
-          gap: 15px;
-          margin-top: 25px;
-        "
-      >
-        <div class="section-title">Button Radius:</div>
-        <div class="input">
-          <input
-            type="number"
-            id="button-radius"
-            class="input__field"
-            placeholder="Button Radius"
-            value="10"
-            style="padding: 5px; width: 110px"
-          />
-        </div>
-      </div>
-      <div class="checkbox" style="width: 100%; margin-top: 15px;">
-        <input
-          id="toggleTextSizeCheckbox"
-          type="checkbox"
-          class="checkbox__box"
-        />
-        <label for="toggleTextSizeCheckbox" class="checkbox__label"
-          >Custom Button Font Size <br/><span style="font-size: 10px;">(will apply to ALL buttons)</span></label
-        >
-      </div>
-
-      <div
-        id="textSizeInputContainer"
-        style="
-          justify-content: center;
-          flex-direction: column;
-          align-items: center;
-          gap: 2rem;
-          width: 110px;
-          margin-top: 10px;
-        "
-      >
-        <div
           style="
             display: flex;
-            flex-direction: column;
             justify-content: center;
             align-items: flex-start;
             width: 100%;
-            gap: 10px;
+            flex-direction: column;
+            gap: 15px;
+            margin-top: 25px;
           "
         >
-          <div class="input" style="width: 100%">
+          <div class="section-title">Button Radius:</div>
+          <div class="input">
             <input
               type="number"
-              id="button-font-size"
+              id="button-radius"
               class="input__field"
-              placeholder="Button Font Size"
-              min="0"
-              max="200"
-              style="width: 100%; padding: 5px"
+              placeholder="Button Radius"
+              value="10"
+              style="padding: 5px; width: 110px"
             />
           </div>
         </div>
-      </div>
+        <div class="checkbox" style="width: 100%; margin-top: 15px">
+          <input
+            id="toggleTextSizeCheckbox"
+            type="checkbox"
+            class="checkbox__box"
+          />
+          <label for="toggleTextSizeCheckbox" class="checkbox__label"
+            >Custom Button Font Size <br /><span style="font-size: 10px"
+              >(will apply to ALL buttons)</span
+            ></label
+          >
+        </div>
 
+        <div
+          id="textSizeInputContainer"
+          style="
+            justify-content: center;
+            flex-direction: column;
+            align-items: center;
+            gap: 2rem;
+            width: 110px;
+            margin-top: 10px;
+          "
+        >
+          <div
+            style="
+              display: flex;
+              flex-direction: column;
+              justify-content: center;
+              align-items: flex-start;
+              width: 100%;
+              gap: 10px;
+            "
+          >
+            <div class="input" style="width: 100%">
+              <input
+                type="number"
+                id="button-font-size"
+                class="input__field"
+                placeholder="Button Font Size"
+                min="0"
+                max="200"
+                style="width: 100%; padding: 5px"
+              />
+            </div>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -651,14 +669,21 @@
     /> -->
 
     <div
-    style="position: sticky; bottom: 0; display: flex; justify-content: center; align-items: center; padding: 10px 0 30px 0; width: 100%; background-color: var(--background-color);"
+      style="
+        position: sticky;
+        bottom: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 10px 0 30px 0;
+        width: 100%;
+        background-color: var(--background-color);
+      "
       id="generate-button-section"
     >
       <button id="submit-post" class="button button--primary">
         Generate Components
       </button>
-
-
     </div>
   </div>
 
@@ -677,7 +702,7 @@
         gap: 10px;
       "
     >
-      <p style="font-size: 20px; text-align: center; margin-top: 20px;">
+      <p style="font-size: 20px; text-align: center; margin-top: 20px">
         Enter your email to get early access to our AI features!
       </p>
       <div
@@ -835,19 +860,29 @@
       Congrats you have been added to the waitlist 🎉
     </p>
   </div>
-  <div id="reportSection" style="padding: 0 20px; display: flex; flex-direction: column; gap: 20px; justify-content: center; align-items: center;">
-<p style="color: #7f7f7f; font-size: 12px; margin-top: 20px;">
-        Have any issues or feedback, share them with us!
-      </p>
+  <div
+    id="reportSection"
+    style="
+      padding: 0 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      justify-content: center;
+      align-items: center;
+    "
+  >
+    <p style="color: #7f7f7f; font-size: 12px; margin-top: 20px">
+      Have any issues or feedback, share them with us!
+    </p>
 
-      <a
-        href="https://forms.gle/LrfpkoeQiALGzhai8"
-        target="_blank"
-        style="text-decoration: none"
-        ><button class="button button--secondary" onclick="">
-          Report / Give Feedback
-        </button></a
-      >
+    <a
+      href="https://forms.gle/LrfpkoeQiALGzhai8"
+      target="_blank"
+      style="text-decoration: none"
+      ><button class="button button--secondary" onclick="">
+        Report / Give Feedback
+      </button></a
+    >
   </div>
 </div>
 
@@ -970,52 +1005,55 @@
   // });
 
   const paddingInputContainer = document.getElementById(
-    "paddingInputContainer")
+    "paddingInputContainer"
+  );
 
   const inputContainer = document.getElementById("inputContainer");
 
   document.addEventListener("DOMContentLoaded", function () {
-  // Get all radio buttons
-  const radioButtons = document.querySelectorAll('input[type="radio"][name="customPaddingAndDimensionsOption"]');
-  let selectedRadioButton = null;
+    // Get all radio buttons
+    const radioButtons = document.querySelectorAll(
+      'input[type="radio"][name="customPaddingAndDimensionsOption"]'
+    );
+    let selectedRadioButton = null;
 
-  // Add click event listener to each radio button
-  radioButtons.forEach(button => {
-    button.addEventListener('click', function() {
-      // Deselect the radio button if it's already selected
-      if (selectedRadioButton === this) {
-        this.checked = false;
-        selectedRadioButton = null;
-        // Hide the corresponding container
-        if (button.id === "toggleButtonPaddingCheckbox") {
-          paddingInputContainer.style.display = "none";
-        } else if (button.id === "toggleCheckbox") {
-          inputContainer.style.display = "none";
-        }
-      } else {
-        // Loop through all radio buttons to deselect others
-        radioButtons.forEach(otherButton => {
-          if (otherButton !== this) {
-            otherButton.checked = false;
+    // Add click event listener to each radio button
+    radioButtons.forEach((button) => {
+      button.addEventListener("click", function () {
+        // Deselect the radio button if it's already selected
+        if (selectedRadioButton === this) {
+          this.checked = false;
+          selectedRadioButton = null;
+          // Hide the corresponding container
+          if (button.id === "toggleButtonPaddingCheckbox") {
+            paddingInputContainer.style.display = "none";
+          } else if (button.id === "toggleCheckbox") {
+            inputContainer.style.display = "none";
           }
-        });
+        } else {
+          // Loop through all radio buttons to deselect others
+          radioButtons.forEach((otherButton) => {
+            if (otherButton !== this) {
+              otherButton.checked = false;
+            }
+          });
 
-        // Select the clicked radio button
-        this.checked = true;
-        selectedRadioButton = this;
+          // Select the clicked radio button
+          this.checked = true;
+          selectedRadioButton = this;
 
-        // Toggle visibility of containers based on the selected radio option
-        if (button.id === "toggleButtonPaddingCheckbox") {
-          paddingInputContainer.style.display = "flex";
-          inputContainer.style.display = "none"; // Hide the other container
-        } else if (button.id === "toggleCheckbox") {
-          inputContainer.style.display = "flex";
-          paddingInputContainer.style.display = "none"; // Hide the other container
+          // Toggle visibility of containers based on the selected radio option
+          if (button.id === "toggleButtonPaddingCheckbox") {
+            paddingInputContainer.style.display = "flex";
+            inputContainer.style.display = "none"; // Hide the other container
+          } else if (button.id === "toggleCheckbox") {
+            inputContainer.style.display = "flex";
+            paddingInputContainer.style.display = "none"; // Hide the other container
+          }
         }
-      }
+      });
     });
   });
-});
 
   // localStylesInputContainer
   const inputLocalColorStylesContainer = document.getElementById(
@@ -1050,7 +1088,6 @@
         : "none";
     });
   });
-
 
   // );
   // document.addEventListener("DOMContentLoaded", function () {
