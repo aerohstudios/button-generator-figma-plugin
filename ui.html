@@ -121,21 +121,23 @@
     width: 117px;
     border: none;
   }
-  #button-preview-container{
+  #button-preview-container {
     display: flex;
     justify-content: center;
     align-items: center;
     border: 1px solid var(--figma-color-border);
+    background-color: var(--background-color);
     flex-direction: column;
     gap: 10px;
     padding: 10px;
+    min-height: 100px;
   }
   #preview-button {
     height: 40px;
     width: 117px;
     border: none;
   }
-  #button-preview-container{
+  #button-preview-container {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -143,6 +145,20 @@
     flex-direction: column;
     gap: 10px;
     padding: 10px;
+  }
+
+  .flex-row-center {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+  }
+
+  .flex-column-center {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-direction: column;
+    height: 100%;
   }
 </style>
 <div style="display: flex; flex-direction: column; gap: 20px">
