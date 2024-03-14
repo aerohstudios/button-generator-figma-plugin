@@ -387,43 +387,75 @@
       </div>
       </div>
 
-    <hr
-      style="
-        border: 0.1px solid var(--figma-color-border);
-        background-color: transparent;
-      "
-    />
-
-    <div
-      style="
-        display: flex;
-        justify-content: flex-start;
-        flex-direction: row;
-        align-items: center;
-        gap: 2rem;
-      "
-    >
-      <div
+      <hr
         style="
-          display: flex;
-          justify-content: center;
-          align-items: flex-start;
-          width: 100%;
-          flex-direction: column;
-          gap: 10px;
+          border: 0.1px solid var(--figma-color-border);
+          background-color: transparent;
+          height: 350px;
+          width: 0.1px;
         "
-      >
-        <div class="section-title">Button Radius:</div>
-        <div class="input">
+      />
+      <!-- <div style="height: 100%; width: 2px; background-color: var(--figma-color-border);"></div> -->
+
+      <div class="flex-column-center" style="gap: 0px;">
+        <div class="checkbox" style="width: 100%;">
           <input
-            type="number"
-            id="button-radius"
-            class="input__field"
-            placeholder="Button Radius"
-            style="padding: 5px; width: 100%"
+            id="toggleButtonPaddingCheckbox"
+            type="radio"
+            class="checkbox__box"
+            name="customPaddingAndDimensionsOption"
           />
+          <label for="toggleButtonPaddingCheckbox" class="checkbox__label"
+            >Use Padding</label
+          >
         </div>
-      </div>
+
+        <div
+          id="paddingInputContainer"
+          style="
+            display: none;
+            justify-content: center;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            width: 100%;
+            margin-top: 25px;
+          "
+        >
+          <div
+            id="paddingInputContainer"
+            style="
+              display: flex;
+              justify-content: center;
+              flex-direction: row;
+              align-items: center;
+              gap: 10px;
+              width: 100%;
+            "
+          >
+            <div
+              style="
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: flex-start;
+                width: 110px;
+                gap: 15px;
+              "
+            >
+              <div class="section-title">Vertical:</div>
+              <div class="input" style="width: 100%">
+                <input
+                  type="number"
+                  id="button-vertical-padding"
+                  class="input__field"
+                  placeholder="Vertical Padding"
+                  max="200"
+                  min="0"
+                  style="width: 100%; padding: 5px"
+                />
+              </div>
+            </div>
 
       <div
         style="
