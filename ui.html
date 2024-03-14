@@ -341,40 +341,51 @@
             </div>
           </div>
 
-      <div
+          <div
+            style="
+              display: flex;
+              justify-content: center;
+              align-items: flex-start;
+              width: 110px;
+              flex-direction: column;
+              gap: 15px;
+            "
+          >
+            <div class="section-title">Secondary Color:</div>
+            <div style="width: 100%; height: 100%">
+              <input
+                type="color"
+                id="secondary-color"
+                class="input__field"
+                placeholder="Secondary Color"
+                value="#FFFFFF"
+                style="width: 100%; height: 30px"
+              />
+            </div>
+          </div>
+        </div>
+        <div
         style="
           display: flex;
           justify-content: center;
           align-items: flex-start;
           width: 100%;
           flex-direction: column;
-          gap: 10px;
+          gap: 15px;
         "
       >
-        <div class="section-title">Secondary Color:</div>
-        <div style="width: 100%; height: 100%">
+        <div class="section-title">Font Name:</div>
+        <div class="input">
           <input
-            type="color"
-            id="secondary-color"
+            type="text"
+            id="font-style"
             class="input__field"
-            placeholder="Secondary Color"
-            value="#FFFFFF"
-            style="width: 100%; height: 30px"
+            placeholder="Font Name (ex: Arial)"
+            style="padding: 5px; width: 230px"
           />
         </div>
       </div>
-    </div>
-
-    <div class="checkbox" style="width: 100%">
-      <input
-        id="toggleLocalColorStylesCheckbox"
-        type="checkbox"
-        class="checkbox__box"
-      />
-      <label for="toggleLocalColorStylesCheckbox" class="checkbox__label"
-        >Use Your Local Color Styles</label
-      >
-    </div>
+      </div>
 
     <hr
       style="
