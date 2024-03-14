@@ -856,7 +856,9 @@
   const primaryColorPreview = document.getElementById("primary-color");
   const secondaryColorPreview = document.getElementById("secondary-color");
   const primaryLocalColorPreview = document.getElementById("color-dropdown");
-  const secondaryLocalColorPreview = document.getElementById("secondary-color-dropdown");
+  const secondaryLocalColorPreview = document.getElementById(
+    "secondary-color-dropdown"
+  );
   const buttonRadiusInput = document.getElementById("button-radius");
   const fontStyleInput = document.getElementById("font-style");
   const buttonHeightInput = document.getElementById("button-height");
@@ -907,39 +909,68 @@
     previewButton.style.height = useCustomSize ? buttonHeight + "px" : "40px";
     previewButton.style.width = useCustomSize ? buttonWidth + "px" : "117px";
     // Calculate font size
-  let fontSize;
-  if (useCustomFontSize) {
-    fontSize = buttonFontSize + "px";
-  } else {
-    if (buttonHeight === buttonWidth && useCustomSize) {
-      fontSize = Math.max(12, Math.floor(buttonWidth / 20) * 4) + "px";
+    let fontSize;
+    if (useCustomFontSize) {
+      fontSize = buttonFontSize + "px";
     } else {
-      fontSize = Math.max(12, Math.floor(buttonWidth / 20) * 4) + "px";
+      if (buttonHeight === buttonWidth && useCustomSize) {
+        fontSize = Math.max(12, Math.floor(buttonWidth / 20) * 4) + "px";
+      } else {
+        fontSize = Math.max(12, Math.floor(buttonWidth / 20) * 4) + "px";
+      }
     }
-  }
-  previewButton.style.fontSize = fontSize;
+    previewButton.style.fontSize = fontSize;
 
-  let primaryColorButton = primaryColor;
-  let secondaryColorButton = secondaryColor;
+    let primaryColorButton = primaryColor;
+    let secondaryColorButton = secondaryColor;
 
-  if (useLocalColorStyles) {
-  const localPrimaryColor = document.getElementById("color-dropdown").value;
-  const localSecondaryColor = document.getElementById("secondary-color-dropdown").value;
+    if (useLocalColorStyles) {
+      const localPrimaryColor = document.getElementById("color-dropdown").value;
+      const localSecondaryColor = document.getElementById(
+        "secondary-color-dropdown"
+      ).value;
 
-  // Parse the JSON strings back into objects
-  const primaryColorButton = JSON.parse(localPrimaryColor);
-  const secondaryColorButton = JSON.parse(localSecondaryColor);
+      // Parse the JSON strings back into objects
+      const primaryColorButton = JSON.parse(localPrimaryColor);
+      const secondaryColorButton = JSON.parse(localSecondaryColor);
 
-  // Set background and text color using RGB values
-  previewButton.style.backgroundColor = `rgb(${primaryColorButton.r * 255}, ${primaryColorButton.g * 255}, ${primaryColorButton.b * 255})`;
-  previewButton.style.color = `rgb(${secondaryColorButton.r * 255}, ${secondaryColorButton.g * 255}, ${secondaryColorButton.b * 255})`;
-} else {
-  previewButton.style.backgroundColor = primaryColorButton;
-  previewButton.style.color = secondaryColorButton;
-}
+      // Set background and text color using RGB values
+      previewButton.style.backgroundColor = `rgb(${
+        primaryColorButton.r * 255
+      }, ${primaryColorButton.g * 255}, ${primaryColorButton.b * 255})`;
+      previewButton.style.color = `rgb(${secondaryColorButton.r * 255}, ${
+        secondaryColorButton.g * 255
+      }, ${secondaryColorButton.b * 255})`;
+    } else {
+      previewButton.style.backgroundColor = primaryColorButton;
+      previewButton.style.color = secondaryColorButton;
+    }
   }
   // Call updatePreviewButton initially to set initial styles
   updatePreviewButton();
+
+  //
+  // document.addEventListener("DOMContentLoaded", function () {
+  //   const checkbox = document.getElementById("toggleCheckbox");
+
+  //   checkbox.addEventListener("change", function () {
+  //     inputContainer.style.display = checkbox.checked ? "flex" : "none";
+  //   });
+  // });
+
+  // const inputFontSizeContainer = document.getElementById(
+  //   "textSizeInputContainer"
+  // );
+  // document.addEventListener("DOMContentLoaded", function () {
+  //   const checkbox = document.getElementById("toggleTextSizeCheckbox");
+
+  //   checkbox.addEventListener("change", function () {
+  //     inputFontSizeContainer.style.display = checkbox.checked ? "flex" : "none";
+  //   });
+  // });
+
+  const paddingInputContainer = document.getElementById(
+    "paddingInputContainer")
 
   const inputContainer = document.getElementById("inputContainer");
   document.addEventListener("DOMContentLoaded", function () {
