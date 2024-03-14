@@ -973,24 +973,49 @@
     "paddingInputContainer")
 
   const inputContainer = document.getElementById("inputContainer");
-  document.addEventListener("DOMContentLoaded", function () {
-    const checkbox = document.getElementById("toggleCheckbox");
 
-    checkbox.addEventListener("change", function () {
-      inputContainer.style.display = checkbox.checked ? "flex" : "none";
+  document.addEventListener("DOMContentLoaded", function () {
+  // Get all radio buttons
+  const radioButtons = document.querySelectorAll('input[type="radio"][name="customPaddingAndDimensionsOption"]');
+  let selectedRadioButton = null;
+
+  // Add click event listener to each radio button
+  radioButtons.forEach(button => {
+    button.addEventListener('click', function() {
+      // Deselect the radio button if it's already selected
+      if (selectedRadioButton === this) {
+        this.checked = false;
+        selectedRadioButton = null;
+        // Hide the corresponding container
+        if (button.id === "toggleButtonPaddingCheckbox") {
+          paddingInputContainer.style.display = "none";
+        } else if (button.id === "toggleCheckbox") {
+          inputContainer.style.display = "none";
+        }
+      } else {
+        // Loop through all radio buttons to deselect others
+        radioButtons.forEach(otherButton => {
+          if (otherButton !== this) {
+            otherButton.checked = false;
+          }
+        });
+
+        // Select the clicked radio button
+        this.checked = true;
+        selectedRadioButton = this;
+
+        // Toggle visibility of containers based on the selected radio option
+        if (button.id === "toggleButtonPaddingCheckbox") {
+          paddingInputContainer.style.display = "flex";
+          inputContainer.style.display = "none"; // Hide the other container
+        } else if (button.id === "toggleCheckbox") {
+          inputContainer.style.display = "flex";
+          paddingInputContainer.style.display = "none"; // Hide the other container
+        }
+      }
     });
   });
-
-  const inputFontSizeContainer = document.getElementById(
-    "textSizeInputContainer"
-  );
-  document.addEventListener("DOMContentLoaded", function () {
-    const checkbox = document.getElementById("toggleTextSizeCheckbox");
-
-    checkbox.addEventListener("change", function () {
-      inputFontSizeContainer.style.display = checkbox.checked ? "flex" : "none";
-    });
-  });
+});
 
   // localStylesInputContainer
   const inputLocalColorStylesContainer = document.getElementById(
