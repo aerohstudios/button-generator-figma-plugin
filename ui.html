@@ -184,42 +184,56 @@
     <div id="button-preview-container">
       <button id="preview-button">Preview</button>
     </div>
+  </div>
 
-    <div
-      id="localStylesInputContainer"
-      style="
-        display: none;
-        justify-content: center;
-        flex-direction: column;
-        align-items: center;
-        gap: 2rem;
-        width: 100%;
-      "
-    >
-      <div
-        id="localStylesInputContainer"
-        style="
-          display: flex;
-          justify-content: center;
-          flex-direction: row;
-          align-items: center;
-          gap: 2rem;
-          width: 100%;
-        "
-      >
+
+    <div class="flex-row-center" style="gap: 10px; height: 100%;" id="middle-section">
+      <div class="flex-column-center" style="gap: 25px;">
+        <div class="checkbox" style="width: 100%">
+          <input
+            id="toggleLocalColorStylesCheckbox"
+            type="checkbox"
+            class="checkbox__box"
+          />
+          <label for="toggleLocalColorStylesCheckbox" class="checkbox__label"
+            >Use Your Local Color Styles</label
+          >
+        </div>
         <div
+          id="localStylesInputContainer"
           style="
-            display: flex;
-            flex-direction: column;
+            display: none;
             justify-content: center;
-            align-items: flex-start;
+            flex-direction: column;
+            align-items: center;
+            gap: 25px;
             width: 100%;
-            gap: 10px;
           "
         >
-          <div class="section-title">Primary Color:</div>
-          <select name="primary-color" id="color-dropdown"></select>
-        </div>
+          <div
+            id="localStylesInputContainer"
+            style="
+              display: flex;
+              justify-content: center;
+              flex-direction: row;
+              align-items: center;
+              gap: 10px;
+              width: 100%;
+            "
+          >
+            <div
+              style="
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: flex-start;
+                width: 100%;
+                gap: 15px;
+              "
+            >
+              <div class="section-title">Primary Color:</div>
+              <select name="primary-color" id="color-dropdown"></select>
+            </div>
 
         <div
           style="
