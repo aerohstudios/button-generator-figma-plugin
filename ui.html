@@ -1040,23 +1040,26 @@
     });
   });
   document.addEventListener("DOMContentLoaded", function () {
-    const checkbox = document.getElementById("toggleLocalColorStylesCheckboxAdvanced");
+    const checkbox = document.getElementById(
+      "toggleLocalColorStylesCheckboxAdvanced"
+    );
 
     checkbox.addEventListener("change", function () {
       inputCustomStylesContainerAdvanced.style.display = checkbox.checked
         ? "flex"
         : "none";
-  });
-});
-
-  const paddingInputContainer = document.getElementById("paddingInputContainer");
-  document.addEventListener("DOMContentLoaded", function () {
-    const checkbox = document.getElementById("toggleButtonPaddingCheckbox");
-
-    checkbox.addEventListener("change", function () {
-      paddingInputContainer.style.display = checkbox.checked ? "flex" : "none";
     });
   });
+
+
+  // );
+  // document.addEventListener("DOMContentLoaded", function () {
+  //   const checkbox = document.getElementById("toggleButtonPaddingCheckbox");
+
+  //   checkbox.addEventListener("change", function () {
+  //     paddingInputContainer.style.display = checkbox.checked ? "flex" : "none";
+  //   });
+  // });
 
   document.getElementById("submit-post").onclick = () => {
     const primaryColor = document.getElementById("primary-color").value;
@@ -1098,9 +1101,13 @@
     }
 
     if (useButtonPadding) {
-    var verticalPadding = document.getElementById("button-vertical-padding").value;
-      var horizontalPadding = document.getElementById("button-horizontal-padding").value;
-}
+      var verticalPadding = document.getElementById(
+        "button-vertical-padding"
+      ).value;
+      var horizontalPadding = document.getElementById(
+        "button-horizontal-padding"
+      ).value;
+    }
 
     if (!fontStyle) {
       fontStyle = "Inter";
@@ -1124,18 +1131,28 @@
 
     if (useLocalColorStyles) {
       const localPrimaryColorName = document.getElementById("color-dropdown");
-      var selectedOption = localPrimaryColorName.options[localPrimaryColorName.selectedIndex];
+      var selectedOption =
+        localPrimaryColorName.options[localPrimaryColorName.selectedIndex];
       var primaryOptionName = selectedOption.text;
-      const localSecondaryColorName = document.getElementById("secondary-color-dropdown");
-      var selectedSecondaryOption = localSecondaryColorName.options[localSecondaryColorName.selectedIndex];
+      const localSecondaryColorName = document.getElementById(
+        "secondary-color-dropdown"
+      );
+      var selectedSecondaryOption =
+        localSecondaryColorName.options[localSecondaryColorName.selectedIndex];
       var secondaryOptionName = selectedSecondaryOption.text;
 
-      const localHoverColorName = document.getElementById("color-hover-dropdown");
-      var selectedHoverOption = localHoverColorName.options[localHoverColorName.selectedIndex];
+      const localHoverColorName = document.getElementById(
+        "color-hover-dropdown"
+      );
+      var selectedHoverOption =
+        localHoverColorName.options[localHoverColorName.selectedIndex];
       var hoverOptionName = selectedHoverOption.text;
 
-      const localPressedName = document.getElementById("color-pressed-dropdown");
-      var selectedPressedOption = localPressedName.options[localPressedName.selectedIndex];
+      const localPressedName = document.getElementById(
+        "color-pressed-dropdown"
+      );
+      var selectedPressedOption =
+        localPressedName.options[localPressedName.selectedIndex];
       var pressedOptionName = selectedPressedOption.text;
 
       const localPrimaryColor = document.getElementById("color-dropdown").value;
@@ -1167,7 +1184,7 @@
           secondaryOptionName,
           hoverOptionName,
           pressedOptionName,
-          useLocalColorStyles
+          useLocalColorStyles,
         },
       },
       "*"
