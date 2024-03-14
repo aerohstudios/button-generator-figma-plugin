@@ -457,28 +457,31 @@
               </div>
             </div>
 
-      <div
-        style="
-          display: flex;
-          justify-content: center;
-          align-items: flex-start;
-          width: 100%;
-          flex-direction: column;
-          gap: 10px;
-        "
-      >
-        <div class="section-title">Font Name:</div>
-        <div class="input">
-          <input
-            type="text"
-            id="font-style"
-            class="input__field"
-            placeholder="Font Name (ex: Arial)"
-            style="padding: 5px; width: 100%"
-          />
+            <div
+              style="
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: flex-start;
+                width: 110px;
+                gap: 15px;
+              "
+            >
+              <div class="section-title">Horizontal:</div>
+              <div class="input" style="width: 100%">
+                <input
+                  type="number"
+                  id="button-horizontal-padding"
+                  class="input__field"
+                  placeholder="Horizontal Padding"
+                  min="0"
+                  max="200"
+                  style="width: 100%; padding: 5px"
+                />
+              </div>
+            </div>
+          </div>
         </div>
-      </div>
-    </div>
 
     <div class="checkbox">
       <input id="toggleCheckbox" type="checkbox" class="checkbox__box" />
