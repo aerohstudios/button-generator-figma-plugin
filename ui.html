@@ -290,53 +290,56 @@
               ></select>
             </div>
 
+            <div
+              style="
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: flex-start;
+                width: 100%;
+                gap: 15px;
+              "
+            >
+              <div class="section-title">Pressed Color:</div>
+              <select
+                name="secondary-pressed-color"
+                id="color-pressed-dropdown"
+              ></select>
+            </div>
+          </div>
+        </div>
         <div
+          id="customInputColorsSection"
           style="
             display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: flex-start;
-            width: 100%;
+            justify-content: space-between;
+            flex-direction: row;
+            align-items: center;
             gap: 10px;
           "
         >
-          <div class="section-title">Primary Pressed Color:</div>
-          <select name="secondary-pressed-color" id="color-pressed-dropdown"></select>
-        </div>
-      </div>
-    </div>
-    <div
-      id="customInputColorsSection"
-      style="
-        display: flex;
-        justify-content: space-between;
-        flex-direction: row;
-        align-items: center;
-        gap: 2rem;
-      "
-    >
-      <div
-        style="
-          display: flex;
-          justify-content: center;
-          align-items: flex-start;
-          width: 100%;
-          flex-direction: column;
-          gap: 10px;
-        "
-      >
-        <div class="section-title">Primary Color:</div>
-        <div class="input" style="width: 100%; height: 100%">
-          <input
-            type="color"
-            id="primary-color"
-            class="input__field"
-            placeholder="Primary Color"
-            value="#48479A"
-            style="width: 100%; height: 30px"
-          />
-        </div>
-      </div>
+          <div
+            style="
+              display: flex;
+              justify-content: center;
+              align-items: flex-start;
+              width: 110px;
+              flex-direction: column;
+              gap: 15px;
+            "
+          >
+            <div class="section-title">Primary Color:</div>
+            <div class="input" style="width: 100%; height: 100%">
+              <input
+                type="color"
+                id="primary-color"
+                class="input__field"
+                placeholder="Primary Color"
+                value="#48479A"
+                style="width: 100%; height: 30px"
+              />
+            </div>
+          </div>
 
       <div
         style="
