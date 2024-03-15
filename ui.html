@@ -935,9 +935,25 @@
   const useLocalColorStyles = useLocalColorStylesCheckbox.checked;
   const useButtonPadding = useButtonPaddingCheckbox.checked;
 
-    // Apply styles to the preview button
-    previewButton.style.borderRadius = buttonRadius + "px";
-    previewButton.style.fontFamily = fontStyle;
+  // Apply styles to the preview button
+  previewButton.style.borderRadius = buttonRadius + "px";
+  previewButton.style.fontFamily = fontStyle;
+
+  if (useButtonPadding) {
+    // Check if buttonVerticalPadding and buttonHorizontalPadding are not null
+    const verticalPadding = buttonVerticalPadding !== null ? buttonVerticalPadding + "px" : "0";
+    const horizontalPadding = buttonHorizontalPadding !== null ? buttonHorizontalPadding + "px" : "0";
+
+    // Apply padding
+    previewButton.style.paddingTop = verticalPadding;
+    previewButton.style.paddingBottom = verticalPadding;
+    previewButton.style.paddingLeft = horizontalPadding;
+    previewButton.style.paddingRight = horizontalPadding;
+
+    previewButton.style.height = "auto";
+    previewButton.style.width = "auto";
+    previewButton.style.fontSize = "12px";
+  } else if (useCustomSize){
     previewButton.style.height = useCustomSize ? buttonHeight + "px" : "40px";
     previewButton.style.width = useCustomSize ? buttonWidth + "px" : "117px";
     // Calculate font size
