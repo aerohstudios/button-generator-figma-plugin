@@ -895,6 +895,12 @@
     "toggleLocalColorStylesCheckboxAdvanced"
   );
   const previewButton = document.getElementById("preview-button");
+  const useButtonPaddingCheckbox = document.getElementById(
+      "toggleButtonPaddingCheckbox"
+    );
+  const buttonVerticalPaddingInput = document.getElementById("button-vertical-padding");
+  const buttonHorizontalPaddingInput = document.getElementById("button-horizontal-padding");
+
 
   // Add event listeners to all relevant elements
   primaryColorPreview.addEventListener("input", updatePreviewButton);
