@@ -1304,8 +1304,18 @@
   function submitEmail() {
     // Handle email submission logic here
 
-    var emailInput = document.getElementById("email-input").value;
-    var nameInput = document.getElementById("name-input").value;
+    var emailInput = document.getElementById("email-input").value.trim();
+    var nameInput = document.getElementById("name-input").value.trim();
+
+    // Check if email and name are provided
+    if (emailInput === "" || nameInput === "") {
+        const waitlistSuccessText = document.getElementById("waitlist-success-text");
+        waitlistSuccessText.classList.add("warning");
+        waitlistSuccessText.style.display = "block";
+        waitlistSuccessText.textContent = "*Email and Name are required!";
+        return; // Exit function if email or name is missing
+    }
+
     var roleInput = document.getElementById("role-input").value;
     var companyInput = document.getElementById("company-input").value;
     var superpowerInput = "";
