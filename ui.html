@@ -1328,15 +1328,17 @@
     }
 
     if (document.getElementById("otherCheckbox").checked) {
-      var otherInput = document.getElementById("otherInput").value;
-      if (otherInput.trim() !== "") {
-        superpowerInput += otherInput.substring(0, 300); // Limit to 300 characters
-      }
+        var otherInput = document.getElementById("otherInput").value;
+        if (otherInput.trim() !== "") {
+            superpowerInput += otherInput.substring(0, 300) + ", "; // Limit to 255 characters
+        }
     }
+
     var button = document.getElementById("submit-email");
     button.classList.add("btn-disabled");
     button.textContent = "Just wait a sec";
     button.disabled = true;
+
     if (isValidEmail(emailInput)) {
         const waitlistSuccessText = document.getElementById("waitlist-success-text");
         waitlistSuccessText.classList.remove("warning");
@@ -1367,7 +1369,7 @@
                     })
                         .then((response) => response.json())
                         .then(() => {
-                            waitlistSuccessText.textContent = "Your details have been updated 🎉";
+                            waitlistSuccessText.textContent = "Your details have been updated ";
                             waitlistSuccessText.style.display = "block";
                             button.textContent = "Submit";
                             button.disabled = false;
@@ -1404,18 +1406,16 @@
                 }
             });
     } else {
-      const waitlistSuccessText = document.getElementById(
-        "waitlist-success-text"
-      );
-      waitlistSuccessText.classList.add("warning");
-      waitlistSuccessText.style.display = "block";
-      waitlistSuccessText.textContent = "*Invalid Email!";
-      button.textContent = "Submit";
-      button.disabled = false;
-      button.classList.remove("btn-disabled");
+        const waitlistSuccessText = document.getElementById("waitlist-success-text");
+        waitlistSuccessText.classList.add("warning");
+        waitlistSuccessText.style.display = "block";
+        waitlistSuccessText.textContent = "*Invalid Email!";
+        button.textContent = "Submit";
+        button.disabled = false;
+        button.classList.remove("btn-disabled");
     }
-  }
-  const isValidEmail = (email) => {
+}
+const isValidEmail = (email) => {
     const emailRegex =
       /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     return emailRegex.test(email);
