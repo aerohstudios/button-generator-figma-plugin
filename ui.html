@@ -915,6 +915,9 @@
   useCustomSizeCheckbox.addEventListener("change", updatePreviewButton);
   useCustomFontSizeCheckbox.addEventListener("change", updatePreviewButton);
   useLocalColorStylesCheckbox.addEventListener("change", updatePreviewButton);
+  useButtonPaddingCheckbox.addEventListener("change", updatePreviewButton);
+  buttonVerticalPaddingInput.addEventListener("input", updatePreviewButton);
+  buttonHorizontalPaddingInput.addEventListener("input", updatePreviewButton);
 
   // Function to update the preview button
   function updatePreviewButton() {
