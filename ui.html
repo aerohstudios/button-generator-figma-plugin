@@ -1330,7 +1330,7 @@
     if (document.getElementById("otherCheckbox").checked) {
         var otherInput = document.getElementById("otherInput").value;
         if (otherInput.trim() !== "") {
-            superpowerInput += otherInput.substring(0, 300) + ", "; // Limit to 255 characters
+            superpowerInput += otherInput.substring(0, 300); // Limit to 255 characters
         }
     }
 
@@ -1369,7 +1369,7 @@
                     })
                         .then((response) => response.json())
                         .then(() => {
-                            waitlistSuccessText.textContent = "Your details have been updated ";
+                            waitlistSuccessText.textContent = "Your details have been updated 🎉";
                             waitlistSuccessText.style.display = "block";
                             button.textContent = "Submit";
                             button.disabled = false;
