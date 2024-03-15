@@ -921,16 +921,19 @@
 
   // Function to update the preview button
   function updatePreviewButton() {
-    const primaryColor = primaryColorPreview.value;
-    const secondaryColor = secondaryColorPreview.value;
-    const buttonRadius = buttonRadiusInput.value;
-    const fontStyle = fontStyleInput.value;
-    const buttonHeight = buttonHeightInput.value;
-    const buttonWidth = buttonWidthInput.value;
-    const buttonFontSize = buttonFontSizeInput.value;
-    const useCustomSize = useCustomSizeCheckbox.checked;
-    const useCustomFontSize = useCustomFontSizeCheckbox.checked;
-    const useLocalColorStyles = useLocalColorStylesCheckbox.checked;
+  const primaryColor = primaryColorPreview.value;
+  const secondaryColor = secondaryColorPreview.value;
+  const buttonRadius = buttonRadiusInput.value;
+  const fontStyle = fontStyleInput.value;
+  const buttonHeight = buttonHeightInput.value;
+  const buttonWidth = buttonWidthInput.value;
+  const buttonFontSize = buttonFontSizeInput.value;
+  const buttonVerticalPadding = buttonVerticalPaddingInput.value;
+  const buttonHorizontalPadding = buttonHorizontalPaddingInput.value;
+  const useCustomSize = useCustomSizeCheckbox.checked;
+  const useCustomFontSize = useCustomFontSizeCheckbox.checked;
+  const useLocalColorStyles = useLocalColorStylesCheckbox.checked;
+  const useButtonPadding = useButtonPaddingCheckbox.checked;
 
     // Apply styles to the preview button
     previewButton.style.borderRadius = buttonRadius + "px";
