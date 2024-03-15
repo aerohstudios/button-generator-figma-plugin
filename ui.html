@@ -1338,45 +1338,71 @@
     button.textContent = "Just wait a sec";
     button.disabled = true;
     if (isValidEmail(emailInput)) {
-      const waitlistSuccessText = document.getElementById(
-        "waitlist-success-text"
-      );
-      waitlistSuccessText.classList.remove("warning");
-      waitlistSuccessText.style.display = "none";
-      fetch("https://sheetdb.io/api/v1/ddqnlui2bceog", {
-        method: "POST",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          data: [
-            {
-              id: Date.now(),
-              ipAddress: null,
-              name: nameInput,
-              role: roleInput,
-              company: companyInput,
-              email: emailInput,
-              superpower: superpowerInput.trim(),
-            },
-          ],
-        }),
-      })
-        .then((response) => response.json())
-        .then((data) => {
-          const waitlistSuccessText = document.getElementById(
-            "waitlist-success-text"
-          );
-          waitlistSuccessText.textContent =
-            "Congrats you have been added to the waitlist 🎉";
-          waitlistSuccessText.style.display = "block";
-          // var button = document.getElementById("submit-email");
-          button.textContent = "Submit";
-          button.disabled = false;
-          button.classList.remove("btn-disabled");
-          // setButtonText("Join Waitlist");
-        });
+        const waitlistSuccessText = document.getElementById("waitlist-success-text");
+        waitlistSuccessText.classList.remove("warning");
+        waitlistSuccessText.style.display = "none";
+
+        // Check if the email is already in the list
+        fetch(`https://sheetdb.io/api/v1/ddqnlui2bceog/search?email=${emailInput}`)
+            .then((response) => response.json())
+            .then((data) => {
+                if (data.length > 0) {
+                    // Email is already in the list
+                    const entryId = data[0].id;
+                    fetch(`https://sheetdb.io/api/v1/ddqnlui2bceog/id/${entryId}`, {
+                        method: "PATCH",
+                        headers: {
+                            Accept: "application/json",
+                            "Content-Type": "application/json",
+                        },
+                        body: JSON.stringify({
+                            data: {
+                                name: nameInput,
+                                role: roleInput,
+                                company: companyInput,
+                                email: emailInput,
+                                superpower: superpowerInput.trim(),
+                            },
+                        }),
+                    })
+                        .then((response) => response.json())
+                        .then(() => {
+                            waitlistSuccessText.textContent = "Your details have been updated 🎉";
+                            waitlistSuccessText.style.display = "block";
+                            button.textContent = "Submit";
+                            button.disabled = false;
+                            button.classList.remove("btn-disabled");
+                        });
+                } else {
+                    // Email is not in the list, add new entry
+                    fetch("https://sheetdb.io/api/v1/ddqnlui2bceog", {
+                        method: "POST",
+                        headers: {
+                            Accept: "application/json",
+                            "Content-Type": "application/json",
+                        },
+                        body: JSON.stringify({
+                            data: [{
+                                id: Date.now(),
+                                ipAddress: null,
+                                name: nameInput,
+                                role: roleInput,
+                                company: companyInput,
+                                email: emailInput,
+                                superpower: superpowerInput.trim(),
+                            }, ],
+                        }),
+                    })
+                        .then((response) => response.json())
+                        .then(() => {
+                            waitlistSuccessText.textContent = "Congrats you have been added to the waitlist 🎉";
+                            waitlistSuccessText.style.display = "block";
+                            button.textContent = "Submit";
+                            button.disabled = false;
+                            button.classList.remove("btn-disabled");
+                        });
+                }
+            });
     } else {
       const waitlistSuccessText = document.getElementById(
         "waitlist-success-text"
