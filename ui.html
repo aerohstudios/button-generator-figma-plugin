@@ -978,41 +978,46 @@
       const horizontalPadding =
         buttonHorizontalPadding !== null ? buttonHorizontalPadding + "px" : "0";
 
-    // Apply padding
-    previewButton.style.paddingTop = verticalPadding;
-    previewButton.style.paddingBottom = verticalPadding;
-    previewButton.style.paddingLeft = horizontalPadding;
-    previewButton.style.paddingRight = horizontalPadding;
+      // Apply padding
+      previewButton.style.paddingTop = verticalPadding;
+      previewButton.style.paddingBottom = verticalPadding;
+      previewButton.style.paddingLeft = horizontalPadding;
+      previewButton.style.paddingRight = horizontalPadding;
 
-    previewButton.style.height = "auto";
-    previewButton.style.width = "auto";
-    previewButton.style.fontSize = "12px";
-  } else if (useCustomSize){
-    previewButton.style.height = useCustomSize ? buttonHeight + "px" : "40px";
-    previewButton.style.width = useCustomSize ? buttonWidth + "px" : "117px";
-    previewButton.style.padding = "0";
-  }
-
-  // Calculate font size
-  let fontSize;
-  if (useCustomFontSize) {
-    fontSize = buttonFontSize + "px";
-  } else if (useButtonPadding) {
-        if (buttonSize == 'small') {
-          buttonTextNode.fontSize = 12;
-        } else if (buttonSize == 'medium') {
-          buttonTextNode.fontSize = 16;
-        } else {
-          buttonTextNode.fontSize = 20;
-        }
-  } else {
-    if (buttonHeight === buttonWidth && useCustomSize) {
-      fontSize = Math.max(12, Math.floor(buttonWidth / 20) * 4) + "px";
+      previewButton.style.height = "auto";
+      previewButton.style.width = "auto";
+      previewButton.style.fontSize = "12px";
+    } else if (useCustomSize) {
+      previewButton.style.height = useCustomSize ? buttonHeight + "px" : "40px";
+      previewButton.style.width = useCustomSize ? buttonWidth + "px" : "117px";
+      previewButton.style.padding = "0";
     } else {
-      fontSize = Math.max(12, Math.floor(buttonWidth / 20) * 4) + "px";
+      previewButton.style.height = "40px";
+      previewButton.style.width = "117px";
+      previewButton.style.padding = "0";
+      previewButton.style.fontSize = "20px";
     }
-  }
-  previewButton.style.fontSize = fontSize;
+
+    // Calculate font size
+    let fontSize;
+    if (useCustomFontSize) {
+      fontSize = buttonFontSize + "px";
+    } else if (useButtonPadding) {
+      if (buttonSize == "small") {
+        buttonTextNode.fontSize = 12;
+      } else if (buttonSize == "medium") {
+        buttonTextNode.fontSize = 16;
+      } else {
+        buttonTextNode.fontSize = 20;
+      }
+    } else {
+      if (buttonHeight === buttonWidth && useCustomSize) {
+        fontSize = Math.max(12, Math.floor(buttonWidth / 20) * 4) + "px";
+      } else {
+        fontSize = Math.max(12, Math.floor(buttonWidth / 20) * 4) + "px";
+      }
+    }
+    previewButton.style.fontSize = fontSize;
 
     let primaryColorButton = primaryColor;
     let secondaryColorButton = secondaryColor;
@@ -1335,6 +1340,33 @@
     document.getElementById("customAIOption").classList.remove("active");
     document.getElementById("reportOption").classList.add("active");
   }
+
+  // Add event listener to name input field
+  document.getElementById("name-input").addEventListener("focus", function () {
+    this.style.color = "var(--figma-color-text)"; // Change background color to white when clicked
+  });
+
+  // Add event listener to email input field
+  document.getElementById("email-input").addEventListener("focus", function () {
+    this.style.color = "var(--figma-color-text)"; // Change background color to white when clicked
+  });
+
+  // Add event listener to role input field
+  document.getElementById("role-input").addEventListener("focus", function () {
+    this.style.color = "var(--figma-color-text)"; // Change background color to white when clicked
+  });
+
+  // Add event listener to company input field
+  document
+    .getElementById("company-input")
+    .addEventListener("focus", function () {
+      this.style.color = "var(--figma-color-text)"; // Change background color to white when clicked
+    });
+
+  // Add event listener to other input field
+  document.getElementById("otherInput").addEventListener("focus", function () {
+    this.style.color = "var(--figma-color-text)"; // Change background color to white when clicked
+  });
   function submitEmail() {
     // Handle email submission logic here
 
