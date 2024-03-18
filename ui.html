@@ -876,7 +876,16 @@
       align-items: center;
     "
   >
-    <p style="color: var(--figma-color-text); font-weight: bold; margin-top: 20px; font-size: 18px; text-align: center; width: 100%;">
+    <p
+      style="
+        color: var(--figma-color-text);
+        font-weight: bold;
+        margin-top: 20px;
+        font-size: 18px;
+        text-align: center;
+        width: 100%;
+      "
+    >
       Have any issues or feedback, share them with us!
     </p>
 
@@ -916,11 +925,14 @@
   );
   const previewButton = document.getElementById("preview-button");
   const useButtonPaddingCheckbox = document.getElementById(
-      "toggleButtonPaddingCheckbox"
-    );
-  const buttonVerticalPaddingInput = document.getElementById("button-vertical-padding");
-  const buttonHorizontalPaddingInput = document.getElementById("button-horizontal-padding");
-
+    "toggleButtonPaddingCheckbox"
+  );
+  const buttonVerticalPaddingInput = document.getElementById(
+    "button-vertical-padding"
+  );
+  const buttonHorizontalPaddingInput = document.getElementById(
+    "button-horizontal-padding"
+  );
 
   // Add event listeners to all relevant elements
   primaryColorPreview.addEventListener("input", updatePreviewButton);
@@ -941,28 +953,30 @@
 
   // Function to update the preview button
   function updatePreviewButton() {
-  const primaryColor = primaryColorPreview.value;
-  const secondaryColor = secondaryColorPreview.value;
-  const buttonRadius = buttonRadiusInput.value;
-  const fontStyle = fontStyleInput.value;
-  const buttonHeight = buttonHeightInput.value;
-  const buttonWidth = buttonWidthInput.value;
-  const buttonFontSize = buttonFontSizeInput.value;
-  const buttonVerticalPadding = buttonVerticalPaddingInput.value;
-  const buttonHorizontalPadding = buttonHorizontalPaddingInput.value;
-  const useCustomSize = useCustomSizeCheckbox.checked;
-  const useCustomFontSize = useCustomFontSizeCheckbox.checked;
-  const useLocalColorStyles = useLocalColorStylesCheckbox.checked;
-  const useButtonPadding = useButtonPaddingCheckbox.checked;
+    const primaryColor = primaryColorPreview.value;
+    const secondaryColor = secondaryColorPreview.value;
+    const buttonRadius = buttonRadiusInput.value;
+    const fontStyle = fontStyleInput.value;
+    const buttonHeight = buttonHeightInput.value;
+    const buttonWidth = buttonWidthInput.value;
+    const buttonFontSize = buttonFontSizeInput.value;
+    const buttonVerticalPadding = buttonVerticalPaddingInput.value;
+    const buttonHorizontalPadding = buttonHorizontalPaddingInput.value;
+    const useCustomSize = useCustomSizeCheckbox.checked;
+    const useCustomFontSize = useCustomFontSizeCheckbox.checked;
+    const useLocalColorStyles = useLocalColorStylesCheckbox.checked;
+    const useButtonPadding = useButtonPaddingCheckbox.checked;
 
-  // Apply styles to the preview button
-  previewButton.style.borderRadius = buttonRadius + "px";
-  previewButton.style.fontFamily = fontStyle;
+    // Apply styles to the preview button
+    previewButton.style.borderRadius = buttonRadius + "px";
+    previewButton.style.fontFamily = fontStyle;
 
-  if (useButtonPadding) {
-    // Check if buttonVerticalPadding and buttonHorizontalPadding are not null
-    const verticalPadding = buttonVerticalPadding !== null ? buttonVerticalPadding + "px" : "0";
-    const horizontalPadding = buttonHorizontalPadding !== null ? buttonHorizontalPadding + "px" : "0";
+    if (useButtonPadding) {
+      // Check if buttonVerticalPadding and buttonHorizontalPadding are not null
+      const verticalPadding =
+        buttonVerticalPadding !== null ? buttonVerticalPadding + "px" : "0";
+      const horizontalPadding =
+        buttonHorizontalPadding !== null ? buttonHorizontalPadding + "px" : "0";
 
     // Apply padding
     previewButton.style.paddingTop = verticalPadding;
