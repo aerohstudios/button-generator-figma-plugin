@@ -1375,29 +1375,33 @@
 
     // Check if email and name are provided
     if (emailInput === "" || nameInput === "") {
-        const waitlistSuccessText = document.getElementById("waitlist-success-text");
-        waitlistSuccessText.classList.add("warning");
-        waitlistSuccessText.style.display = "block";
-        waitlistSuccessText.textContent = "*Email and Name are required!";
-        return; // Exit function if email or name is missing
+      const waitlistSuccessText = document.getElementById(
+        "waitlist-success-text"
+      );
+      waitlistSuccessText.classList.add("warning");
+      waitlistSuccessText.style.display = "block";
+      waitlistSuccessText.textContent = "*Email and Name are required!";
+      return; // Exit function if email or name is missing
     }
 
+    // Check if the user is trying to update with the same email and name
+    // but leaving role, company, and superpower empty
     var roleInput = document.getElementById("role-input").value;
     var companyInput = document.getElementById("company-input").value;
     var superpowerInput = "";
     if (document.getElementById("codeGenerationCheckbox").checked) {
-        superpowerInput += "Code Generation, ";
+      superpowerInput += "Code Generation, ";
     }
 
     if (document.getElementById("uiGenerationCheckbox").checked) {
-        superpowerInput += "UI Generation, ";
+      superpowerInput += "UI Generation, ";
     }
 
     if (document.getElementById("otherCheckbox").checked) {
-        var otherInput = document.getElementById("otherInput").value;
-        if (otherInput.trim() !== "") {
-            superpowerInput += otherInput.substring(0, 300); // Limit to 255 characters
-        }
+      var otherInput = document.getElementById("otherInput").value;
+      if (otherInput.trim() !== "") {
+        superpowerInput += otherInput.substring(0, 300); // Limit to 300 characters
+      }
     }
 
     var button = document.getElementById("submit-email");
@@ -1406,71 +1410,168 @@
     button.disabled = true;
 
     if (isValidEmail(emailInput)) {
-        const waitlistSuccessText = document.getElementById("waitlist-success-text");
-        waitlistSuccessText.classList.remove("warning");
-        waitlistSuccessText.style.display = "none";
+      const waitlistSuccessText = document.getElementById(
+        "waitlist-success-text"
+      );
+      waitlistSuccessText.classList.remove("warning");
+      waitlistSuccessText.style.display = "none";
 
-        // Check if the email is already in the list
-        fetch(`https://sheetdb.io/api/v1/ddqnlui2bceog/search?email=${emailInput}`)
-            .then((response) => response.json())
-            .then((data) => {
-                if (data.length > 0) {
-                    // Email is already in the list
-                    const entryId = data[0].id;
-                    fetch(`https://sheetdb.io/api/v1/ddqnlui2bceog/id/${entryId}`, {
-                        method: "PATCH",
-                        headers: {
-                            Accept: "application/json",
-                            "Content-Type": "application/json",
-                        },
-                        body: JSON.stringify({
-                            data: {
-                                name: nameInput,
-                                role: roleInput,
-                                company: companyInput,
-                                email: emailInput,
-                                superpower: superpowerInput.trim(),
-                            },
-                        }),
-                    })
-                        .then((response) => response.json())
-                        .then(() => {
-                            waitlistSuccessText.textContent = "Your details have been updated 🎉";
-                            waitlistSuccessText.style.display = "block";
-                            button.textContent = "Submit";
-                            button.disabled = false;
-                            button.classList.remove("btn-disabled");
-                        });
-                } else {
-                    // Email is not in the list, add new entry
-                    fetch("https://sheetdb.io/api/v1/ddqnlui2bceog", {
-                        method: "POST",
-                        headers: {
-                            Accept: "application/json",
-                            "Content-Type": "application/json",
-                        },
-                        body: JSON.stringify({
-                            data: [{
-                                id: Date.now(),
-                                ipAddress: null,
-                                name: nameInput,
-                                role: roleInput,
-                                company: companyInput,
-                                email: emailInput,
-                                superpower: superpowerInput.trim(),
-                            }, ],
-                        }),
-                    })
-                        .then((response) => response.json())
-                        .then(() => {
-                            waitlistSuccessText.textContent = "Congrats you have been added to the waitlist 🎉";
-                            waitlistSuccessText.style.display = "block";
-                            button.textContent = "Submit";
-                            button.disabled = false;
-                            button.classList.remove("btn-disabled");
-                        });
-                }
-            });
+      // Check if the email is already in the list
+      fetch(
+        `https://sheetdb.io/api/v1/ddqnlui2bceog/search?email=${emailInput}`
+      )
+        .then((response) => response.json())
+        .then((data) => {
+          if (data.length > 0) {
+            // Email is already in the list
+            const entryId = data[0].id;
+            // Email is already in the list
+            const entryEmail = data[0].email;
+            const entryName = data[0].name;
+            const entryRole = data[0].role;
+            const entryCompany = data[0].company;
+            const entrySuperpower = data[0].superpower;
+            console.log(data[0]);
+
+            if (
+              entryEmail === emailInput &&
+              entryName === nameInput &&
+              roleInput === entryRole &&
+              companyInput === entryCompany &&
+              superpowerInput.trim() == entrySuperpower
+            ) {
+              // Add event listener to name input field
+              document.getElementById("name-input").style.color = "grey"; // Change background color to white when clicked
+
+              // Add event listener to email input field
+              document.getElementById("email-input").style.color = "grey";
+
+              // Add event listener to role input field
+              document.getElementById("role-input").style.color = "grey";
+
+              // Add event listener to company input field
+              document.getElementById("company-input").style.color = "grey";
+
+              // Add event listener to other input field
+              document.getElementById("otherInput").style.color = "grey";
+              const waitlistSuccessText = document.getElementById(
+                "waitlist-success-text"
+              );
+              waitlistSuccessText.classList.add("warning");
+              waitlistSuccessText.style.display = "block";
+              waitlistSuccessText.textContent =
+                "Your email is already in the waitlist!";
+              // Add event listener to name input field
+              document.getElementById("name-input").style.color = "grey";
+
+              // Add event listener to email input field
+              document.getElementById("email-input").style.color = "grey";
+
+              // Add event listener to role input field
+              document.getElementById("role-input").style.color = "grey";
+
+              // Add event listener to company input field
+              document.getElementById("company-input").style.color = "grey";
+
+              // Add event listener to other input field
+              document.getElementById("otherInput").style.color = "grey";
+
+              // Reset button state
+              button.textContent = "Submit";
+              button.disabled = false;
+              button.classList.remove("btn-disabled");
+            } else {
+              // Update details in the sheet
+              fetch(`https://sheetdb.io/api/v1/ddqnlui2bceog/id/${entryId}`, {
+                method: "PATCH",
+                headers: {
+                  Accept: "application/json",
+                  "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                  data: {
+                    name: nameInput == "" ? entryName : nameInput,
+                    role: roleInput == "" ? entryRole : roleInput,
+                    company: companyInput == "" ? entryCompany : companyInput,
+                    email: emailInput == "" ? entryEmail : emailInput,
+                    superpower:
+                      superpowerInput.trim() == ""
+                        ? entrySuperpower
+                        : superpowerInput.trim(),
+                  },
+                }),
+              })
+                .then((response) => response.json())
+                .then(() => {
+                  waitlistSuccessText.textContent =
+                    "You are already in our waitlist and your details have been UPDATED 🎉";
+                  waitlistSuccessText.style.display = "block";
+                  button.textContent = "Submit";
+                  button.disabled = false;
+                  button.classList.remove("btn-disabled");
+                  // Add event listener to name input field
+                  document.getElementById("name-input").style.color = "grey";
+
+                  // Add event listener to email input field
+                  document.getElementById("email-input").style.color = "grey";
+
+                  // Add event listener to role input field
+                  document.getElementById("role-input").style.color = "grey";
+
+                  // Add event listener to company input field
+                  document.getElementById("company-input").style.color = "grey";
+
+                  // Add event listener to other input field
+                  document.getElementById("otherInput").style.color = "grey";
+                });
+            }
+          } else {
+            // Email is not in the list, add new entry
+            fetch("https://sheetdb.io/api/v1/ddqnlui2bceog", {
+              method: "POST",
+              headers: {
+                Accept: "application/json",
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify({
+                data: [
+                  {
+                    id: Date.now(),
+                    ipAddress: null,
+                    name: nameInput,
+                    role: roleInput,
+                    company: companyInput,
+                    email: emailInput,
+                    superpower: superpowerInput.trim(),
+                  },
+                ],
+              }),
+            })
+              .then((response) => response.json())
+              .then(() => {
+                waitlistSuccessText.textContent =
+                  "Congrats you have been added to the waitlist 🎉";
+                waitlistSuccessText.style.display = "block";
+                button.textContent = "Submit";
+                button.disabled = false;
+                button.classList.remove("btn-disabled");
+                // Add event listener to name input field
+                document.getElementById("name-input").style.color = "grey";
+
+                // Add event listener to email input field
+                document.getElementById("email-input").style.color = "grey";
+
+                // Add event listener to role input field
+                document.getElementById("role-input").style.color = "grey";
+
+                // Add event listener to company input field
+                document.getElementById("company-input").style.color = "grey";
+
+                // Add event listener to other input field
+                document.getElementById("otherInput").style.color = "grey";
+              });
+          }
+        });
     } else {
         const waitlistSuccessText = document.getElementById("waitlist-success-text");
         waitlistSuccessText.classList.add("warning");
