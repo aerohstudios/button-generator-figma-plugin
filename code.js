@@ -9,7 +9,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 figma.showUI(__html__, { themeColors: true });
-figma.ui.resize(520, 660);
+figma.ui.resize(475, 660);
 let primaryColorStyle;
 let secondaryColorStyle;
 let hoverColorStyle;

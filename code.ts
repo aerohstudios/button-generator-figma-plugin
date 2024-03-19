@@ -1,5 +1,5 @@
 figma.showUI(__html__, { themeColors: true })
-figma.ui.resize(520, 660)
+figma.ui.resize(475, 660)
 
 let primaryColorStyle: PaintStyle;
 let secondaryColorStyle: PaintStyle;
