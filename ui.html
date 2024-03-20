@@ -1181,6 +1181,8 @@
       ).value;
     }
 
+    fontStyle = fontStyle.toLowerCase();
+    fontStyle =  fontStyle.charAt(0).toUpperCase() + fontStyle.slice(1);
     if (!fontStyle) {
       fontStyle = "Inter";
     }
