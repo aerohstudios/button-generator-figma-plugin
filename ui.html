@@ -2,20 +2,24 @@
   ::-webkit-scrollbar {
     display: none;
   }
+
   * {
     margin: 0;
     padding: 0;
     font-family: "Inter";
     color: var(--figma-color-text);
   }
+
   body {
     /* padding: 0 30px; */
     background-color: 1px solid var(--figma-color-bg);
   }
+
   .section-title {
     font-size: 12px;
     font-weight: bold;
   }
+
   input,
   textarea {
     background-color: transparent;
@@ -25,6 +29,7 @@
     border-radius: 5px;
     font-size: 12px;
   }
+
   select {
     background-color: transparent;
     border: 1px solid var(--figma-color-border);
@@ -33,15 +38,18 @@
     padding: 5px;
     font-size: 12px;
   }
+
   .checkbox {
     display: flex;
     justify-content: flex-start;
     align-items: center;
     gap: 10px;
   }
+
   .checkbox__label {
     font-size: 12px;
   }
+
   .button--primary {
     background-color: #ffc83a;
     color: #100e14;
@@ -52,6 +60,7 @@
     height: 35px;
     width: 187px;
   }
+
   .button--secondary {
     background-color: transparent;
     /* color: #FFFFFF; */
@@ -62,9 +71,11 @@
     height: 40px;
     width: 187px;
   }
+
   input:checked {
     background-color: #ffc83a;
   }
+
   .navbar {
     display: flex;
     justify-content: flex-start;
@@ -76,11 +87,13 @@
     position: sticky;
     top: 0;
   }
+
   .navbar-option {
     cursor: pointer;
     color: var(--figma-color-text-disabled);
     transition: color 0.3s;
   }
+
   .navbar-option:hover {
     color: var(--figma-color-text-onselected-secondary);
   }
@@ -95,11 +108,13 @@
     display: none;
     font-weight: bold;
   }
+
   .btn-disabled {
     background-color: #7f7f7f;
     color: #ffffff;
     cursor: not-allowed;
   }
+
   .outline {
     color: transparent;
     position: relative;
@@ -115,11 +130,13 @@
   .warning {
     color: var(--figma-color-text-danger);
   }
+
   #preview-button {
     height: 40px;
     width: 117px;
     border: none;
   }
+
   #button-preview-container {
     display: flex;
     justify-content: center;
@@ -131,6 +148,7 @@
     padding: 10px;
     min-height: 100px;
   }
+
   #preview-button {
     height: 40px;
     width: 117px;
@@ -163,259 +181,177 @@
       Report/Feedback
     </p>
   </div>
-  <div
-    id="buttonsSection"
-    style="padding: 0 20px; display: flex; flex-direction: column; gap: 20px"
-  >
+  <div id="buttonsSection" style="padding: 0 20px; display: flex; flex-direction: column; gap: 20px">
     <div id="preview-section" style="position: sticky; top: 37; z-index: 999">
-      <p
-        style="
+      <p style="
           width: 100%;
           text-align: left;
           font-size: 12px;
           font-weight: bold;
           margin: 10px 0;
-        "
-      >
+        ">
         Below is the preview of the Primary Small Button:
       </p>
       <div id="button-preview-container">
         <button id="preview-button">Preview</button>
-        <p id="note-text" style="font-size: 8px; position: absolute; bottom: 3; left: 3; color: var(--figma-color-text-disabled); display: none;">NOTE: Preview doesn't support all font names, but the response does!</p>
+        <p id="note-text"
+          style="font-size: 8px; position: absolute; bottom: 3; left: 3; color: var(--figma-color-text-disabled); display: none;">
+          NOTE: Preview doesn't support all font names, but the response does!</p>
       </div>
     </div>
 
-    <div
-      class="flex-row-center"
-      style="gap: 10px; height: 100%"
-      id="middle-section"
-    >
+    <div class="flex-row-center" style="gap: 10px; height: 100%" id="middle-section">
       <div class="flex-column-center" style="gap: 25px">
         <div class="checkbox" style="width: 100%">
-          <input
-            id="toggleLocalColorStylesCheckbox"
-            type="checkbox"
-            class="checkbox__box"
-          />
-          <label for="toggleLocalColorStylesCheckbox" class="checkbox__label"
-            >Use Your Local Color Styles</label
-          >
+          <input id="toggleLocalColorStylesCheckbox" type="checkbox" class="checkbox__box" />
+          <label for="toggleLocalColorStylesCheckbox" class="checkbox__label">Use Your Local Color Styles</label>
         </div>
-        <div
-          id="localStylesInputContainer"
-          style="
+        <div id="localStylesInputContainer" style="
             display: none;
             justify-content: center;
             flex-direction: column;
             align-items: center;
             gap: 25px;
             width: 100%;
-          "
-        >
-          <div
-            id="localStylesInputContainer"
-            style="
+          ">
+          <div id="localStylesInputContainer" style="
               display: flex;
               justify-content: center;
               flex-direction: row;
               align-items: center;
               gap: 10px;
               width: 100%;
-            "
-          >
-            <div
-              style="
+            ">
+            <div style="
                 display: flex;
                 flex-direction: column;
                 justify-content: center;
                 align-items: flex-start;
                 width: 100%;
                 gap: 15px;
-              "
-            >
+              ">
               <div class="section-title">Primary Color:</div>
               <select name="primary-color" id="color-dropdown"></select>
             </div>
 
-            <div
-              style="
+            <div style="
                 display: flex;
                 flex-direction: column;
                 justify-content: center;
                 align-items: flex-start;
                 width: 100%;
                 gap: 15px;
-              "
-            >
+              ">
               <div class="section-title">Secondary Color:</div>
-              <select
-                name="secondary-color"
-                id="secondary-color-dropdown"
-              ></select>
+              <select name="secondary-color" id="secondary-color-dropdown"></select>
             </div>
           </div>
           <div class="checkbox" style="width: 100%">
-            <input
-              id="toggleLocalColorStylesCheckboxAdvanced"
-              type="checkbox"
-              class="checkbox__box"
-            />
-            <label for="toggleLocalColorStylesCheckbox" class="checkbox__label"
-              >Choose Hover and Pressed Color</label
-            >
+            <input id="toggleLocalColorStylesCheckboxAdvanced" type="checkbox" class="checkbox__box" />
+            <label for="toggleLocalColorStylesCheckbox" class="checkbox__label">Choose Hover and Pressed Color</label>
           </div>
-          <div
-            id="localStylesInputContainerAdvanced"
-            style="
+          <div id="localStylesInputContainerAdvanced" style="
               display: none;
               justify-content: center;
               flex-direction: row;
               align-items: center;
               gap: 10px;
               width: 100%;
-            "
-          >
-            <div
-              style="
+            ">
+            <div style="
                 display: flex;
                 flex-direction: column;
                 justify-content: center;
                 align-items: flex-start;
                 width: 100%;
                 gap: 15px;
-              "
-            >
+              ">
               <div class="section-title">Hover Color:</div>
-              <select
-                name="primary-hover-color"
-                id="color-hover-dropdown"
-              ></select>
+              <select name="primary-hover-color" id="color-hover-dropdown"></select>
             </div>
 
-            <div
-              style="
+            <div style="
                 display: flex;
                 flex-direction: column;
                 justify-content: center;
                 align-items: flex-start;
                 width: 100%;
                 gap: 15px;
-              "
-            >
+              ">
               <div class="section-title">Pressed Color:</div>
-              <select
-                name="secondary-pressed-color"
-                id="color-pressed-dropdown"
-              ></select>
+              <select name="secondary-pressed-color" id="color-pressed-dropdown"></select>
             </div>
           </div>
         </div>
-        <div
-          id="customInputColorsSection"
-          style="
+        <div id="customInputColorsSection" style="
             display: flex;
             justify-content: space-between;
             flex-direction: row;
             align-items: center;
             gap: 10px;
-          "
-        >
-          <div
-            style="
+          ">
+          <div style="
               display: flex;
               justify-content: center;
               align-items: flex-start;
               width: 110px;
               flex-direction: column;
               gap: 15px;
-            "
-          >
+            ">
             <div class="section-title">Primary Color:</div>
             <div class="input" style="width: 100%; height: 100%">
-              <input
-                type="color"
-                id="primary-color"
-                class="input__field"
-                placeholder="Primary Color"
-                value="#48479A"
-                style="width: 100%; height: 30px"
-              />
+              <input type="color" id="primary-color" class="input__field" placeholder="Primary Color" value="#48479A"
+                style="width: 100%; height: 30px" />
             </div>
           </div>
 
-          <div
-            style="
+          <div style="
               display: flex;
               justify-content: center;
               align-items: flex-start;
               width: 110px;
               flex-direction: column;
               gap: 15px;
-            "
-          >
+            ">
             <div class="section-title">Secondary Color:</div>
             <div style="width: 100%; height: 100%">
-              <input
-                type="color"
-                id="secondary-color"
-                class="input__field"
-                placeholder="Secondary Color"
-                value="#FFFFFF"
-                style="width: 100%; height: 30px"
-              />
+              <input type="color" id="secondary-color" class="input__field" placeholder="Secondary Color"
+                value="#FFFFFF" style="width: 100%; height: 30px" />
             </div>
           </div>
         </div>
-        <div
-          style="
+        <div style="
             display: flex;
             justify-content: center;
             align-items: flex-start;
             width: 100%;
             flex-direction: column;
             gap: 15px;
-          "
-        >
+          ">
           <div class="section-title">Font Name:</div>
           <div class="input">
-            <input
-              type="text"
-              id="font-style"
-              class="input__field"
-              placeholder="Type Your Font Name (ex: Arial)"
-              value="Inter"
-              style="padding: 5px; width: 230px"
-            />
+            <input type="text" id="font-style" class="input__field" placeholder="Type Your Font Name (ex: Arial)"
+              value="Inter" style="padding: 5px; width: 230px" />
           </div>
         </div>
       </div>
 
-      <hr
-        style="
+      <hr style="
           border: 0.1px solid var(--figma-color-border);
           background-color: transparent;
           height: 350px;
           width: 0.1px;
-        "
-      />
+        " />
       <!-- <div style="height: 100%; width: 2px; background-color: var(--figma-color-border);"></div> -->
 
       <div class="flex-column-center" style="gap: 0px">
         <div class="checkbox" style="width: 100%">
-          <input
-            id="toggleButtonPaddingCheckbox"
-            type="radio"
-            class="checkbox__box"
-            name="customPaddingAndDimensionsOption"
-          />
-          <label for="toggleButtonPaddingCheckbox" class="checkbox__label"
-            >Use Padding</label
-          >
+          <input id="toggleButtonPaddingCheckbox" type="radio" class="checkbox__box"
+            name="customPaddingAndDimensionsOption" />
+          <label for="toggleButtonPaddingCheckbox" class="checkbox__label">Use Padding</label>
         </div>
 
-        <div
-          id="paddingInputContainer"
-          style="
+        <div id="paddingInputContainer" style="
             display: none;
             justify-content: flex-start;
             flex-direction: column;
@@ -423,96 +359,61 @@
             gap: 10px;
             width: 100%;
             margin-top: 25px;
-          "
-        >
-          <div
-            id="paddingInputContainer"
-            style="
+          ">
+          <div id="paddingInputContainer" style="
               display: flex;
               justify-content: flex-start;
               flex-direction: row;
               align-items: center;
               gap: 10px;
               width: 100%;
-            "
-          >
-            <div
-              style="
+            ">
+            <div style="
                 display: flex;
                 flex-direction: column;
                 justify-content: center;
                 align-items: flex-start;
                 width: 87px;
                 gap: 15px;
-              "
-            >
+              ">
               <div class="section-title">Vertical:</div>
               <div class="input" style="width: 100%">
-                <input
-                  type="number"
-                  id="button-vertical-padding"
-                  class="input__field"
-                  placeholder="Max: 100"
-                  max="100"
-                  min="0"
-                  style="width: 100%; padding: 5px"
-                />
+                <input type="number" id="button-vertical-padding" class="input__field" placeholder="Max: 100" max="100"
+                  min="0" style="width: 100%; padding: 5px" />
               </div>
             </div>
 
-            <div
-              style="
+            <div style="
                 display: flex;
                 flex-direction: column;
                 justify-content: center;
                 align-items: flex-start;
                 width: 87px;
                 gap: 15px;
-              "
-            >
+              ">
               <div class="section-title">Horizontal:</div>
               <div class="input" style="width: 100%">
-                <input
-                  type="number"
-                  id="button-horizontal-padding"
-                  class="input__field"
-                  placeholder="Max: 100"
-                  min="0"
-                  max="100"
-                  style="width: 100%; padding: 5px"
-                />
+                <input type="number" id="button-horizontal-padding" class="input__field" placeholder="Max: 100" min="0"
+                  max="100" style="width: 100%; padding: 5px" />
               </div>
             </div>
           </div>
         </div>
 
         <div class="checkbox" style="margin-top: 25px">
-          <input
-            id="toggleCheckbox"
-            type="radio"
-            class="checkbox__box"
-            name="customPaddingAndDimensionsOption"
-          />
-          <label for="toggleCheckbox" class="checkbox__label"
-            >Use Custom Dimensions<br /><span style="font-size: 10px"
-              >(Button Font Size will Auto-Scale)</span
-            ></label
-          >
+          <input id="toggleCheckbox" type="radio" class="checkbox__box" name="customPaddingAndDimensionsOption" />
+          <label for="toggleCheckbox" class="checkbox__label">Use Custom Dimensions<br /><span
+              style="font-size: 10px">(Button Font Size will Auto-Scale)</span></label>
         </div>
 
-        <div
-          id="inputContainer"
-          style="
+        <div id="inputContainer" style="
             display: none;
             justify-content: flex-start;
             flex-direction: column;
             align-items: center;
             width: 100%;
-          "
-        >
-          <div
-            id="inputContainer"
-            style="
+          ">
+          <div id="inputContainer" style="
               display: flex;
               justify-content: flex-start;
               flex-direction: row;
@@ -520,60 +421,40 @@
               gap: 10px;
               width: 100%;
               margin-top: 25px;
-            "
-          >
-            <div
-              style="
+            ">
+            <div style="
                 display: flex;
                 flex-direction: column;
                 justify-content: center;
                 align-items: flex-start;
                 width: 100%;
                 gap: 15px;
-              "
-            >
+              ">
               <div class="section-title">Height:</div>
               <div class="input" style="width: 87px">
-                <input
-                  type="number"
-                  id="button-height"
-                  class="input__field"
-                  placeholder="Max: 200"
-                  max="200"
-                  min="0"
-                  style="width: 100%; padding: 5px"
-                />
+                <input type="number" id="button-height" class="input__field" placeholder="Max: 200" max="200" min="0"
+                  style="width: 100%; padding: 5px" />
               </div>
             </div>
 
-            <div
-              style="
+            <div style="
                 display: flex;
                 flex-direction: column;
                 justify-content: center;
                 align-items: flex-start;
                 width: 100%;
                 gap: 15px;
-              "
-            >
+              ">
               <div class="section-title">Width:</div>
               <div class="input" style="width: 87px">
-                <input
-                  type="number"
-                  id="button-width"
-                  class="input__field"
-                  placeholder="Max: 200"
-                  min="0"
-                  max="200"
-                  style="width: 100%; padding: 5px"
-                />
+                <input type="number" id="button-width" class="input__field" placeholder="Max: 200" min="0" max="200"
+                  style="width: 100%; padding: 5px" />
               </div>
             </div>
           </div>
         </div>
 
-        <div
-          style="
+        <div style="
             display: flex;
             justify-content: center;
             align-items: flex-start;
@@ -581,73 +462,45 @@
             flex-direction: column;
             gap: 15px;
             margin-top: 24px;
-          "
-        >
+          ">
           <div class="section-title">Button Radius:</div>
           <div class="input">
-            <input
-              type="number"
-              id="button-radius"
-              class="input__field"
-              placeholder="Button Radius"
-              value="10"
-              style="padding: 5px; width: 87px"
-            />
+            <input type="number" id="button-radius" class="input__field" placeholder="Button Radius" value="10"
+              style="padding: 5px; width: 87px" />
           </div>
         </div>
         <div class="checkbox" style="width: 100%; margin-top: 13px">
-          <input
-            id="toggleTextSizeCheckbox"
-            type="checkbox"
-            class="checkbox__box"
-          />
-          <label for="toggleTextSizeCheckbox" class="checkbox__label"
-            >Custom Button Font Size <br /><span style="font-size: 10px"
-              >(will apply to ALL buttons)</span
-            ></label
-          >
+          <input id="toggleTextSizeCheckbox" type="checkbox" class="checkbox__box" />
+          <label for="toggleTextSizeCheckbox" class="checkbox__label">Custom Button Font Size <br /><span
+              style="font-size: 10px">(will apply to ALL buttons)</span></label>
         </div>
 
-        <div
-          id="textSizeInputContainer"
-          style="
+        <div id="textSizeInputContainer" style="
             justify-content: center;
             flex-direction: column;
             align-items: center;
             gap: 2rem;
             width: 87px;
             margin-top: 10px;
-          "
-        >
-          <div
-            style="
+          ">
+          <div style="
               display: flex;
               flex-direction: column;
               justify-content: center;
               align-items: flex-start;
               width: 100%;
               gap: 10px;
-            "
-          >
+            ">
             <div class="input" style="width: 100%">
-              <input
-                type="number"
-                id="button-font-size"
-                class="input__field"
-                placeholder=""
-                value="20"
-                min="0"
-                max="200"
-                style="width: 100%; padding: 5px"
-              />
+              <input type="number" id="button-font-size" class="input__field" placeholder="" value="20" min="0"
+                max="200" style="width: 100%; padding: 5px" />
             </div>
           </div>
         </div>
       </div>
     </div>
 
-    <div
-      style="
+    <div style="
         position: sticky;
         bottom: 0;
         display: flex;
@@ -656,209 +509,146 @@
         padding: 10px 0 30px 0;
         width: 100%;
         background-color: var(--figma-color-bg);
-      "
-      id="generate-button-section"
-    >
+      " id="generate-button-section">
       <button id="submit-post" class="button button--primary">
         Generate Components
       </button>
     </div>
   </div>
 
-  <div
-    id="customAISection"
-    style="display: none; padding: 0 20px; flex-direction: column; gap: 15px"
-  >
+  <div id="customAISection" style="display: none; padding: 0 20px; flex-direction: column; gap: 15px">
     <!-- Custom AI Section -->
-    <div
-      style="
+    <div style="
         display: flex;
         justify-content: center;
         flex-direction: column;
         align-items: flex-start;
         width: 100%;
         gap: 20px;
-      "
-    >
-      <p
-        style="
+      ">
+      <p style="
           font-size: 16px;
           font-weight: bold;
           color: var(--figma-color-text);
           text-align: center;
           margin-top: 10px;
           width: 100%;
-        "
-      >
+        ">
         Enter your email to get early access to our AI features!
       </p>
-      <div
-        style="
+      <div style="
           display: flex;
           justify-content: center;
           flex-direction: column;
           align-items: flex-start;
           width: 100%;
           gap: 10px;
-        "
-      >
+        ">
         <div class="section-title">
           Full Name:
           <span style="color: var(--figma-color-text-danger)"> *</span>
         </div>
         <div class="input" style="width: 100%">
-          <input
-            type="text"
-            id="name-input"
-            class="input__field"
-            placeholder="First and Last Name"
-            style="width: 100%; padding: 5px; height: 40px"
-          />
+          <input type="text" id="name-input" class="input__field" placeholder="First and Last Name"
+            style="width: 100%; padding: 5px; height: 40px" />
         </div>
       </div>
 
-      <div
-        style="
+      <div style="
           display: flex;
           justify-content: center;
           flex-direction: column;
           align-items: flex-start;
           width: 100%;
           gap: 10px;
-        "
-      >
+        ">
         <div class="section-title">
           Email: <span style="color: var(--figma-color-text-danger)"> *</span>
         </div>
         <div class="input" style="width: 100%">
-          <input
-            type="email"
-            id="email-input"
-            class="input__field"
-            placeholder="Enter your email"
-            style="width: 100%; padding: 5px; height: 40px"
-          />
+          <input type="email" id="email-input" class="input__field" placeholder="Enter your email"
+            style="width: 100%; padding: 5px; height: 40px" />
         </div>
       </div>
 
-      <p style="font-size: 10px; text-align: center; width: 100%;">To help us build best AI features for you, we would love to know more about you.</p>
+      <p style="font-size: 10px; text-align: center; width: 100%;">To help us build best AI features for you, we would
+        love to know more about you.</p>
 
       <div style="display: flex; gap: 30px; width: 100%">
-        <div
-          style="
+        <div style="
             display: flex;
             justify-content: center;
             flex-direction: column;
             align-items: flex-start;
             width: 100%;
             gap: 10px;
-          "
-        >
+          ">
           <div class="section-title">Role:</div>
           <div class="input" style="width: 100%">
-            <input
-              type="role"
-              id="role-input"
-              class="input__field"
-              placeholder=""
-              style="width: 100%; padding: 5px; height: 40px"
-            />
+            <input type="role" id="role-input" class="input__field" placeholder=""
+              style="width: 100%; padding: 5px; height: 40px" />
           </div>
         </div>
 
-        <div
-          style="
+        <div style="
             display: flex;
             justify-content: center;
             flex-direction: column;
             align-items: flex-start;
             width: 100%;
             gap: 10px;
-          "
-        >
+          ">
           <div class="section-title">Company:</div>
           <div class="input" style="width: 100%">
-            <input
-              type="text"
-              id="company-input"
-              class="input__field"
-              placeholder=""
-              style="width: 100%; padding: 5px; height: 40px"
-            />
+            <input type="text" id="company-input" class="input__field" placeholder=""
+              style="width: 100%; padding: 5px; height: 40px" />
           </div>
         </div>
       </div>
-      <div
-        style="
+      <div style="
           display: flex;
           justify-content: center;
           flex-direction: column;
           align-items: flex-start;
           width: 100%;
           gap: 10px;
-        "
-      >
+        ">
         <div class="section-title">
           What AI Superpowers are you most excited about?
         </div>
         <div style="display: flex; flex-direction: column; gap: 0px; width: 100%">
           <div class="checkbox" style="width: 100%; margin-left: 15px">
-            <input
-              id="codeGenerationCheckbox"
-              type="checkbox"
-              class="checkbox__box"
-            />
-            <label for="codeGenerationCheckbox" class="checkbox__label"
-              >Code Generation</label
-            >
+            <input id="codeGenerationCheckbox" type="checkbox" class="checkbox__box" />
+            <label for="codeGenerationCheckbox" class="checkbox__label">Code Generation</label>
           </div>
           <div class="checkbox" style="width: 100%; margin-left: 15px">
-            <input
-              id="uiGenerationCheckbox"
-              type="checkbox"
-              class="checkbox__box"
-            />
-            <label for="uiGenerationCheckbox" class="checkbox__label"
-              >UI Generation</label
-            >
+            <input id="uiGenerationCheckbox" type="checkbox" class="checkbox__box" />
+            <label for="uiGenerationCheckbox" class="checkbox__label">UI Generation</label>
           </div>
           <div style="display: flex; flex-direction: column; width: 100%">
             <div class="checkbox" style="width: 100%; margin-left: 15px">
               <input id="otherCheckbox" type="checkbox" class="checkbox__box" />
               <label for="otherCheckbox" class="checkbox__label">Other</label>
             </div>
-            <textarea
-              maxlength="300"
-              type="text"
-              id="otherInput"
-              class="input__field"
-              placeholder="Write your AI superpower wish! (max 300 characters)"
-              style="
+            <textarea maxlength="300" type="text" id="otherInput" class="input__field"
+              placeholder="Write your AI superpower wish! (max 300 characters)" style="
                 width: 92%;
                 padding: 5px;
                 height: 25px;
                 margin-left: 35px;
                 height: 80px;
-              "
-            ></textarea>
+              "></textarea>
           </div>
         </div>
       </div>
     </div>
-    <div
-      style="
+    <div style="
         width: 100%;
         display: flex;
         justify-content: center;
         align-items: center;
-      "
-    >
-      <button
-        id="submit-email"
-        class="button button--primary"
-        style="width: 110px"
-        onclick="submitEmail()"
-      >
+      ">
+      <button id="submit-email" class="button button--primary" style="width: 110px" onclick="submitEmail()">
         Submit
       </button>
     </div>
@@ -867,38 +657,29 @@
       Congrats you have been added to the waitlist 🎉
     </p>
   </div>
-  <div
-    id="reportSection"
-    style="
+  <div id="reportSection" style="
       padding: 0 20px;
       display: none;
       flex-direction: column;
       gap: 20px;
       justify-content: center;
       align-items: center;
-    "
-  >
-    <p
-      style="
+    ">
+    <p style="
         color: var(--figma-color-text);
         font-weight: bold;
         margin-top: 10px;
         font-size: 16px;
         text-align: center;
         width: 100%;
-      "
-    >
+      ">
       Have any issues or feedback, share them with us!
     </p>
 
-    <a
-      href="https://forms.gle/LrfpkoeQiALGzhai8"
-      target="_blank"
-      style="text-decoration: none"
-      ><button class="button button--secondary" onclick="">
+    <a href="https://forms.gle/LrfpkoeQiALGzhai8" target="_blank" style="text-decoration: none"><button
+        class="button button--secondary" onclick="">
         Report / Give Feedback
-      </button></a
-    >
+      </button></a>
   </div>
 </div>
 
@@ -943,12 +724,12 @@
 
   // Function to handle font name input field change
   function handleFontNameInputChange() {
-      // Show the paragraph element
+    // Show the paragraph element
     noteTextElement.style.display = "block";
 
     // Hide the paragraph element after 5 seconds
     setTimeout(() => {
-        noteTextElement.style.display = "none";
+      noteTextElement.style.display = "none";
     }, 5000); // 5000 milliseconds = 5 seconds
   }
 
@@ -1021,7 +802,7 @@
     if (useCustomFontSize) {
       fontSize = buttonFontSize + "px";
     } else if (useButtonPadding) {
-        fontSize = 12;
+      fontSize = 12;
     } else {
       if (buttonHeight === buttonWidth && useCustomSize) {
         fontSize = Math.max(12, Math.floor(buttonWidth / 20) * 4) + "px";
@@ -1045,12 +826,10 @@
       const secondaryColorButton = JSON.parse(localSecondaryColor);
 
       // Set background and text color using RGB values
-      previewButton.style.backgroundColor = `rgb(${
-        primaryColorButton.r * 255
-      }, ${primaryColorButton.g * 255}, ${primaryColorButton.b * 255})`;
-      previewButton.style.color = `rgb(${secondaryColorButton.r * 255}, ${
-        secondaryColorButton.g * 255
-      }, ${secondaryColorButton.b * 255})`;
+      previewButton.style.backgroundColor = `rgb(${primaryColorButton.r * 255
+        }, ${primaryColorButton.g * 255}, ${primaryColorButton.b * 255})`;
+      previewButton.style.color = `rgb(${secondaryColorButton.r * 255}, ${secondaryColorButton.g * 255
+        }, ${secondaryColorButton.b * 255})`;
     } else {
       previewButton.style.backgroundColor = primaryColorButton;
       previewButton.style.color = secondaryColorButton;
@@ -1164,18 +943,18 @@
     ).checked;
 
     if (useButtonPadding) {
-    var verticalPadding = document.getElementById("button-vertical-padding").value;
-    var horizontalPadding = document.getElementById("button-horizontal-padding").value;
+      var verticalPadding = document.getElementById("button-vertical-padding").value;
+      var horizontalPadding = document.getElementById("button-horizontal-padding").value;
 
-    // Validate vertical and horizontal padding
-    const isValidVerticalPadding = validatePadding(verticalPadding);
-    const isValidHorizontalPadding = validatePadding(horizontalPadding);
+      // Validate vertical and horizontal padding
+      const isValidVerticalPadding = validatePadding(verticalPadding);
+      const isValidHorizontalPadding = validatePadding(horizontalPadding);
 
-    if (!isValidVerticalPadding || !isValidHorizontalPadding) {
-      alert("Vertical and horizontal padding should be numbers less than or equal to 100.");
-      return;
+      if (!isValidVerticalPadding || !isValidHorizontalPadding) {
+        alert("Vertical and horizontal padding should be numbers less than or equal to 100.");
+        return;
+      }
     }
-  }
 
     if (useCustomSize) {
       // Validate custom height and width
@@ -1207,7 +986,7 @@
     }
 
     fontStyle = fontStyle.toLowerCase();
-    fontStyle =  fontStyle.charAt(0).toUpperCase() + fontStyle.slice(1);
+    fontStyle = fontStyle.charAt(0).toUpperCase() + fontStyle.slice(1);
     if (!fontStyle) {
       fontStyle = "Inter";
     }
@@ -1294,9 +1073,9 @@
     return !isNaN(numericValue) && numericValue <= 200 && numericValue > 0;
   }
   function validatePadding(value) {
-  const numericValue = parseFloat(value);
-  return !isNaN(numericValue) && numericValue <= 100 && numericValue >= 0;
-}
+    const numericValue = parseFloat(value);
+    return !isNaN(numericValue) && numericValue <= 100 && numericValue >= 0;
+  }
 
   onmessage = (event) => {
     const message = event.data.pluginMessage;
