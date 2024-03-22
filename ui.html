@@ -934,6 +934,22 @@
   const buttonHorizontalPaddingInput = document.getElementById(
     "button-horizontal-padding"
   );
+  // Event listener for showing the text inside preview container
+  fontStyleInput.addEventListener("input", handleFontNameInputChange);
+
+  // Get the paragraph element
+  const noteTextElement = document.getElementById("note-text");
+
+  // Function to handle font name input field change
+  function handleFontNameInputChange() {
+      // Show the paragraph element
+    noteTextElement.style.display = "block";
+
+    // Hide the paragraph element after 5 seconds
+    setTimeout(() => {
+        noteTextElement.style.display = "none";
+    }, 5000); // 5000 milliseconds = 5 seconds
+  }
 
   // Add event listeners to all relevant elements
   primaryColorPreview.addEventListener("input", updatePreviewButton);
@@ -1065,8 +1081,10 @@
           // Hide the corresponding container
           if (button.id === "toggleButtonPaddingCheckbox") {
             paddingInputContainer.style.display = "none";
+            updatePreviewButton();
           } else if (button.id === "toggleCheckbox") {
             inputContainer.style.display = "none";
+            updatePreviewButton();
           }
         } else {
           // Loop through all radio buttons to deselect others
