@@ -1152,6 +1152,20 @@
       "toggleButtonPaddingCheckbox"
     ).checked;
 
+    if (useButtonPadding) {
+    var verticalPadding = document.getElementById("button-vertical-padding").value;
+    var horizontalPadding = document.getElementById("button-horizontal-padding").value;
+
+    // Validate vertical and horizontal padding
+    const isValidVerticalPadding = validatePadding(verticalPadding);
+    const isValidHorizontalPadding = validatePadding(horizontalPadding);
+
+    if (!isValidVerticalPadding || !isValidHorizontalPadding) {
+      alert("Vertical and horizontal padding should be numbers less than or equal to 100.");
+      return;
+    }
+  }
+
     if (useCustomSize) {
       // Validate custom height and width
       const isValidHeight = validateSize(buttonHeight);
