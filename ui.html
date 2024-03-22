@@ -1280,8 +1280,12 @@
   };
   function validateSize(value) {
     const numericValue = parseFloat(value);
-    return !isNaN(numericValue) && numericValue <= 200;
+    return !isNaN(numericValue) && numericValue <= 200 && numericValue > 0;
   }
+  function validatePadding(value) {
+  const numericValue = parseFloat(value);
+  return !isNaN(numericValue) && numericValue <= 100 && numericValue >= 0;
+}
 
   onmessage = (event) => {
     const message = event.data.pluginMessage;
