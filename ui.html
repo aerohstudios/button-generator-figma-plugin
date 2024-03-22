@@ -1004,13 +1004,7 @@
     if (useCustomFontSize) {
       fontSize = buttonFontSize + "px";
     } else if (useButtonPadding) {
-      if (buttonSize == "small") {
-        buttonTextNode.fontSize = 12;
-      } else if (buttonSize == "medium") {
-        buttonTextNode.fontSize = 16;
-      } else {
-        buttonTextNode.fontSize = 20;
-      }
+        fontSize = 12;
     } else {
       if (buttonHeight === buttonWidth && useCustomSize) {
         fontSize = Math.max(12, Math.floor(buttonWidth / 20) * 4) + "px";
